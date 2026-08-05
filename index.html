@@ -1,15 +1,1916 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>AI Model Playground</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Interactive educational AI Model Playground">
+<title>AI Model Playground</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>AI Model Playground</h1>
-    <p>Visualize how AI models transform inputs into outputs.</p>
-    
-    <script src="script.js"></script>
+
+<header class="site-header">
+<div class="wrap header">
+
+<a href="#home" class="brand">
+<span class="brand-icon">AI</span>
+AI Model Playground
+</a>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#playground">Playground</a>
+<a href="#neural-learn">Learn</a>
+</nav>
+
+</div>
+</header>
+
+
+<main>
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section class="hero" id="home">
+
+<div class="wrap hero-inner">
+
+<span class="label">
+Interactive AI Education
+</span>
+
+<h1>
+See how AI models work.
+</h1>
+
+<p>
+Build models, change inputs and parameters, and visually explore
+how information moves from input to output.
+</p>
+
+<a href="#playground" class="btn primary">
+Open Playground
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PLAYGROUND
+====================================================== -->
+
+<section
+class="section playground-bg"
+id="playground"
+>
+
+<div class="wrap">
+
+
+<!-- =====================================================
+     MODEL SELECTOR
+====================================================== -->
+
+<div class="model-selector">
+
+<button
+class="model-option active"
+data-model="neural"
+type="button"
+>
+<strong>Neural Network</strong>
+<span>Available</span>
+</button>
+
+
+<button
+class="model-option"
+data-model="cnn"
+type="button"
+>
+<strong>CNN</strong>
+<span>Available</span>
+</button>
+
+
+<button
+class="model-option disabled"
+type="button"
+disabled
+>
+<strong>Transformer</strong>
+<span>Coming Soon</span>
+</button>
+
+
+<button
+class="model-option disabled"
+type="button"
+disabled
+>
+<strong>Decision Tree</strong>
+<span>Coming Soon</span>
+</button>
+
+</div>
+
+
+
+<!-- =====================================================
+     NEURAL NETWORK PLAYGROUND
+====================================================== -->
+
+<div id="neural-playground">
+
+
+<div class="heading">
+
+<span class="label">
+Neural Network Playground
+</span>
+
+<h2>
+Build your own network
+</h2>
+
+<p>
+Configure the architecture and explore how values travel
+from input to output.
+</p>
+
+</div>
+
+
+
+<!-- ARCHITECTURE -->
+
+<section class="card architecture">
+
+<div class="arch-top">
+
+<div>
+
+<span class="label">
+Architecture
+</span>
+
+<h3>
+Configure network
+</h3>
+
+</div>
+
+
+<div class="mode-switch">
+
+<button
+id="simple-mode"
+class="mode active"
+type="button"
+>
+Simple
+</button>
+
+<button
+id="advanced-mode"
+class="mode"
+type="button"
+>
+Advanced
+</button>
+
+</div>
+
+</div>
+
+
+<div class="arch-controls">
+
+
+<label>
+Inputs
+
+<select id="architecture-inputs">
+
+<option>1</option>
+<option>2</option>
+<option selected>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+
+</select>
+
+</label>
+
+
+
+<label>
+Hidden layers
+
+<select id="architecture-hidden-layers">
+
+<option selected>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+
+</select>
+
+</label>
+
+
+<div
+id="hidden-layer-settings"
+class="hidden-settings"
+></div>
+
+
+<label>
+
+Outputs
+
+<span class="fixed">
+1
+</span>
+
+</label>
+
+
+</div>
+
+
+<div class="actions">
+
+<button
+id="apply-architecture"
+class="btn primary"
+type="button"
+>
+Apply Architecture
+</button>
+
+
+<button
+id="restore-default"
+class="btn"
+type="button"
+>
+Restore Default
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- NEURAL TOOLBAR -->
+
+<div class="toolbar card">
+
+<div>
+
+<small>
+Current architecture
+</small>
+
+<strong id="architecture-description"></strong>
+
+</div>
+
+
+<div class="actions">
+
+<button
+id="reset-network"
+class="btn"
+type="button"
+>
+Reset Values
+</button>
+
+
+<button
+id="run-network"
+class="btn primary"
+type="button"
+>
+Run Forward Pass
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="live-step"
+class="live-step"
+aria-live="polite"
+>
+Ready. Change the values and run the network.
+</div>
+
+
+
+<!-- =====================================================
+     NEURAL WORKSPACE
+====================================================== -->
+
+<div class="workspace">
+
+
+<!-- INPUT PANEL -->
+
+<section class="card panel">
+
+<h3>
+<span class="step">1</span>
+Inputs
+</h3>
+
+<p class="muted">
+Use the slider or type a value.
+</p>
+
+
+<div id="dynamic-input-controls"></div>
+
+
+<label class="field">
+
+Activation
+
+<select id="activation-function">
+
+<option value="relu">
+ReLU
+</option>
+
+<option value="sigmoid">
+Sigmoid
+</option>
+
+<option value="tanh">
+Tanh
+</option>
+
+</select>
+
+</label>
+
+
+<div class="field">
+
+<div class="control-head">
+
+<label for="output-bias">
+Output bias
+</label>
+
+<output id="output-bias-display">
+0.10
+</output>
+
+</div>
+
+
+<div class="value-row">
+
+<input
+id="output-bias"
+type="range"
+min="-1"
+max="1"
+step=".05"
+value=".10"
+>
+
+
+<input
+id="output-bias-number"
+class="number-input"
+type="number"
+min="-1"
+max="1"
+step=".05"
+value=".10"
+>
+
+</div>
+
+
+<div class="limits">
+
+<span>
+Min −1
+</span>
+
+<span>
+Max 1
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- MODEL PANEL -->
+
+<section class="card panel model-panel">
+
+<h3>
+<span class="step">2</span>
+Model
+</h3>
+
+<p class="muted">
+Hover a connection to see its weight. In Advanced mode,
+click it to edit.
+</p>
+
+
+<div class="network-scroll">
+
+<svg
+id="network-svg"
+class="network-svg"
+role="img"
+aria-label="Neural network"
+></svg>
+
+</div>
+
+
+<div class="legend">
+
+<span>
+<i class="legend-line positive"></i>
+Positive weight
+</span>
+
+<span>
+<i class="legend-line negative"></i>
+Negative weight
+</span>
+
+<span>
+Thicker = stronger
+</span>
+
+</div>
+
+</section>
+
+
+
+<!-- OUTPUT PANEL -->
+
+<section class="card panel">
+
+<h3>
+<span class="step">3</span>
+Output
+</h3>
+
+
+<div
+class="prediction"
+aria-live="polite"
+>
+
+<small>
+Prediction
+</small>
+
+<strong id="prediction-value">
+—
+</strong>
+
+<span id="prediction-description">
+Run the network to calculate an output.
+</span>
+
+</div>
+
+
+<div class="results">
+
+<p>
+<span>Hidden layers</span>
+<strong id="result-hidden-layers">—</strong>
+</p>
+
+<p>
+<span>Total neurons</span>
+<strong id="result-total-neurons">—</strong>
+</p>
+
+<p>
+<span>Total connections</span>
+<strong id="result-total-connections">—</strong>
+</p>
+
+<p>
+<span>Weighted output</span>
+<strong id="result-weighted-output">—</strong>
+</p>
+
+<p>
+<span>Final activation</span>
+<strong id="result-final-output">—</strong>
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+
+<!-- =====================================================
+     ADVANCED PARAMETER EDITOR
+====================================================== -->
+
+<section
+id="parameter-editor"
+class="card editor"
+hidden
+>
+
+<div>
+
+<span class="label">
+Advanced Mode
+</span>
+
+<h3 id="editor-title">
+Edit parameter
+</h3>
+
+<p
+id="editor-description"
+class="muted"
+></p>
+
+</div>
+
+
+<div class="editor-control">
+
+<div class="control-head">
+
+<label for="parameter-slider">
+Value
+</label>
+
+<output id="parameter-display">
+0.00
+</output>
+
+</div>
+
+
+<div class="value-row">
+
+<input
+id="parameter-slider"
+type="range"
+min="-1"
+max="1"
+step=".05"
+>
+
+
+<input
+id="parameter-number"
+class="number-input"
+type="number"
+min="-1"
+max="1"
+step=".05"
+>
+
+</div>
+
+
+<div class="limits">
+
+<span>
+Min −1
+</span>
+
+<span>
+Max 1
+</span>
+
+</div>
+
+</div>
+
+
+<button
+id="close-editor"
+class="btn"
+type="button"
+>
+Close
+</button>
+
+</section>
+
+
+</div>
+<!-- END NEURAL PLAYGROUND -->
+
+
+
+<!-- =====================================================
+     CNN PLAYGROUND
+====================================================== -->
+
+<div id="cnn-playground" hidden>
+
+
+<div class="heading">
+
+<span class="label">
+CNN Playground
+</span>
+
+<h2>
+Explore convolution visually
+</h2>
+
+<p>
+Edit a small image, change the filter and watch convolution,
+feature extraction, pooling and flattening happen step by step.
+</p>
+
+</div>
+
+
+
+<!-- CNN TOOLBAR -->
+
+<div class="cnn-toolbar card">
+
+<div>
+
+<small>
+CNN PIPELINE
+</small>
+
+<strong>
+Input → Convolution → Feature Map → Pooling → Flatten
+</strong>
+
+</div>
+
+
+<div class="actions">
+
+<button
+id="cnn-reset"
+class="btn"
+type="button"
+>
+Reset
+</button>
+
+<button
+id="cnn-run"
+class="btn primary"
+type="button"
+>
+Run CNN
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="cnn-live-step"
+class="live-step"
+aria-live="polite"
+>
+Ready. Change the image or kernel and run the CNN.
+</div>
+
+
+
+<!-- CNN CONTROLS -->
+
+<section class="card cnn-controls">
+
+<div class="cnn-settings">
+
+
+<label>
+
+Stride
+
+<select id="cnn-stride">
+
+<option value="1" selected>
+1
+</option>
+
+<option value="2">
+2
+</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+Padding
+
+<select id="cnn-padding">
+
+<option value="0" selected>
+0
+</option>
+
+<option value="1">
+1
+</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+Pooling
+
+<select id="cnn-pooling">
+
+<option value="max" selected>
+Max Pooling
+</option>
+
+<option value="average">
+Average Pooling
+</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+Pooling size
+
+<select id="cnn-pool-size">
+
+<option value="2" selected>
+2 × 2
+</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+Preset Filter
+
+<select id="cnn-kernel-preset">
+
+<option value="edge" selected>
+Vertical Edge
+</option>
+
+<option value="horizontal">
+Horizontal Edge
+</option>
+
+<option value="sharpen">
+Sharpen
+</option>
+
+<option value="blur">
+Blur
+</option>
+
+<option value="custom">
+Custom
+</option>
+
+</select>
+
+</label>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CNN WORKSPACE
+====================================================== -->
+
+<div class="cnn-workspace">
+
+
+<!-- INPUT IMAGE -->
+
+<section class="card cnn-panel">
+
+<div class="cnn-panel-heading">
+
+<span class="step">
+1
+</span>
+
+<div>
+
+<h3>
+Input Image
+</h3>
+
+<p>
+Edit each pixel directly.
+</p>
+
+</div>
+
+</div>
+
+
+<div
+id="cnn-input-grid"
+class="matrix-grid matrix-5"
+></div>
+
+
+<p class="matrix-limit">
+Allowed pixel values: 0 to 9
+</p>
+
+</section>
+
+
+
+<!-- KERNEL -->
+
+<section class="card cnn-panel">
+
+<div class="cnn-panel-heading">
+
+<span class="step">
+2
+</span>
+
+<div>
+
+<h3>
+Kernel / Filter
+</h3>
+
+<p>
+The filter slides across the input.
+</p>
+
+</div>
+
+</div>
+
+
+<div
+id="cnn-kernel-grid"
+class="matrix-grid matrix-3"
+></div>
+
+
+<p class="matrix-limit">
+Allowed kernel values: −3 to 3
+</p>
+
+</section>
+
+
+
+<!-- FEATURE MAP -->
+
+<section class="card cnn-panel">
+
+<div class="cnn-panel-heading">
+
+<span class="step">
+3
+</span>
+
+<div>
+
+<h3>
+Feature Map
+</h3>
+
+<p>
+Each value is produced by convolution.
+</p>
+
+</div>
+
+</div>
+
+
+<div
+id="cnn-feature-map"
+class="cnn-result-grid"
+></div>
+
+
+<div class="cnn-stat">
+
+<span>
+Feature map size
+</span>
+
+<strong id="cnn-feature-size">
+—
+</strong>
+
+</div>
+
+</section>
+
+
+
+<!-- POOLING -->
+
+<section class="card cnn-panel">
+
+<div class="cnn-panel-heading">
+
+<span class="step">
+4
+</span>
+
+<div>
+
+<h3>
+Pooling
+</h3>
+
+<p>
+Reduces the feature map.
+</p>
+
+</div>
+
+</div>
+
+
+<div
+id="cnn-pool-map"
+class="cnn-result-grid"
+></div>
+
+
+<div class="cnn-stat">
+
+<span>
+Pooled size
+</span>
+
+<strong id="cnn-pool-size-result">
+—
+</strong>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+
+<!-- FLATTEN -->
+
+<section class="card cnn-flatten-panel">
+
+<div class="cnn-panel-heading">
+
+<span class="step">
+5
+</span>
+
+<div>
+
+<h3>
+Flattened Output
+</h3>
+
+<p>
+The pooled matrix becomes a one-dimensional vector.
+</p>
+
+</div>
+
+</div>
+
+
+<div
+id="cnn-flatten-output"
+class="flatten-vector"
+>
+
+<span>
+Run the CNN to generate the flattened vector.
+</span>
+
+</div>
+
+</section>
+
+
+
+<!-- CNN CALCULATION -->
+
+<section class="card cnn-calculation-panel">
+
+<div class="cnn-panel-heading">
+
+<span class="step">
+6
+</span>
+
+<div>
+
+<h3>
+Step-by-step Calculation
+</h3>
+
+<p>
+See exactly how each convolution value is calculated.
+</p>
+
+</div>
+
+</div>
+
+
+<div
+id="cnn-calculation-output"
+class="cnn-calculation-output"
+>
+
+<p>
+Run the CNN to see the calculations.
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- CNN QUICK EDUCATION -->
+
+<section class="cnn-learning-grid">
+
+
+<article class="card">
+
+<span class="label">
+Convolution
+</span>
+
+<h3>
+What does the kernel do?
+</h3>
+
+<p>
+The kernel moves across the image. At every position,
+corresponding values are multiplied and then added.
+</p>
+
+<p class="equation">
+Feature = Σ(Input × Kernel)
+</p>
+
+</article>
+
+
+
+<article class="card">
+
+<span class="label">
+Pooling
+</span>
+
+<h3>
+Why reduce the feature map?
+</h3>
+
+<p>
+Pooling keeps important information while reducing the
+number of values passed to later CNN layers.
+</p>
+
+</article>
+
+
+
+<article class="card">
+
+<span class="label">
+Flatten
+</span>
+
+<h3>
+Why create a vector?
+</h3>
+
+<p>
+After convolution and pooling, CNN features are commonly
+converted into a one-dimensional representation for later
+processing.
+</p>
+
+</article>
+
+
+</section>
+
+
+</div>
+<!-- END CNN PLAYGROUND -->
+
+
+</div>
+<!-- END PLAYGROUND WRAP -->
+
+</section>
+<!-- END PLAYGROUND SECTION -->
+
+
+
+<!-- =====================================================
+     NEURAL NETWORK LEARNING
+====================================================== -->
+
+<section
+class="section"
+id="neural-learn"
+>
+
+<div class="wrap">
+
+
+<div class="heading">
+
+<span class="label">
+Learn Neural Networks
+</span>
+
+<h2>
+What happened inside the neural network?
+</h2>
+
+<p>
+Follow how inputs are transformed by weights, biases,
+activation functions and hidden layers to produce an output.
+</p>
+
+</div>
+
+
+
+<div class="tabs">
+
+<button
+class="tab active"
+data-tab="beginner"
+type="button"
+>
+Beginner
+</button>
+
+
+<button
+class="tab"
+data-tab="math"
+type="button"
+>
+Mathematics
+</button>
+
+
+<button
+class="tab"
+data-tab="calc"
+type="button"
+>
+Calculation
+</button>
+
+</div>
+
+
+
+<!-- BEGINNER -->
+
+<div
+id="beginner-panel"
+class="learn-panel"
+>
+
+<div class="learn-grid">
+
+
+<article>
+
+<b>1</b>
+
+<h3>
+Inputs enter
+</h3>
+
+<p>
+Each input neuron receives one numerical value.
+</p>
+
+</article>
+
+
+
+<article>
+
+<b>2</b>
+
+<h3>
+Weights modify
+</h3>
+
+<p>
+Each connection multiplies the incoming value by a weight.
+</p>
+
+</article>
+
+
+
+<article>
+
+<b>3</b>
+
+<h3>
+Bias shifts
+</h3>
+
+<p>
+A bias is added to the weighted sum before activation.
+</p>
+
+</article>
+
+
+
+<article>
+
+<b>4</b>
+
+<h3>
+Activation transforms
+</h3>
+
+<p>
+ReLU, Sigmoid or Tanh transforms the weighted sum.
+</p>
+
+</article>
+
+
+
+<article>
+
+<b>5</b>
+
+<h3>
+Layers continue
+</h3>
+
+<p>
+The activation values become inputs to the next layer.
+</p>
+
+</article>
+
+
+
+<article>
+
+<b>6</b>
+
+<h3>
+Prediction appears
+</h3>
+
+<p>
+The final output neuron produces the simulated prediction.
+</p>
+
+</article>
+
+
+</div>
+
+</div>
+
+
+
+<!-- MATHEMATICS -->
+
+<div
+id="math-panel"
+class="learn-panel"
+hidden
+>
+
+<div class="math-grid">
+
+
+<article>
+
+<h3>
+Weighted sum
+</h3>
+
+<p class="equation">
+z = Σ(xᵢ × wᵢ) + b
+</p>
+
+<p>
+Each input is multiplied by its connection weight.
+The products are added together with the neuron's bias.
+</p>
+
+</article>
+
+
+
+<article>
+
+<h3>
+Activation
+</h3>
+
+<p class="equation">
+a = f(z)
+</p>
+
+<p>
+The weighted sum passes through the selected activation function.
+</p>
+
+</article>
+
+
+
+<article>
+
+<h3>
+Sigmoid
+</h3>
+
+<p class="equation">
+σ(z) = 1 / (1 + e⁻ᶻ)
+</p>
+
+<p>
+Sigmoid converts the weighted sum into a value between 0 and 1.
+</p>
+
+</article>
+
+
+</div>
+
+</div>
+
+
+
+<!-- CALCULATION -->
+
+<div
+id="calc-panel"
+class="learn-panel"
+hidden
+>
+
+<div id="calculation-output">
+
+<p>
+Run the neural network to see the complete calculations.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CNN LEARNING
+====================================================== -->
+
+<section
+class="section"
+id="cnn-learn"
+hidden
+>
+
+<div class="wrap">
+
+
+<div class="heading">
+
+<span class="label">
+Learn CNN
+</span>
+
+<h2>
+What happened inside the CNN?
+</h2>
+
+<p>
+Follow how an input matrix passes through convolution,
+feature extraction, pooling and flattening.
+</p>
+
+</div>
+
+
+
+<div class="tabs cnn-tabs">
+
+<button
+class="tab cnn-tab active"
+data-cnn-tab="beginner"
+type="button"
+>
+Beginner
+</button>
+
+
+<button
+class="tab cnn-tab"
+data-cnn-tab="math"
+type="button"
+>
+Mathematics
+</button>
+
+
+<button
+class="tab cnn-tab"
+data-cnn-tab="pipeline"
+type="button"
+>
+CNN Pipeline
+</button>
+
+</div>
+
+
+
+<!-- CNN BEGINNER -->
+
+<div
+id="cnn-beginner-panel"
+class="learn-panel"
+>
+
+<div class="learn-grid">
+
+
+<article>
+
+<b>1</b>
+
+<h3>
+Input image
+</h3>
+
+<p>
+The image is represented as a matrix of numerical pixel values.
+</p>
+
+</article>
+
+
+
+<article>
+
+<b>2</b>
+
+<h3>
+Kernel slides
+</h3>
+
+<p>
+A small filter moves across different regions of the input image.
+</p>
+
+</article>
+
+
+
+<article>
+
+<b>3</b>
+
+<h3>
+Values multiply
+</h3>
+
+<p>
+Each input value is multiplied by the corresponding kernel value.
+</p>
+
+</article>
+
+
+
+<article>
+
+<b>4</b>
+
+<h3>
+Feature map forms
+</h3>
+
+<p>
+The multiplication results are added together to produce
+one feature-map value.
+</p>
+
+</article>
+
+
+
+<article>
+
+<b>5</b>
+
+<h3>
+Pooling reduces
+</h3>
+
+<p>
+Pooling reduces the feature map while retaining important information.
+</p>
+
+</article>
+
+
+
+<article>
+
+<b>6</b>
+
+<h3>
+Flatten creates a vector
+</h3>
+
+<p>
+The pooled matrix is converted into a one-dimensional feature vector.
+</p>
+
+</article>
+
+
+</div>
+
+</div>
+
+
+
+<!-- CNN MATHEMATICS -->
+
+<div
+id="cnn-math-panel"
+class="learn-panel"
+hidden
+>
+
+<div class="math-grid">
+
+
+<article>
+
+<h3>
+Convolution
+</h3>
+
+<p class="equation">
+y(i,j) = Σₘ Σₙ x(i+m,j+n) × k(m,n)
+</p>
+
+<p>
+The input region and kernel are multiplied element by element,
+then all products are added.
+</p>
+
+</article>
+
+
+
+<article>
+
+<h3>
+Feature map size
+</h3>
+
+<p class="equation">
+O = floor((N + 2P − K) / S) + 1
+</p>
+
+<p>
+N is input size, P is padding, K is kernel size,
+and S is stride.
+</p>
+
+</article>
+
+
+
+<article>
+
+<h3>
+Max pooling
+</h3>
+
+<p class="equation">
+y = max(x₁,x₂,...,xₙ)
+</p>
+
+<p>
+The largest value inside each pooling region is retained.
+</p>
+
+</article>
+
+
+<article>
+
+<h3>
+Average pooling
+</h3>
+
+<p class="equation">
+y = (x₁ + x₂ + ... + xₙ) / n
+</p>
+
+<p>
+Average pooling calculates the mean value inside each pooling region.
+</p>
+
+</article>
+
+
+<article>
+
+<h3>
+Flatten
+</h3>
+
+<p class="equation">
+Matrix → [x₁, x₂, x₃, ..., xₙ]
+</p>
+
+<p>
+Flattening converts the final two-dimensional feature map
+into a one-dimensional vector.
+</p>
+
+</article>
+
+
+<article>
+
+<h3>
+CNN pipeline
+</h3>
+
+<p class="equation">
+Input → Conv → Pool → Flatten
+</p>
+
+<p>
+These operations transform raw input pixels into extracted features.
+</p>
+
+</article>
+
+
+</div>
+
+</div>
+
+
+
+<!-- CNN PIPELINE -->
+
+<div
+id="cnn-pipeline-panel"
+class="learn-panel"
+hidden
+>
+
+<div class="cnn-pipeline">
+
+
+<div class="pipeline-box">
+
+<strong>
+Input
+</strong>
+
+<span>
+5 × 5 matrix
+</span>
+
+</div>
+
+
+<span class="pipeline-arrow">
+→
+</span>
+
+
+<div class="pipeline-box">
+
+<strong>
+Kernel
+</strong>
+
+<span>
+3 × 3 filter
+</span>
+
+</div>
+
+
+<span class="pipeline-arrow">
+→
+</span>
+
+
+<div class="pipeline-box">
+
+<strong>
+Convolution
+</strong>
+
+<span>
+Multiply + Sum
+</span>
+
+</div>
+
+
+<span class="pipeline-arrow">
+→
+</span>
+
+
+<div class="pipeline-box">
+
+<strong>
+Feature Map
+</strong>
+
+<span>
+Extracted features
+</span>
+
+</div>
+
+
+<span class="pipeline-arrow">
+→
+</span>
+
+
+<div class="pipeline-box">
+
+<strong>
+Pooling
+</strong>
+
+<span>
+Reduce dimensions
+</span>
+
+</div>
+
+
+<span class="pipeline-arrow">
+→
+</span>
+
+
+<div class="pipeline-box">
+
+<strong>
+Flatten
+</strong>
+
+<span>
+1D feature vector
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+<div class="wrap footer">
+
+<strong>
+AI Model Playground
+</strong>
+
+<span>
+Educational simulation only.
+</span>
+
+</div>
+
+</footer>
+
+
+
+<div
+id="weight-tooltip"
+class="weight-tooltip"
+hidden
+></div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="models/neural-network.js"></script>
+<script src="models/cnn.js"></script>
+<script src="script.js"></script>
+
+
 </body>
+
 </html>
