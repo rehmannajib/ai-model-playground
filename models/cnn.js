@@ -1,1260 +1,572 @@
+// models/cnn.js
 "use strict";
-
-/* =====================================================
-   CNN EDUCATIONAL PLAYGROUND
-===================================================== */
 
 const CNN = (() => {
 
-  const $ = id => document.getElementById(id);
-
-  const elements = {
-    inputGrid: $("cnn-input-grid"),
-    kernelGrid: $("cnn-kernel-grid"),
-    featureMap: $("cnn-feature-map"),
-    poolMap: $("cnn-pool-map"),
-    flatten: $("cnn-flatten-output"),
-    calculations: $("cnn-calculation-output"),
-
-    stride: $("cnn-stride"),
-    padding: $("cnn-padding"),
-    pooling: $("cnn-pooling"),
-    poolSize: $("cnn-pool-size"),
-    preset: $("cnn-kernel-preset"),
-
-    featureSize: $("cnn-feature-size"),
-    poolSizeResult: $("cnn-pool-size-result"),
-
-    run: $("cnn-run"),
-    reset: $("cnn-reset"),
-    live: $("cnn-live-step")
-  };
-
-
-  const INPUT_SIZE = 5;
-  const KERNEL_SIZE = 3;
-
-  const INPUT_MIN = 0;
-  const INPUT_MAX = 9;
-
-  const KERNEL_MIN = -3;
-  const KERNEL_MAX = 3;
-
-
-  const defaultInput = [
-    [1,2,0,1,3],
-    [0,1,2,2,1],
-    [3,1,0,2,2],
-    [1,2,1,0,3],
-    [2,0,1,1,2]
-  ];
-
-
-  const presets = {
-
-    edge: [
-      [1,0,-1],
-      [1,0,-1],
-      [1,0,-1]
-    ],
-
-    horizontal: [
-      [1,1,1],
-      [0,0,0],
-      [-1,-1,-1]
-    ],
-
-    sharpen: [
-      [0,-1,0],
-      [-1,5,-1],
-      [0,-1,0]
-    ],
-
-    blur: [
-      [0.11,0.11,0.11],
-      [0.11,0.11,0.11],
-      [0.11,0.11,0.11]
-    ]
-
-  };
-
-
-  let state = {
-    input: copyMatrix(defaultInput),
-    kernel: copyMatrix(presets.edge),
-    running: false
-  };
-
-
-  function copyMatrix(matrix) {
-    return matrix.map(row => [...row]);
-  }
-
-
-  function number(value, fallback = 0) {
-    const parsed = Number.parseFloat(value);
-
-    return Number.isFinite(parsed)
-      ? parsed
-      : fallback;
-  }
-
-
-  function clamp(value, minimum, maximum, fallback = 0) {
-    const parsed = number(value, fallback);
-
-    return Math.min(
-      maximum,
-      Math.max(minimum, parsed)
-    );
-  }
-
-
-  function format(value) {
-    const rounded =
-      Math.round(value * 1000) / 1000;
-
-    return String(rounded);
-  }
-
-
-  function wait(milliseconds) {
-    return new Promise(resolve => {
-      window.setTimeout(resolve, milliseconds);
-    });
-  }
-
-
-  /* ===================================================
-     INPUT GRID
-  =================================================== */
-
-  function createEditableGrid(
-    container,
-    matrix,
-    minimum,
-    maximum,
-    step,
-    type
-  ) {
-
-    container.replaceChildren();
-
-    matrix.forEach((row, rowIndex) => {
-
-      row.forEach((value, columnIndex) => {
-
-        const input =
-          document.createElement("input");
-
-        input.type = "number";
-        input.className = "matrix-cell";
-
-        input.min = String(minimum);
-        input.max = String(maximum);
-        input.step = String(step);
-
-        input.value = format(value);
-
-        input.dataset.row =
-          String(rowIndex);
-
-        input.dataset.column =
-          String(columnIndex);
-
-        input.setAttribute(
-          "aria-label",
-          `${type} row ${rowIndex + 1}, column ${columnIndex + 1}`
-        );
-
-
-        input.addEventListener(
-          "input",
-          () => {
-
-            const parsed =
-              Number.parseFloat(input.value);
-
-            if (
-              Number.isFinite(parsed) &&
-              parsed >= minimum &&
-              parsed <= maximum
-            ) {
-
-              input.classList.remove("invalid");
-
-              updateStateCell(
-                type,
-                rowIndex,
-                columnIndex,
-                parsed
-              );
-
-              clearResults();
-
-            } else {
-
-              input.classList.add("invalid");
-
-            }
-
-          }
-        );
-
-
-        input.addEventListener(
-          "change",
-          () => {
-
-            const safe =
-              clamp(
-                input.value,
-                minimum,
-                maximum,
-                0
-              );
-
-            input.value =
-              format(safe);
-
-            input.classList.remove(
-              "invalid"
-            );
-
-            updateStateCell(
-              type,
-              rowIndex,
-              columnIndex,
-              safe
-            );
-
-            clearResults();
-
-          }
-        );
-
-
-        container.appendChild(input);
-
-      });
-
-    });
-
-  }
-
-
-  function updateStateCell(
-    type,
-    row,
-    column,
-    value
-  ) {
-
-    if (type === "input") {
-      state.input[row][column] = value;
-    }
-
-    if (type === "kernel") {
-      state.kernel[row][column] = value;
-
-      elements.preset.value =
-        "custom";
-    }
-
-  }
-
-
-  function renderEditableMatrices() {
-
-    createEditableGrid(
-      elements.inputGrid,
-      state.input,
-      INPUT_MIN,
-      INPUT_MAX,
-      1,
-      "input"
-    );
-
-
-    createEditableGrid(
-      elements.kernelGrid,
-      state.kernel,
-      KERNEL_MIN,
-      KERNEL_MAX,
-      0.01,
-      "kernel"
-    );
-
-  }
-
-
-  /* ===================================================
-     PADDING
-  =================================================== */
-
-  function padMatrix(
-    matrix,
-    amount
-  ) {
-
-    if (amount === 0) {
-      return copyMatrix(matrix);
-    }
-
-
-    const width =
-      matrix[0].length +
-      amount * 2;
-
-
-    const padded = [];
-
-
-    for (
-      let row = 0;
-      row < matrix.length + amount * 2;
-      row += 1
-    ) {
-
-      const values =
-        Array(width).fill(0);
-
-      padded.push(values);
-
-    }
-
-
-    matrix.forEach(
-      (row, rowIndex) => {
-
-        row.forEach(
-          (value, columnIndex) => {
-
-            padded[
-              rowIndex + amount
-            ][
-              columnIndex + amount
-            ] = value;
-
-          }
-        );
-
-      }
-    );
-
-
-    return padded;
-
-  }
-
-
-  /* ===================================================
-     CONVOLUTION
-  =================================================== */
-
-  function calculateConvolution() {
-
-    const stride =
-      Number.parseInt(
-        elements.stride.value,
-        10
-      );
-
-
-    const padding =
-      Number.parseInt(
-        elements.padding.value,
-        10
-      );
-
-
-    const padded =
-      padMatrix(
-        state.input,
-        padding
-      );
-
-
-    const outputSize =
-      Math.floor(
-        (
-          padded.length -
-          KERNEL_SIZE
-        ) /
-        stride
-      ) + 1;
-
-
-    const featureMap = [];
-
-    const calculations = [];
-
-
-    for (
-      let outputRow = 0;
-      outputRow < outputSize;
-      outputRow += 1
-    ) {
-
-      const featureRow = [];
-
-
-      for (
-        let outputColumn = 0;
-        outputColumn < outputSize;
-        outputColumn += 1
-      ) {
-
-        const startRow =
-          outputRow * stride;
-
-        const startColumn =
-          outputColumn * stride;
-
-
-        let sum = 0;
-
-        const products = [];
-
-
-        for (
-          let kernelRow = 0;
-          kernelRow < KERNEL_SIZE;
-          kernelRow += 1
-        ) {
-
-          for (
-            let kernelColumn = 0;
-            kernelColumn < KERNEL_SIZE;
-            kernelColumn += 1
-          ) {
-
-            const inputValue =
-              padded[
-                startRow +
-                kernelRow
-              ][
-                startColumn +
-                kernelColumn
-              ];
-
-
-            const kernelValue =
-              state.kernel[
-                kernelRow
-              ][
-                kernelColumn
-              ];
-
-
-            const product =
-              inputValue *
-              kernelValue;
-
-
-            sum += product;
-
-
-            products.push({
-              inputValue,
-              kernelValue,
-              product
-            });
-
-          }
-
-        }
-
-
-        featureRow.push(sum);
-
-
-        calculations.push({
-          outputRow,
-          outputColumn,
-          startRow,
-          startColumn,
-          padding,
-          products,
-          sum
-        });
-
-      }
-
-
-      featureMap.push(
-        featureRow
-      );
-
-    }
-
-
-    return {
-      featureMap,
-      calculations,
-      stride,
-      padding
-    };
-
-  }
-
-
-  /* ===================================================
-     POOLING
-  =================================================== */
-
-  function calculatePooling(
-    featureMap
-  ) {
-
-    const size =
-      Number.parseInt(
-        elements.poolSize.value,
-        10
-      );
-
-
-    const type =
-      elements.pooling.value;
-
-
-    if (
-      featureMap.length <
-      size
-    ) {
-
-      return {
-        matrix: copyMatrix(featureMap),
-        type,
-        size: 1
-      };
-
-    }
-
-
-    const pooled = [];
-
-
-    for (
-      let row = 0;
-      row + size <= featureMap.length;
-      row += size
-    ) {
-
-      const pooledRow = [];
-
-
-      for (
-        let column = 0;
-        column + size <= featureMap[0].length;
-        column += size
-      ) {
-
-        const values = [];
-
-
-        for (
-          let poolRow = 0;
-          poolRow < size;
-          poolRow += 1
-        ) {
-
-          for (
-            let poolColumn = 0;
-            poolColumn < size;
-            poolColumn += 1
-          ) {
-
-            values.push(
-              featureMap[
-                row + poolRow
-              ][
-                column + poolColumn
-              ]
-            );
-
-          }
-
-        }
-
-
-        let result;
-
-
-        if (type === "average") {
-
-          result =
-            values.reduce(
-              (total, value) =>
-                total + value,
-              0
-            ) /
-            values.length;
-
-        } else {
-
-          result =
-            Math.max(...values);
-
-        }
-
-
-        pooledRow.push(
-          result
-        );
-
-      }
-
-
-      if (pooledRow.length) {
-        pooled.push(pooledRow);
-      }
-
-    }
-
-
-    return {
-      matrix: pooled,
-      type,
-      size
-    };
-
-  }
-
-
-  /* ===================================================
-     FLATTEN
-  =================================================== */
-
-  function flattenMatrix(matrix) {
-
-    return matrix.reduce(
-      (result, row) =>
-        result.concat(row),
-      []
-    );
-
-  }
-
-
-  /* ===================================================
-     DISPLAY MATRIX
-  =================================================== */
-
-  function renderResultMatrix(
-    container,
-    matrix
-  ) {
-
-    container.replaceChildren();
-
-
-    if (
-      !matrix.length ||
-      !matrix[0].length
-    ) {
-
-      const message =
-        document.createElement("p");
-
-      message.textContent =
-        "No values.";
-
-      container.appendChild(message);
-
-      return;
-
-    }
-
-
-    container.style.gridTemplateColumns =
-      `repeat(${matrix[0].length}, 1fr)`;
-
-
-    matrix.forEach(
-      (row, rowIndex) => {
-
-        row.forEach(
-          (value, columnIndex) => {
-
-            const cell =
-              document.createElement("div");
-
-            cell.className =
-              "cnn-result-cell";
-
-            cell.textContent =
-              format(value);
-
-            cell.dataset.row =
-              String(rowIndex);
-
-            cell.dataset.column =
-              String(columnIndex);
-
-            container.appendChild(cell);
-
-          }
-        );
-
-      }
-    );
-
-  }
-
-
-  function renderFlattened(
-    values
-  ) {
-
-    elements.flatten.replaceChildren();
-
-
-    values.forEach(
-      (value, index) => {
-
-        const element =
-          document.createElement("span");
-
-        element.className =
-          "flatten-value";
-
-        element.textContent =
-          format(value);
-
-        element.setAttribute(
-          "aria-label",
-          `Flattened value ${index + 1}`
-        );
-
-        elements.flatten.appendChild(
-          element
-        );
-
-      }
-    );
-
-  }
-
-
-  /* ===================================================
-     CALCULATIONS
-  =================================================== */
-
-  function renderCalculations(
-    calculations
-  ) {
-
-    elements.calculations.replaceChildren();
-
-
-    calculations.forEach(
-      (calculation, index) => {
-
-        const wrapper =
-          document.createElement("div");
-
-        wrapper.className =
-          "cnn-calc-step";
-
-
-        const heading =
-          document.createElement("strong");
-
-        heading.textContent =
-          `Feature map cell ${
-            index + 1
-          } — row ${
-            calculation.outputRow + 1
-          }, column ${
-            calculation.outputColumn + 1
-          }`;
-
-
-        const equation =
-          document.createElement("code");
-
-
-        equation.textContent =
-          calculation.products
-            .map(item =>
-              `(${format(item.inputValue)} × ${format(item.kernelValue)})`
-            )
-            .join(" + ");
-
-
-        const result =
-          document.createElement("div");
-
-        result.className =
-          "cnn-calc-result";
-
-        result.textContent =
-          `= ${format(calculation.sum)}`;
-
-
-        wrapper.append(
-          heading,
-          equation,
-          result
-        );
-
-
-        elements.calculations.appendChild(
-          wrapper
-        );
-
-      }
-    );
-
-  }
-
-
-  /* ===================================================
-     ANIMATION
-  =================================================== */
-
-  function clearHighlights() {
-
-    elements.inputGrid
-      .querySelectorAll(".matrix-cell")
-      .forEach(cell => {
-        cell.classList.remove(
-          "highlight"
-        );
-      });
-
-
-    elements.featureMap
-      .querySelectorAll(".cnn-result-cell")
-      .forEach(cell => {
-        cell.classList.remove(
-          "active"
-        );
-      });
-
-  }
-
-
-  function highlightInputWindow(
-    calculation
-  ) {
-
-    clearHighlights();
-
-
-    const padding =
-      calculation.padding;
-
-
-    for (
-      let kernelRow = 0;
-      kernelRow < KERNEL_SIZE;
-      kernelRow += 1
-    ) {
-
-      for (
-        let kernelColumn = 0;
-        kernelColumn < KERNEL_SIZE;
-        kernelColumn += 1
-      ) {
-
-        const paddedRow =
-          calculation.startRow +
-          kernelRow;
-
-
-        const paddedColumn =
-          calculation.startColumn +
-          kernelColumn;
-
-
-        const originalRow =
-          paddedRow -
-          padding;
-
-
-        const originalColumn =
-          paddedColumn -
-          padding;
-
-
-        if (
-          originalRow >= 0 &&
-          originalRow < INPUT_SIZE &&
-          originalColumn >= 0 &&
-          originalColumn < INPUT_SIZE
-        ) {
-
-          const cell =
-            elements.inputGrid
-              .querySelector(
-                `[data-row="${originalRow}"][data-column="${originalColumn}"]`
-              );
-
-
-          if (cell) {
-            cell.classList.add(
-              "highlight"
-            );
-          }
-
-        }
-
-      }
-
-    }
-
-
-    const featureCell =
-      elements.featureMap
-        .querySelector(
-          `[data-row="${calculation.outputRow}"][data-column="${calculation.outputColumn}"]`
-        );
-
-
-    if (featureCell) {
-      featureCell.classList.add(
-        "active"
-      );
-    }
-
-  }
-
-
-  async function animateConvolution(
-    calculations
-  ) {
-
-    elements.run.disabled = true;
-    elements.reset.disabled = true;
-
-
-    for (
-      let index = 0;
-      index < calculations.length;
-      index += 1
-    ) {
-
-      const calculation =
-        calculations[index];
-
-
-      elements.live.textContent =
-        `Convolution ${
-          index + 1
-        } of ${
-          calculations.length
-        }: moving the 3 × 3 filter across the input.`;
-
-
-      highlightInputWindow(
-        calculation
-      );
-
-
-      await wait(350);
-
-    }
-
-
-    clearHighlights();
-
-
-    elements.live.textContent =
-      "Convolution complete. Applying pooling...";
-
-
-    await wait(450);
-
-
-    elements.run.disabled = false;
-    elements.reset.disabled = false;
-
-  }
-
-
-  /* ===================================================
-     RUN CNN
-  =================================================== */
-
-  async function run() {
-
-    if (state.running) {
-      return;
-    }
-
-
-    state.running = true;
-
-
-    const convolution =
-      calculateConvolution();
-
-
-    renderResultMatrix(
-      elements.featureMap,
-      convolution.featureMap
-    );
-
-
-    elements.featureSize.textContent =
-      `${convolution.featureMap.length} × ${
-        convolution.featureMap[0].length
-      }`;
-
-
-    await animateConvolution(
-      convolution.calculations
-    );
-
-
-    const pooling =
-      calculatePooling(
-        convolution.featureMap
-      );
-
-
-    renderResultMatrix(
-      elements.poolMap,
-      pooling.matrix
-    );
-
-
-    if (
-      pooling.matrix.length &&
-      pooling.matrix[0].length
-    ) {
-
-      elements.poolSizeResult.textContent =
-        `${pooling.matrix.length} × ${
-          pooling.matrix[0].length
-        }`;
-
-    } else {
-
-      elements.poolSizeResult.textContent =
-        "—";
-
-    }
-
-
-    const flattened =
-      flattenMatrix(
-        pooling.matrix
-      );
-
-
-    renderFlattened(
-      flattened
-    );
-
-
-    renderCalculations(
-      convolution.calculations
-    );
-
-
-    elements.live.textContent =
-      `CNN simulation complete: ${
-        convolution.featureMap.length
-      } × ${
-        convolution.featureMap[0].length
-      } feature map → ${
-        flattened.length
-      } flattened value${
-        flattened.length === 1
-          ? ""
-          : "s"
-      }.`;
-
-
-    state.running = false;
-
-  }
-
-
-  /* ===================================================
-     PRESETS
-  =================================================== */
-
-  function applyPreset() {
-
-    const preset =
-      elements.preset.value;
-
-
-    if (
-      preset === "custom"
-    ) {
-      return;
-    }
-
-
-    state.kernel =
-      copyMatrix(
-        presets[preset]
-      );
-
-
-    renderEditableMatrices();
-
-    clearResults();
-
-  }
-
-
-  /* ===================================================
-     CLEAR / RESET
-  =================================================== */
-
-  function clearResults() {
-
-    elements.featureMap.replaceChildren();
-    elements.poolMap.replaceChildren();
-    elements.flatten.replaceChildren();
-    elements.calculations.replaceChildren();
-
-
-    elements.featureSize.textContent =
-      "—";
-
-    elements.poolSizeResult.textContent =
-      "—";
-
-
-    const flattenMessage =
-      document.createElement("span");
-
-    flattenMessage.textContent =
-      "Run the CNN to generate the flattened vector.";
-
-    elements.flatten.appendChild(
-      flattenMessage
-    );
-
-
-    const calculationMessage =
-      document.createElement("p");
-
-    calculationMessage.textContent =
-      "Run the CNN to see the calculations.";
-
-    elements.calculations.appendChild(
-      calculationMessage
-    );
-
-
-    elements.live.textContent =
-      "Ready. Change the image or kernel and run the CNN.";
-
-  }
-
-
-  function reset() {
-
-    state.input =
-      copyMatrix(
-        defaultInput
-      );
-
-
-    state.kernel =
-      copyMatrix(
-        presets.edge
-      );
-
-
-    elements.stride.value =
-      "1";
-
-    elements.padding.value =
-      "0";
-
-    elements.pooling.value =
-      "max";
-
-    elements.preset.value =
-      "edge";
-
-
-    renderEditableMatrices();
-
-    clearResults();
-
-  }
-
-
-  /* ===================================================
-     EVENTS
-  =================================================== */
-
-  function attachEvents() {
-
-    elements.run.addEventListener(
-      "click",
-      run
-    );
-
-
-    elements.reset.addEventListener(
-      "click",
-      reset
-    );
-
-
-    elements.preset.addEventListener(
-      "change",
-      applyPreset
-    );
-
-
-    [
-      elements.stride,
-      elements.padding,
-      elements.pooling,
-      elements.poolSize
-    ].forEach(control => {
-
-      control.addEventListener(
-        "change",
-        clearResults
-      );
-
-    });
-
-  }
-
-
-  /* ===================================================
-     INITIALIZE
-  =================================================== */
-
-  function init() {
-
-    if (
-      !elements.inputGrid ||
-      !elements.kernelGrid
-    ) {
-      return;
-    }
-
-
-    renderEditableMatrices();
-
-    clearResults();
-
-    attachEvents();
-
-  }
-
-
-  init();
-
-
-  return {
-    run,
-    reset
-  };
+const $ = id => document.getElementById(id);
+const clamp=(v,min,max,f=0)=>{
+  const n=Number.parseFloat(v);
+  return Number.isFinite(n)?Math.min(max,Math.max(min,n)):f;
+};
+const fmt=v=>String(Math.round(v*1000)/1000);
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+
+const e={
+input:$("cnn-input-grid"),
+kernel:$("cnn-kernel-grid"),
+feature:$("cnn-feature-map"),
+pool:$("cnn-pool-map"),
+flatten:$("cnn-flatten-output"),
+calc:$("cnn-calculation-output"),
+stride:$("cnn-stride"),
+padding:$("cnn-padding"),
+pooling:$("cnn-pooling"),
+poolSize:$("cnn-pool-size"),
+preset:$("cnn-kernel-preset"),
+featureSize:$("cnn-feature-size"),
+poolResultSize:$("cnn-pool-size-result"),
+run:$("cnn-run"),
+reset:$("cnn-reset"),
+live:$("cnn-live-step"),
+prev:$("cnn-prev-step"),
+next:$("cnn-next-step"),
+auto:$("cnn-auto-play"),
+resetSteps:$("cnn-reset-steps"),
+progress:$("cnn-progress-fill"),
+stepCount:$("cnn-step-count"),
+currentTitle:$("cnn-current-title"),
+currentEquation:$("cnn-current-equation"),
+currentResult:$("cnn-current-result")
+};
+
+const defaultInput=[
+[1,2,0,1,3],
+[0,1,2,2,1],
+[3,1,0,2,2],
+[1,2,1,0,3],
+[2,0,1,1,2]
+];
+
+const presets={
+edge:[[1,0,-1],[1,0,-1],[1,0,-1]],
+horizontal:[[1,1,1],[0,0,0],[-1,-1,-1]],
+sharpen:[[0,-1,0],[-1,5,-1],[0,-1,0]],
+blur:[[.11,.11,.11],[.11,.11,.11],[.11,.11,.11]]
+};
+
+let state={
+input:copy(defaultInput),
+kernel:copy(presets.edge),
+steps:[],
+feature:[],
+current:-1,
+playing:false
+};
+
+function copy(m){return m.map(r=>[...r]);}
+
+function createEditable(container,matrix,min,max,step,type){
+container.replaceChildren();
+
+matrix.forEach((row,r)=>row.forEach((value,c)=>{
+const input=document.createElement("input");
+input.type="number";
+input.className="matrix-cell";
+input.min=min;
+input.max=max;
+input.step=step;
+input.value=fmt(value);
+input.dataset.row=r;
+input.dataset.column=c;
+
+input.addEventListener("input",()=>{
+const n=Number.parseFloat(input.value);
+
+if(Number.isFinite(n)&&n>=min&&n<=max){
+input.classList.remove("invalid");
+state[type][r][c]=n;
+if(type==="kernel")e.preset.value="custom";
+invalidate();
+}else input.classList.add("invalid");
+});
+
+input.addEventListener("change",()=>{
+const safe=clamp(input.value,min,max,0);
+input.value=fmt(safe);
+input.classList.remove("invalid");
+state[type][r][c]=safe;
+if(type==="kernel")e.preset.value="custom";
+invalidate();
+});
+
+container.append(input);
+}));
+}
+
+function renderEditable(){
+createEditable(e.input,state.input,0,9,1,"input");
+createEditable(e.kernel,state.kernel,-3,3,.01,"kernel");
+}
+
+function paddedMatrix(){
+const p=+e.padding.value;
+if(!p)return copy(state.input);
+
+const size=state.input.length+p*2;
+const matrix=Array.from({length:size},()=>Array(size).fill(0));
+
+state.input.forEach((row,r)=>
+row.forEach((v,c)=>matrix[r+p][c+p]=v)
+);
+
+return matrix;
+}
+
+function calculate(){
+const padded=paddedMatrix();
+const stride=+e.stride.value;
+const padding=+e.padding.value;
+const kernelSize=3;
+const outSize=Math.floor((padded.length-kernelSize)/stride)+1;
+
+const feature=[];
+const steps=[];
+
+for(let or=0;or<outSize;or++){
+const row=[];
+
+for(let oc=0;oc<outSize;oc++){
+const sr=or*stride,sc=oc*stride;
+let sum=0;
+const products=[];
+
+for(let kr=0;kr<3;kr++){
+for(let kc=0;kc<3;kc++){
+const inputValue=padded[sr+kr][sc+kc];
+const kernelValue=state.kernel[kr][kc];
+const product=inputValue*kernelValue;
+sum+=product;
+
+products.push({
+inputValue,
+kernelValue,
+product,
+paddedRow:sr+kr,
+paddedColumn:sc+kc
+});
+}
+}
+
+row.push(sum);
+steps.push({
+or,oc,sr,sc,padding,products,sum
+});
+}
+
+feature.push(row);
+}
+
+state.feature=feature;
+state.steps=steps;
+}
+
+function renderFeature(blank=true){
+e.feature.replaceChildren();
+
+if(!state.feature.length)return;
+
+e.feature.style.gridTemplateColumns=
+`repeat(${state.feature[0].length},1fr)`;
+
+state.feature.forEach((row,r)=>row.forEach((value,c)=>{
+const cell=document.createElement("div");
+cell.className="cnn-result-cell";
+if(blank)cell.classList.add("pending");
+cell.dataset.row=r;
+cell.dataset.column=c;
+cell.textContent=fmt(value);
+e.feature.append(cell);
+}));
+
+e.featureSize.textContent=
+`${state.feature.length} × ${state.feature[0].length}`;
+}
+
+function clearHighlights(){
+document.querySelectorAll("#cnn-input-grid .matrix-cell")
+.forEach(x=>x.classList.remove("highlight"));
+
+document.querySelectorAll("#cnn-kernel-grid .matrix-cell")
+.forEach(x=>x.classList.remove("kernel-highlight"));
+
+document.querySelectorAll("#cnn-feature-map .cnn-result-cell")
+.forEach(x=>x.classList.remove("active"));
+}
+
+function highlight(step,index){
+clearHighlights();
+
+step.products.forEach((p,i)=>{
+const originalRow=p.paddedRow-step.padding;
+const originalColumn=p.paddedColumn-step.padding;
+
+if(
+originalRow>=0&&
+originalRow<5&&
+originalColumn>=0&&
+originalColumn<5
+){
+const input=e.input.querySelector(
+`[data-row="${originalRow}"][data-column="${originalColumn}"]`
+);
+if(input)input.classList.add("highlight");
+}
+
+const kr=Math.floor(i/3);
+const kc=i%3;
+const kernel=e.kernel.querySelector(
+`[data-row="${kr}"][data-column="${kc}"]`
+);
+if(kernel)kernel.classList.add("kernel-highlight");
+});
+
+const feature=e.feature.querySelector(
+`[data-row="${step.or}"][data-column="${step.oc}"]`
+);
+
+if(feature){
+feature.classList.remove("pending");
+feature.classList.add("active");
+}
+
+e.currentTitle.textContent=
+`Feature Map Row ${step.or+1}, Column ${step.oc+1}`;
+
+e.currentEquation.textContent=
+step.products.map(p=>
+`(${fmt(p.inputValue)} × ${fmt(p.kernelValue)})`
+).join(" + ");
+
+e.currentResult.textContent=`= ${fmt(step.sum)}`;
+
+e.live.textContent=
+`Convolution step ${index+1} of ${state.steps.length}.`;
+
+updateProgress();
+}
+
+function updateProgress(){
+const total=state.steps.length;
+const completed=Math.max(0,state.current+1);
+
+e.stepCount.textContent=`Step ${completed} / ${total}`;
+e.progress.style.width=
+total?`${(completed/total)*100}%`:"0%";
+}
+
+function showStep(index){
+if(!state.steps.length)prepare();
+
+index=Math.max(0,Math.min(index,state.steps.length-1));
+state.current=index;
+
+for(let i=0;i<=index;i++){
+const s=state.steps[i];
+const cell=e.feature.querySelector(
+`[data-row="${s.or}"][data-column="${s.oc}"]`
+);
+if(cell)cell.classList.remove("pending");
+}
+
+highlight(state.steps[index],index);
+
+if(index===state.steps.length-1){
+finish();
+}
+}
+
+function prepare(){
+calculate();
+renderFeature(true);
+state.current=-1;
+clearSecondaryResults();
+updateProgress();
+}
+
+function next(){
+if(state.playing)return;
+if(!state.steps.length)prepare();
+
+if(state.current<state.steps.length-1)
+showStep(state.current+1);
+}
+
+function previous(){
+if(state.playing||!state.steps.length)return;
+
+if(state.current>0){
+state.current--;
+
+renderFeature(true);
+
+for(let i=0;i<=state.current;i++){
+const s=state.steps[i];
+const cell=e.feature.querySelector(
+`[data-row="${s.or}"][data-column="${s.oc}"]`
+);
+if(cell)cell.classList.remove("pending");
+}
+
+highlight(state.steps[state.current],state.current);
+
+}else{
+resetStepView();
+}
+}
+
+async function autoPlay(){
+if(state.playing)return;
+
+prepare();
+state.playing=true;
+toggleControls(true);
+
+for(let i=0;i<state.steps.length;i++){
+if(!state.playing)break;
+state.current=i;
+highlight(state.steps[i],i);
+await wait(500);
+}
+
+state.playing=false;
+toggleControls(false);
+
+if(state.current===state.steps.length-1)
+finish();
+}
+
+function toggleControls(disabled){
+e.run.disabled=disabled;
+e.prev.disabled=disabled;
+e.next.disabled=disabled;
+e.reset.disabled=disabled;
+e.resetSteps.disabled=disabled;
+}
+
+function pool(){
+const size=+e.poolSize.value;
+const type=e.pooling.value;
+const result=[];
+
+for(let r=0;r+size<=state.feature.length;r+=size){
+const row=[];
+
+for(let c=0;c+size<=state.feature[0].length;c+=size){
+const values=[];
+
+for(let pr=0;pr<size;pr++)
+for(let pc=0;pc<size;pc++)
+values.push(state.feature[r+pr][c+pc]);
+
+row.push(
+type==="average"
+?values.reduce((a,b)=>a+b,0)/values.length
+:Math.max(...values)
+);
+}
+
+if(row.length)result.push(row);
+}
+
+return result.length?result:copy(state.feature);
+}
+
+function renderResult(container,matrix){
+container.replaceChildren();
+
+if(!matrix.length)return;
+
+container.style.gridTemplateColumns=
+`repeat(${matrix[0].length},1fr)`;
+
+matrix.forEach(row=>row.forEach(value=>{
+const cell=document.createElement("div");
+cell.className="cnn-result-cell";
+cell.textContent=fmt(value);
+container.append(cell);
+}));
+}
+
+function flatten(matrix){
+return matrix.flat();
+}
+
+function renderFlatten(values){
+e.flatten.replaceChildren();
+
+values.forEach(v=>{
+const cell=document.createElement("span");
+cell.className="flatten-value";
+cell.textContent=fmt(v);
+e.flatten.append(cell);
+});
+}
+
+function renderCalculations(){
+e.calc.replaceChildren();
+
+state.steps.forEach((s,i)=>{
+const box=document.createElement("div");
+box.className="cnn-calc-step";
+
+const title=document.createElement("strong");
+title.textContent=
+`Step ${i+1}: Feature Map (${s.or+1}, ${s.oc+1})`;
+
+const equation=document.createElement("code");
+equation.textContent=s.products
+.map(p=>`(${fmt(p.inputValue)} × ${fmt(p.kernelValue)})`)
+.join(" + ");
+
+const result=document.createElement("div");
+result.className="cnn-calc-result";
+result.textContent=`= ${fmt(s.sum)}`;
+
+box.append(title,equation,result);
+e.calc.append(box);
+});
+}
+
+function finish(){
+clearHighlights();
+
+const pooled=pool();
+renderResult(e.pool,pooled);
+
+e.poolResultSize.textContent=
+`${pooled.length} × ${pooled[0].length}`;
+
+const vector=flatten(pooled);
+renderFlatten(vector);
+renderCalculations();
+
+e.live.textContent=
+`Convolution complete → pooling complete → ${vector.length} flattened value${vector.length===1?"":"s"}.`;
+
+e.currentTitle.textContent="Convolution Complete";
+e.currentEquation.textContent=
+"All kernel positions have been processed.";
+e.currentResult.textContent=
+`Feature map: ${state.feature.length} × ${state.feature[0].length}`;
+
+updateProgress();
+}
+
+async function run(){
+await autoPlay();
+}
+
+function clearSecondaryResults(){
+e.pool.replaceChildren();
+e.flatten.replaceChildren();
+e.calc.replaceChildren();
+
+e.poolResultSize.textContent="—";
+
+const flat=document.createElement("span");
+flat.textContent="Complete the convolution to generate the vector.";
+e.flatten.append(flat);
+
+const calc=document.createElement("p");
+calc.textContent="Complete the convolution to see all calculations.";
+e.calc.append(calc);
+}
+
+function resetStepView(){
+state.current=-1;
+
+renderFeature(true);
+clearHighlights();
+clearSecondaryResults();
+
+e.currentTitle.textContent="No convolution step selected";
+e.currentEquation.textContent=
+"Use Next Step or Auto Play to begin.";
+e.currentResult.textContent="";
+
+e.live.textContent=
+"Ready. Use Next Step or Auto Play.";
+
+updateProgress();
+}
+
+function invalidate(){
+state.steps=[];
+state.feature=[];
+state.current=-1;
+
+e.feature.replaceChildren();
+e.featureSize.textContent="—";
+
+clearSecondaryResults();
+
+e.currentTitle.textContent="Parameters changed";
+e.currentEquation.textContent=
+"Start a new convolution to use the updated values.";
+e.currentResult.textContent="";
+
+e.progress.style.width="0%";
+e.stepCount.textContent="Step 0 / 0";
+}
+
+function applyPreset(){
+if(e.preset.value==="custom")return;
+state.kernel=copy(presets[e.preset.value]);
+renderEditable();
+invalidate();
+}
+
+function reset(){
+state.playing=false;
+state.input=copy(defaultInput);
+state.kernel=copy(presets.edge);
+
+e.stride.value="1";
+e.padding.value="0";
+e.pooling.value="max";
+e.preset.value="edge";
+
+renderEditable();
+invalidate();
+
+e.live.textContent=
+"Reset complete. Use Next Step or Run CNN.";
+}
+
+function attach(){
+e.run.addEventListener("click",run);
+e.reset.addEventListener("click",reset);
+e.prev.addEventListener("click",previous);
+e.next.addEventListener("click",next);
+e.auto.addEventListener("click",autoPlay);
+e.resetSteps.addEventListener("click",resetStepView);
+e.preset.addEventListener("change",applyPreset);
+
+[e.stride,e.padding,e.pooling,e.poolSize]
+.forEach(control=>
+control.addEventListener("change",invalidate)
+);
+}
+
+function init(){
+if(!e.input)return;
+renderEditable();
+invalidate();
+attach();
+}
+
+init();
+
+return{run,reset};
 
 })();
