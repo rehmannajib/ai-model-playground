@@ -1,116 +1,86 @@
+// script.js
 "use strict";
 
-const modelButtons =
-  document.querySelectorAll(".model-option[data-model]");
+const modelButtons=
+document.querySelectorAll(".model-option[data-model]");
 
-const neuralPlayground =
-  document.getElementById("neural-playground");
+const neuralPlayground=
+document.getElementById("neural-playground");
 
-const cnnPlayground =
-  document.getElementById("cnn-playground");
+const cnnPlayground=
+document.getElementById("cnn-playground");
 
-const neuralLearn =
-  document.getElementById("neural-learn");
+const neuralLearn=
+document.getElementById("neural-learn");
 
-const cnnLearn =
-  document.getElementById("cnn-learn");
-
+const cnnLearn=
+document.getElementById("cnn-learn");
 
 function switchModel(model){
 
-  modelButtons.forEach(button=>{
+const neural=model==="neural";
 
-    button.classList.toggle(
-      "active",
-      button.dataset.model === model
-    );
+modelButtons.forEach(button=>{
+button.classList.toggle(
+"active",
+button.dataset.model===model
+);
+});
 
-  });
+neuralPlayground.hidden=!neural;
+cnnPlayground.hidden=neural;
 
+neuralLearn.hidden=!neural;
+cnnLearn.hidden=neural;
 
-  const neuralSelected =
-    model === "neural";
+const learnLink=
+document.querySelector("header nav a:last-child");
 
-
-  neuralPlayground.hidden =
-    !neuralSelected;
-
-  cnnPlayground.hidden =
-    neuralSelected;
-
-
-  neuralLearn.hidden =
-    !neuralSelected;
-
-  cnnLearn.hidden =
-    neuralSelected;
+if(learnLink){
+learnLink.href=
+neural
+?"#neural-learn"
+:"#cnn-learn";
+}
 
 }
 
-
 modelButtons.forEach(button=>{
-
-  button.addEventListener(
-    "click",
-    ()=>{
-
-      switchModel(
-        button.dataset.model
-      );
-
-    }
-  );
-
+button.addEventListener("click",()=>{
+switchModel(button.dataset.model);
+});
 });
 
+/* CNN Learning Tabs */
 
-/* CNN learning tabs */
-
-const cnnTabs =
-  document.querySelectorAll(".cnn-tab");
-
+const cnnTabs=
+document.querySelectorAll(".cnn-tab");
 
 cnnTabs.forEach(tab=>{
 
-  tab.addEventListener(
-    "click",
-    ()=>{
+tab.addEventListener("click",()=>{
 
-      cnnTabs.forEach(item=>{
+cnnTabs.forEach(item=>
+item.classList.toggle(
+"active",
+item===tab
+)
+);
 
-        item.classList.toggle(
-          "active",
-          item === tab
-        );
+const selected=
+tab.dataset.cnnTab;
 
-      });
+document.getElementById("cnn-beginner-panel").hidden=
+selected!=="beginner";
 
+document.getElementById("cnn-math-panel").hidden=
+selected!=="math";
 
-      const selected =
-        tab.dataset.cnnTab;
-
-
-      document.getElementById(
-        "cnn-beginner-panel"
-      ).hidden =
-        selected !== "beginner";
-
-
-      document.getElementById(
-        "cnn-math-panel"
-      ).hidden =
-        selected !== "math";
-
-
-      document.getElementById(
-        "cnn-pipeline-panel"
-      ).hidden =
-        selected !== "pipeline";
-
-    }
-  );
+document.getElementById("cnn-pipeline-panel").hidden=
+selected!=="pipeline";
 
 });
 
+});
 
 switchModel("neural");

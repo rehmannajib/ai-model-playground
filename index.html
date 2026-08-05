@@ -28,7 +28,7 @@
 <div class="wrap hero-inner">
 <span class="label">Interactive AI Education</span>
 <h1>See how AI models work.</h1>
-<p>Build models, change inputs and parameters, and visually explore how information moves from input to output.</p>
+<p>Build models, change parameters and visually explore how information moves from input to output.</p>
 <a href="#playground" class="btn primary">Open Playground</a>
 </div>
 </section>
@@ -43,9 +43,7 @@
 <button class="model-option disabled" disabled type="button"><strong>Decision Tree</strong><span>Coming Soon</span></button>
 </div>
 
-<!-- =====================================================
-     NEURAL NETWORK
-====================================================== -->
+<!-- ===================== NEURAL NETWORK ===================== -->
 
 <div id="neural-playground">
 
@@ -56,8 +54,8 @@
 </div>
 
 <section class="card architecture">
-<div class="arch-top">
 
+<div class="arch-top">
 <div>
 <span class="label">Architecture</span>
 <h3>Configure network</h3>
@@ -67,7 +65,6 @@
 <button id="simple-mode" class="mode active" type="button">Simple</button>
 <button id="advanced-mode" class="mode" type="button">Advanced</button>
 </div>
-
 </div>
 
 <div class="arch-controls">
@@ -100,6 +97,7 @@ Outputs
 <button id="apply-architecture" class="btn primary" type="button">Apply Architecture</button>
 <button id="restore-default" class="btn" type="button">Restore Default</button>
 </div>
+
 </section>
 
 <div class="toolbar card">
@@ -136,6 +134,7 @@ Activation
 </label>
 
 <div class="field">
+
 <div class="control-head">
 <label for="output-bias">Output bias</label>
 <output id="output-bias-display">0.10</output>
@@ -147,6 +146,7 @@ Activation
 </div>
 
 <div class="limits"><span>Min −1</span><span>Max 1</span></div>
+
 </div>
 </section>
 
@@ -159,7 +159,7 @@ Activation
 </div>
 
 <div class="legend">
-<span><i class="legend-line positive"></i> Positive weight</span>
+<span><i class="legend-line"></i> Positive weight</span>
 <span><i class="legend-line negative"></i> Negative weight</span>
 <span>Thicker = stronger</span>
 </div>
@@ -168,7 +168,7 @@ Activation
 <section class="card panel">
 <h3><span class="step">3</span> Output</h3>
 
-<div class="prediction" aria-live="polite">
+<div class="prediction">
 <small>Prediction</small>
 <strong id="prediction-value">—</strong>
 <span id="prediction-description">Run the network to calculate an output.</span>
@@ -186,13 +186,14 @@ Activation
 </div>
 
 <section id="parameter-editor" class="card editor" hidden>
+
 <div>
 <span class="label">Advanced Mode</span>
 <h3 id="editor-title">Edit parameter</h3>
 <p id="editor-description" class="muted"></p>
 </div>
 
-<div class="editor-control">
+<div>
 <div class="control-head">
 <label for="parameter-slider">Value</label>
 <output id="parameter-display">0.00</output>
@@ -207,23 +208,23 @@ Activation
 </div>
 
 <button id="close-editor" class="btn" type="button">Close</button>
+
 </section>
 
 </div>
 
-<!-- =====================================================
-     CNN
-====================================================== -->
+<!-- =========================== CNN =========================== -->
 
 <div id="cnn-playground" hidden>
 
 <div class="heading">
 <span class="label">CNN Playground</span>
 <h2>Explore convolution visually</h2>
-<p>Edit image pixels and filter values, then follow convolution, feature extraction, pooling and flattening step by step.</p>
+<p>Edit image pixels and filters, then explore convolution, feature maps, pooling and flattening.</p>
 </div>
 
 <div class="cnn-toolbar card">
+
 <div>
 <small>CNN PIPELINE</small>
 <strong>Input → Convolution → Feature Map → Pooling → Flatten</strong>
@@ -233,17 +234,19 @@ Activation
 <button id="cnn-reset" class="btn" type="button">Reset</button>
 <button id="cnn-run" class="btn primary" type="button">Run CNN</button>
 </div>
+
 </div>
 
-<div id="cnn-live-step" class="live-step" aria-live="polite">
+<div id="cnn-live-step" class="live-step">
 Ready. Change the image or kernel and run the CNN.
 </div>
 
 <section class="card cnn-controls">
+
 <div class="cnn-settings">
 
 <label>
-Stride
+Convolution Stride
 <select id="cnn-stride">
 <option value="1" selected>1</option>
 <option value="2">2</option>
@@ -261,15 +264,26 @@ Padding
 <label>
 Pooling
 <select id="cnn-pooling">
+<option value="none">No Pooling</option>
 <option value="max" selected>Max Pooling</option>
 <option value="average">Average Pooling</option>
 </select>
 </label>
 
 <label>
-Pooling size
+Pooling Size
 <select id="cnn-pool-size">
 <option value="2" selected>2 × 2</option>
+<option value="3">3 × 3</option>
+</select>
+</label>
+
+<label>
+Pooling Stride
+<select id="cnn-pool-stride">
+<option value="1">1</option>
+<option value="2" selected>2</option>
+<option value="3">3</option>
 </select>
 </label>
 
@@ -285,16 +299,58 @@ Preset Filter
 </label>
 
 </div>
+
 </section>
 
-<!-- MANUAL / AUTO CONTROLS -->
+<!-- DIMENSION EXPLANATION -->
+
+<section class="card cnn-dimension-card">
+
+<div>
+<span class="label">Dimensions</span>
+<h3>How the selected parameters change the CNN</h3>
+</div>
+
+<div class="dimension-grid">
+
+<div>
+<span>Input</span>
+<strong>5 × 5</strong>
+</div>
+
+<div>
+<span>Kernel</span>
+<strong>3 × 3</strong>
+</div>
+
+<div>
+<span>Feature Map</span>
+<strong id="cnn-dimension-feature">3 × 3</strong>
+</div>
+
+<div>
+<span>Pooling</span>
+<strong id="cnn-dimension-pooling">1 × 1</strong>
+</div>
+
+</div>
+
+<code id="cnn-dimension-equation">
+floor((5 + 2(0) - 3) / 1) + 1 = 3
+</code>
+
+<div id="cnn-config-warning" class="cnn-warning" hidden></div>
+
+</section>
+
+<!-- MANUAL CONVOLUTION -->
 
 <section class="card cnn-step-controller">
 
 <div>
 <span class="label">Convolution Explorer</span>
-<h3>Move through the convolution manually</h3>
-<p class="muted">Use Previous and Next to inspect each position, or Auto Play to animate all steps.</p>
+<h3>Move through convolution manually</h3>
+<p class="muted">Inspect each kernel position or automatically play the full convolution.</p>
 </div>
 
 <div class="cnn-step-buttons">
@@ -305,27 +361,23 @@ Preset Filter
 </div>
 
 <div class="cnn-progress">
-<div class="cnn-progress-bar">
-<div id="cnn-progress-fill"></div>
-</div>
+<div class="cnn-progress-bar"><div id="cnn-progress-fill"></div></div>
 <strong id="cnn-step-count">Step 0 / 0</strong>
 </div>
 
 </section>
 
-<!-- CURRENT EQUATION -->
-
 <section class="card cnn-current-calculation">
-<div>
+
 <span class="label">Current Calculation</span>
 <h3 id="cnn-current-title">No convolution step selected</h3>
-</div>
 
 <code id="cnn-current-equation">
-Use Next Step or Auto Play to begin.
+Use Next or Auto Play to begin.
 </code>
 
 <strong id="cnn-current-result"></strong>
+
 </section>
 
 <div class="cnn-workspace">
@@ -348,7 +400,7 @@ Use Next Step or Auto Play to begin.
 <span class="step">2</span>
 <div>
 <h3>Kernel / Filter</h3>
-<p>The highlighted kernel is applied to the highlighted input region.</p>
+<p>The filter moves over the input image.</p>
 </div>
 </div>
 
@@ -361,7 +413,7 @@ Use Next Step or Auto Play to begin.
 <span class="step">3</span>
 <div>
 <h3>Feature Map</h3>
-<p>Each completed convolution creates one value.</p>
+<p>Convolution generates these values.</p>
 </div>
 </div>
 
@@ -378,14 +430,14 @@ Use Next Step or Auto Play to begin.
 <span class="step">4</span>
 <div>
 <h3>Pooling</h3>
-<p>Reduces the feature map after convolution.</p>
+<p id="cnn-pooling-description">Max Pooling reduces the feature map.</p>
 </div>
 </div>
 
 <div id="cnn-pool-map" class="cnn-result-grid"></div>
 
 <div class="cnn-stat">
-<span>Pooled size</span>
+<span>Result size</span>
 <strong id="cnn-pool-size-result">—</strong>
 </div>
 </section>
@@ -393,31 +445,35 @@ Use Next Step or Auto Play to begin.
 </div>
 
 <section class="card cnn-flatten-panel">
+
 <div class="cnn-panel-heading">
 <span class="step">5</span>
 <div>
 <h3>Flattened Output</h3>
-<p>The pooled matrix becomes a one-dimensional vector.</p>
+<p>The final matrix becomes a one-dimensional vector.</p>
 </div>
 </div>
 
 <div id="cnn-flatten-output" class="flatten-vector">
-<span>Complete the convolution to generate the vector.</span>
+<span>Run the CNN to generate the vector.</span>
 </div>
+
 </section>
 
 <section class="card cnn-calculation-panel">
+
 <div class="cnn-panel-heading">
 <span class="step">6</span>
 <div>
-<h3>All Calculations</h3>
-<p>Every feature-map calculation is recorded here.</p>
+<h3>All Convolution Calculations</h3>
+<p>Every feature-map calculation appears here.</p>
 </div>
 </div>
 
 <div id="cnn-calculation-output" class="cnn-calculation-output">
 <p>Run or step through the CNN to see calculations.</p>
 </div>
+
 </section>
 
 </div>
@@ -425,9 +481,7 @@ Use Next Step or Auto Play to begin.
 </div>
 </section>
 
-<!-- =====================================================
-     NEURAL LEARNING
-====================================================== -->
+<!-- ===================== NEURAL LEARNING ===================== -->
 
 <section class="section" id="neural-learn">
 <div class="wrap">
@@ -435,46 +489,41 @@ Use Next Step or Auto Play to begin.
 <div class="heading">
 <span class="label">Learn Neural Networks</span>
 <h2>What happened inside the neural network?</h2>
-<p>Follow how inputs are transformed by weights, biases and activation functions.</p>
 </div>
 
 <div class="tabs">
-<button class="tab active" data-tab="beginner" type="button">Beginner</button>
-<button class="tab" data-tab="math" type="button">Mathematics</button>
-<button class="tab" data-tab="calc" type="button">Calculation</button>
+<button class="tab active" data-tab="beginner">Beginner</button>
+<button class="tab" data-tab="math">Mathematics</button>
+<button class="tab" data-tab="calc">Calculation</button>
 </div>
 
 <div id="beginner-panel" class="learn-panel">
 <div class="learn-grid">
-<article><b>1</b><h3>Inputs enter</h3><p>Each input neuron receives one numerical value.</p></article>
-<article><b>2</b><h3>Weights modify</h3><p>Connections multiply values by weights.</p></article>
+<article><b>1</b><h3>Inputs enter</h3><p>Each neuron receives an input value.</p></article>
+<article><b>2</b><h3>Weights modify</h3><p>Connections multiply inputs by weights.</p></article>
 <article><b>3</b><h3>Bias shifts</h3><p>A bias is added before activation.</p></article>
-<article><b>4</b><h3>Activation transforms</h3><p>ReLU, Sigmoid or Tanh transforms the sum.</p></article>
-<article><b>5</b><h3>Layers continue</h3><p>Activations become inputs to the next layer.</p></article>
-<article><b>6</b><h3>Prediction appears</h3><p>The output neuron produces the final value.</p></article>
+<article><b>4</b><h3>Activation transforms</h3><p>An activation function transforms the result.</p></article>
+<article><b>5</b><h3>Layers continue</h3><p>Activations become inputs to later layers.</p></article>
+<article><b>6</b><h3>Output appears</h3><p>The final neuron produces the output.</p></article>
 </div>
 </div>
 
 <div id="math-panel" class="learn-panel" hidden>
 <div class="math-grid">
-<article><h3>Weighted sum</h3><p class="equation">z = Σ(xᵢ × wᵢ) + b</p></article>
+<article><h3>Weighted Sum</h3><p class="equation">z = Σ(xᵢ × wᵢ) + b</p></article>
 <article><h3>Activation</h3><p class="equation">a = f(z)</p></article>
-<article><h3>Sigmoid</h3><p class="equation">σ(z) = 1 / (1 + e⁻ᶻ)</p></article>
+<article><h3>Sigmoid</h3><p class="equation">σ(z)=1/(1+e⁻ᶻ)</p></article>
 </div>
 </div>
 
 <div id="calc-panel" class="learn-panel" hidden>
-<div id="calculation-output">
-<p>Run the neural network to see the complete calculations.</p>
-</div>
+<div id="calculation-output"><p>Run the network to see calculations.</p></div>
 </div>
 
 </div>
 </section>
 
-<!-- =====================================================
-     CNN LEARNING
-====================================================== -->
+<!-- ======================= CNN LEARNING ======================= -->
 
 <section class="section" id="cnn-learn" hidden>
 <div class="wrap">
@@ -482,23 +531,23 @@ Use Next Step or Auto Play to begin.
 <div class="heading">
 <span class="label">Learn CNN</span>
 <h2>What happened inside the CNN?</h2>
-<p>Follow how pixels become feature maps, pooled features and a flattened vector.</p>
+<p>Understand convolution, stride, padding, pooling and flattening.</p>
 </div>
 
 <div class="tabs cnn-tabs">
-<button class="tab cnn-tab active" data-cnn-tab="beginner" type="button">Beginner</button>
-<button class="tab cnn-tab" data-cnn-tab="math" type="button">Mathematics</button>
-<button class="tab cnn-tab" data-cnn-tab="pipeline" type="button">CNN Pipeline</button>
+<button class="tab cnn-tab active" data-cnn-tab="beginner">Beginner</button>
+<button class="tab cnn-tab" data-cnn-tab="math">Mathematics</button>
+<button class="tab cnn-tab" data-cnn-tab="pipeline">CNN Pipeline</button>
 </div>
 
 <div id="cnn-beginner-panel" class="learn-panel">
 <div class="learn-grid">
-<article><b>1</b><h3>Input image</h3><p>The image becomes a numerical matrix.</p></article>
+<article><b>1</b><h3>Input image</h3><p>The image becomes a matrix of pixel values.</p></article>
 <article><b>2</b><h3>Kernel slides</h3><p>A filter moves across the input.</p></article>
-<article><b>3</b><h3>Values multiply</h3><p>Input and kernel values are multiplied.</p></article>
-<article><b>4</b><h3>Feature map forms</h3><p>The products are summed into feature values.</p></article>
-<article><b>5</b><h3>Pooling reduces</h3><p>Pooling reduces feature-map dimensions.</p></article>
-<article><b>6</b><h3>Flatten creates vector</h3><p>The pooled matrix becomes a 1D vector.</p></article>
+<article><b>3</b><h3>Stride controls movement</h3><p>Stride determines how far the kernel moves each step.</p></article>
+<article><b>4</b><h3>Padding adds borders</h3><p>Padding adds values around the input edges.</p></article>
+<article><b>5</b><h3>Pooling reduces</h3><p>Pooling summarizes local regions of the feature map.</p></article>
+<article><b>6</b><h3>Flatten creates vector</h3><p>The final matrix becomes a 1D vector.</p></article>
 </div>
 </div>
 
@@ -506,18 +555,33 @@ Use Next Step or Auto Play to begin.
 <div class="math-grid">
 
 <article>
-<h3>Convolution</h3>
-<p class="equation">y(i,j) = Σₘ Σₙ x(i+m,j+n) × k(m,n)</p>
-</article>
-
-<article>
-<h3>Output size</h3>
+<h3>Convolution Output Size</h3>
 <p class="equation">O = floor((N + 2P − K) / S) + 1</p>
 </article>
 
 <article>
-<h3>Max pooling</h3>
-<p class="equation">y = max(x₁,x₂,...,xₙ)</p>
+<h3>Pooling Output Size</h3>
+<p class="equation">Oₚ = floor((N − F) / Sₚ) + 1</p>
+</article>
+
+<article>
+<h3>Convolution</h3>
+<p class="equation">y(i,j)=ΣₘΣₙx(i+m,j+n)k(m,n)</p>
+</article>
+
+<article>
+<h3>Max Pooling</h3>
+<p class="equation">y=max(x₁,...,xₙ)</p>
+</article>
+
+<article>
+<h3>Average Pooling</h3>
+<p class="equation">y=(x₁+...+xₙ)/n</p>
+</article>
+
+<article>
+<h3>No Pooling</h3>
+<p>The feature map goes directly to flattening.</p>
 </article>
 
 </div>
@@ -526,19 +590,15 @@ Use Next Step or Auto Play to begin.
 <div id="cnn-pipeline-panel" class="learn-panel" hidden>
 
 <div class="cnn-pipeline">
-
-<div class="pipeline-box"><strong>Input</strong><span>Pixel matrix</span></div>
+<div class="pipeline-box"><strong>Input</strong><span>5 × 5 matrix</span></div>
 <span class="pipeline-arrow">→</span>
 <div class="pipeline-box"><strong>Kernel</strong><span>3 × 3 filter</span></div>
 <span class="pipeline-arrow">→</span>
-<div class="pipeline-box"><strong>Convolution</strong><span>Multiply + sum</span></div>
+<div class="pipeline-box"><strong>Feature Map</strong><span>Convolution output</span></div>
 <span class="pipeline-arrow">→</span>
-<div class="pipeline-box"><strong>Feature Map</strong><span>Detected features</span></div>
-<span class="pipeline-arrow">→</span>
-<div class="pipeline-box"><strong>Pooling</strong><span>Dimension reduction</span></div>
+<div class="pipeline-box"><strong>Pooling</strong><span>Optional reduction</span></div>
 <span class="pipeline-arrow">→</span>
 <div class="pipeline-box"><strong>Flatten</strong><span>1D vector</span></div>
-
 </div>
 
 </div>
