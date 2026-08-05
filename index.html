@@ -1,6 +1,6 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,430 +11,1530 @@
 
 <body>
 
+<!-- =========================================
+     HEADER
+========================================= -->
+
 <header class="site-header">
 <div class="wrap header">
-<a href="#home" class="brand"><span class="brand-icon">AI</span>AI Model Playground</a>
+
+<a href="#home" class="brand">
+<span class="brand-icon">AI</span>
+AI Model Playground
+</a>
+
 <nav>
 <a href="#home">Home</a>
 <a href="#playground">Playground</a>
 <a id="learn-nav-link" href="#neural-learn">Learn</a>
 </nav>
+
 </div>
 </header>
 
+
 <main>
+
+<!-- =========================================
+     HERO
+========================================= -->
 
 <section class="hero" id="home">
 <div class="wrap hero-inner">
+
 <span class="label">Interactive AI Education</span>
+
 <h1>See how AI models work.</h1>
-<p>Build models, change parameters and visually explore how information moves from input to output.</p>
-<a href="#playground" class="btn primary">Open Playground</a>
+
+<p>
+Build models, change parameters and visually explore how
+information moves from input to output.
+</p>
+
+<a href="#playground" class="btn primary">
+Open Playground
+</a>
+
 </div>
 </section>
 
+
+<!-- =========================================
+     MAIN PLAYGROUND
+========================================= -->
+
 <section class="section playground-bg" id="playground">
+
 <div class="wrap">
 
+
+<!-- =========================================
+     MODEL SELECTOR
+========================================= -->
+
 <div class="model-selector">
-<button class="model-option active" data-model="neural" type="button"><strong>Neural Network</strong><span>Available</span></button>
-<button class="model-option" data-model="cnn" type="button"><strong>CNN</strong><span>Available</span></button>
-<button class="model-option disabled" disabled type="button"><strong>Transformer</strong><span>Coming Soon</span></button>
-<button class="model-option" data-model="tree" type="button"><strong>Decision Tree</strong><span>Available</span></button>
+
+<button
+class="model-option active"
+data-model="neural"
+type="button"
+>
+<strong>Neural Network</strong>
+<span>Available</span>
+</button>
+
+
+<button
+class="model-option"
+data-model="cnn"
+type="button"
+>
+<strong>CNN</strong>
+<span>Available</span>
+</button>
+
+
+<button
+class="model-option disabled"
+disabled
+type="button"
+>
+<strong>Transformer</strong>
+<span>Coming Soon</span>
+</button>
+
+
+<button
+class="model-option"
+data-model="tree"
+type="button"
+>
+<strong>Decision Tree</strong>
+<span>Available</span>
+</button>
+
 </div>
 
-<!-- ==================== NEURAL NETWORK ==================== -->
+
+<!-- =====================================================
+     NEURAL NETWORK PLAYGROUND
+====================================================== -->
 
 <div id="neural-playground">
 
+
 <div class="heading">
-<span class="label">Neural Network Playground</span>
-<h2>Build your own network</h2>
-<p>Configure the architecture and explore how values travel from input to output.</p>
+
+<span class="label">
+Neural Network Playground
+</span>
+
+<h2>
+Build your own network
+</h2>
+
+<p>
+Configure the architecture and explore how values travel
+from input to output.
+</p>
+
 </div>
+
+
+<!-- =========================================
+     NEURAL NETWORK - ARCHITECTURE
+========================================= -->
 
 <section class="card architecture">
+
 <div class="arch-top">
-<div><span class="label">Architecture</span><h3>Configure network</h3></div>
+
+<div>
+<span class="label">Architecture</span>
+<h3>Configure network</h3>
+</div>
+
 <div class="mode-switch">
-<button id="simple-mode" class="mode active" type="button">Simple</button>
-<button id="advanced-mode" class="mode" type="button">Advanced</button>
+
+<button
+id="simple-mode"
+class="mode active"
+type="button"
+>
+Simple
+</button>
+
+<button
+id="advanced-mode"
+class="mode"
+type="button"
+>
+Advanced
+</button>
+
 </div>
+
 </div>
+
 
 <div class="arch-controls">
-<label>Inputs
+
+
+<label>
+Inputs
+
 <select id="architecture-inputs">
-<option>1</option><option>2</option><option selected>3</option><option>4</option>
-<option>5</option><option>6</option><option>7</option><option>8</option>
+
+<option>1</option>
+<option>2</option>
+<option selected>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+
 </select>
+
 </label>
 
-<label>Hidden layers
+
+<label>
+Hidden layers
+
 <select id="architecture-hidden-layers">
-<option selected>1</option><option>2</option><option>3</option><option>4</option>
+
+<option selected>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+
 </select>
+
 </label>
 
-<div id="hidden-layer-settings" class="hidden-settings"></div>
 
-<label>Outputs<span class="fixed">1</span></label>
+<div
+id="hidden-layer-settings"
+class="hidden-settings"
+></div>
+
+
+<label>
+Outputs
+
+<span class="fixed">
+1
+</span>
+
+</label>
+
 </div>
+
 
 <div class="actions">
-<button id="apply-architecture" class="btn primary" type="button">Apply Architecture</button>
-<button id="restore-default" class="btn" type="button">Restore Default</button>
+
+<button
+id="apply-architecture"
+class="btn primary"
+type="button"
+>
+Apply Architecture
+</button>
+
+<button
+id="restore-default"
+class="btn"
+type="button"
+>
+Restore Default
+</button>
+
 </div>
+
 </section>
 
+
+<!-- =========================================
+     NEURAL NETWORK - TOOLBAR
+========================================= -->
+
 <div class="toolbar card">
-<div><small>Current architecture</small><strong id="architecture-description"></strong></div>
-<div class="actions">
-<button id="reset-network" class="btn" type="button">Reset Values</button>
-<button id="run-network" class="btn primary" type="button">Run Forward Pass</button>
-</div>
+
+<div>
+
+<small>
+Current architecture
+</small>
+
+<strong id="architecture-description"></strong>
+
 </div>
 
-<div id="live-step" class="live-step">Ready. Change the values and run the network.</div>
+
+<div class="actions">
+
+<button
+id="reset-network"
+class="btn"
+type="button"
+>
+Reset Values
+</button>
+
+<button
+id="run-network"
+class="btn primary"
+type="button"
+>
+Run Forward Pass
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="live-step"
+class="live-step"
+>
+Ready. Change the values and run the network.
+</div>
+
+
+<!-- =========================================
+     NEURAL NETWORK - WORKSPACE
+========================================= -->
 
 <div class="workspace">
 
+
+<!-- INPUTS -->
+
 <section class="card panel">
-<h3><span class="step">1</span> Inputs</h3>
-<p class="muted">Use the slider or type a value.</p>
+
+<h3>
+<span class="step">1</span>
+Inputs
+</h3>
+
+<p class="muted">
+Use the slider or type a value.
+</p>
+
 <div id="dynamic-input-controls"></div>
 
-<label class="field">Activation
+
+<label class="field">
+
+Activation
+
 <select id="activation-function">
+
 <option value="relu">ReLU</option>
 <option value="sigmoid">Sigmoid</option>
 <option value="tanh">Tanh</option>
+
 </select>
+
 </label>
+
 
 <div class="field">
-<div class="control-head"><label for="output-bias">Output bias</label><output id="output-bias-display">0.10</output></div>
+
+<div class="control-head">
+
+<label for="output-bias">
+Output bias
+</label>
+
+<output id="output-bias-display">
+0.10
+</output>
+
+</div>
+
+
 <div class="value-row">
-<input id="output-bias" type="range" min="-1" max="1" step=".05" value=".10">
-<input id="output-bias-number" class="number-input" type="number" min="-1" max="1" step=".05" value=".10">
+
+<input
+id="output-bias"
+type="range"
+min="-1"
+max="1"
+step=".05"
+value=".10"
+>
+
+<input
+id="output-bias-number"
+class="number-input"
+type="number"
+min="-1"
+max="1"
+step=".05"
+value=".10"
+>
+
 </div>
-<div class="limits"><span>Min −1</span><span>Max 1</span></div>
+
+
+<div class="limits">
+
+<span>Min −1</span>
+<span>Max 1</span>
+
 </div>
+
+</div>
+
 </section>
+
+
+<!-- MODEL -->
 
 <section class="card panel model-panel">
-<h3><span class="step">2</span> Model</h3>
-<p class="muted">Hover a connection to see its weight. In Advanced mode, click it to edit.</p>
-<div class="network-scroll"><svg id="network-svg" class="network-svg" role="img" aria-label="Neural network"></svg></div>
-<div class="legend">
-<span><i class="legend-line"></i> Positive weight</span>
-<span><i class="legend-line negative"></i> Negative weight</span>
-<span>Thicker = stronger</span>
+
+<h3>
+<span class="step">2</span>
+Model
+</h3>
+
+<p class="muted">
+Hover a connection to see its weight.
+In Advanced mode, click it to edit.
+</p>
+
+
+<div class="network-scroll">
+
+<svg
+id="network-svg"
+class="network-svg"
+role="img"
+aria-label="Neural network"
+></svg>
+
 </div>
+
+
+<div class="legend">
+
+<span>
+<i class="legend-line"></i>
+Positive weight
+</span>
+
+<span>
+<i class="legend-line negative"></i>
+Negative weight
+</span>
+
+<span>
+Thicker = stronger
+</span>
+
+</div>
+
 </section>
+
+
+<!-- OUTPUT -->
 
 <section class="card panel">
-<h3><span class="step">3</span> Output</h3>
+
+<h3>
+<span class="step">3</span>
+Output
+</h3>
+
+
 <div class="prediction">
-<small>Prediction</small>
-<strong id="prediction-value">—</strong>
-<span id="prediction-description">Run the network to calculate an output.</span>
+
+<small>
+Prediction
+</small>
+
+<strong id="prediction-value">
+—
+</strong>
+
+<span id="prediction-description">
+Run the network to calculate an output.
+</span>
+
 </div>
+
 
 <div class="results">
-<p><span>Hidden layers</span><strong id="result-hidden-layers">—</strong></p>
-<p><span>Total neurons</span><strong id="result-total-neurons">—</strong></p>
-<p><span>Total connections</span><strong id="result-total-connections">—</strong></p>
-<p><span>Weighted output</span><strong id="result-weighted-output">—</strong></p>
-<p><span>Final activation</span><strong id="result-final-output">—</strong></p>
+
+<p>
+<span>Hidden layers</span>
+<strong id="result-hidden-layers">—</strong>
+</p>
+
+<p>
+<span>Total neurons</span>
+<strong id="result-total-neurons">—</strong>
+</p>
+
+<p>
+<span>Total connections</span>
+<strong id="result-total-connections">—</strong>
+</p>
+
+<p>
+<span>Weighted output</span>
+<strong id="result-weighted-output">—</strong>
+</p>
+
+<p>
+<span>Final activation</span>
+<strong id="result-final-output">—</strong>
+</p>
+
 </div>
+
 </section>
 
 </div>
 
-<section id="parameter-editor" class="card editor" hidden>
-<div>
-<span class="label">Advanced Mode</span>
-<h3 id="editor-title">Edit parameter</h3>
-<p id="editor-description" class="muted"></p>
-</div>
+
+<!-- =========================================
+     NEURAL NETWORK - ADVANCED EDITOR
+========================================= -->
+
+<section
+id="parameter-editor"
+class="card editor"
+hidden
+>
 
 <div>
-<div class="control-head"><label for="parameter-slider">Value</label><output id="parameter-display">0.00</output></div>
+
+<span class="label">
+Advanced Mode
+</span>
+
+<h3 id="editor-title">
+Edit parameter
+</h3>
+
+<p
+id="editor-description"
+class="muted"
+></p>
+
+</div>
+
+
+<div>
+
+<div class="control-head">
+
+<label for="parameter-slider">
+Value
+</label>
+
+<output id="parameter-display">
+0.00
+</output>
+
+</div>
+
+
 <div class="value-row">
-<input id="parameter-slider" type="range" min="-1" max="1" step=".05">
-<input id="parameter-number" class="number-input" type="number" min="-1" max="1" step=".05">
-</div>
-<div class="limits"><span>Min −1</span><span>Max 1</span></div>
+
+<input
+id="parameter-slider"
+type="range"
+min="-1"
+max="1"
+step=".05"
+>
+
+<input
+id="parameter-number"
+class="number-input"
+type="number"
+min="-1"
+max="1"
+step=".05"
+>
+
 </div>
 
-<button id="close-editor" class="btn" type="button">Close</button>
+
+<div class="limits">
+<span>Min −1</span>
+<span>Max 1</span>
+</div>
+
+</div>
+
+
+<button
+id="close-editor"
+class="btn"
+type="button"
+>
+Close
+</button>
+
 </section>
 
 </div>
 
-<!-- ========================== CNN ========================== -->
 
-<div id="cnn-playground" hidden>
+<!-- =====================================================
+     CNN PLAYGROUND
+====================================================== -->
+
+<div
+id="cnn-playground"
+hidden
+>
+
 
 <div class="heading">
-<span class="label">CNN Playground</span>
-<h2>Explore convolution visually</h2>
-<p>Edit image pixels and filters, then explore convolution, feature maps, pooling and flattening.</p>
+
+<span class="label">
+CNN Playground
+</span>
+
+<h2>
+Explore convolution visually
+</h2>
+
+<p>
+Edit image pixels and filters, then explore convolution,
+feature maps, pooling and flattening.
+</p>
+
 </div>
+
+
+<!-- =========================================
+     CNN - TOOLBAR
+========================================= -->
 
 <div class="cnn-toolbar card">
-<div><small>CNN PIPELINE</small><strong>Input → Convolution → Feature Map → Pooling → Flatten</strong></div>
-<div class="actions">
-<button id="cnn-reset" class="btn" type="button">Reset</button>
-<button id="cnn-run" class="btn primary" type="button">Run CNN</button>
-</div>
+
+<div>
+
+<small>
+CNN PIPELINE
+</small>
+
+<strong>
+Input → Convolution → Feature Map → Pooling → Flatten
+</strong>
+
 </div>
 
-<div id="cnn-live-step" class="live-step">Ready. Change the image or kernel and run the CNN.</div>
+
+<div class="actions">
+
+<button
+id="cnn-reset"
+class="btn"
+type="button"
+>
+Reset
+</button>
+
+<button
+id="cnn-run"
+class="btn primary"
+type="button"
+>
+Run CNN
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="cnn-live-step"
+class="live-step"
+>
+Ready. Change the image or kernel and run the CNN.
+</div>
+
+
+<!-- =========================================
+     CNN - SETTINGS
+========================================= -->
 
 <section class="card cnn-controls">
+
 <div class="cnn-settings">
 
-<label>Convolution Stride
-<select id="cnn-stride"><option value="1" selected>1</option><option value="2">2</option></select>
+
+<label>
+Convolution Stride
+
+<select id="cnn-stride">
+
+<option value="1" selected>1</option>
+<option value="2">2</option>
+
+</select>
+
 </label>
 
-<label>Padding
-<select id="cnn-padding"><option value="0" selected>0</option><option value="1">1</option></select>
+
+<label>
+Padding
+
+<select id="cnn-padding">
+
+<option value="0" selected>0</option>
+<option value="1">1</option>
+
+</select>
+
 </label>
 
-<label>Pooling
+
+<label>
+Pooling
+
 <select id="cnn-pooling">
-<option value="none">No Pooling</option>
-<option value="max" selected>Max Pooling</option>
-<option value="average">Average Pooling</option>
+
+<option value="none">
+No Pooling
+</option>
+
+<option value="max" selected>
+Max Pooling
+</option>
+
+<option value="average">
+Average Pooling
+</option>
+
 </select>
+
 </label>
 
-<label>Pooling Size
-<select id="cnn-pool-size"><option value="2" selected>2 × 2</option><option value="3">3 × 3</option></select>
+
+<label>
+Pooling Size
+
+<select id="cnn-pool-size">
+
+<option value="2" selected>
+2 × 2
+</option>
+
+<option value="3">
+3 × 3
+</option>
+
+</select>
+
 </label>
 
-<label>Pooling Stride
-<select id="cnn-pool-stride"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select>
+
+<label>
+Pooling Stride
+
+<select id="cnn-pool-stride">
+
+<option value="1">1</option>
+<option value="2" selected>2</option>
+<option value="3">3</option>
+
+</select>
+
 </label>
 
-<label>Preset Filter
+
+<label>
+Preset Filter
+
 <select id="cnn-kernel-preset">
-<option value="edge" selected>Vertical Edge</option>
-<option value="horizontal">Horizontal Edge</option>
-<option value="sharpen">Sharpen</option>
-<option value="blur">Blur</option>
-<option value="custom">Custom</option>
+
+<option value="edge" selected>
+Vertical Edge
+</option>
+
+<option value="horizontal">
+Horizontal Edge
+</option>
+
+<option value="sharpen">
+Sharpen
+</option>
+
+<option value="blur">
+Blur
+</option>
+
+<option value="custom">
+Custom
+</option>
+
 </select>
+
 </label>
 
 </div>
+
 </section>
+
+
+<!-- =========================================
+     CNN - DIMENSIONS
+========================================= -->
 
 <section class="card cnn-dimension-card">
-<div><span class="label">Dimensions</span><h3>How the selected parameters change the CNN</h3></div>
-<div class="dimension-grid">
-<div><span>Input</span><strong>5 × 5</strong></div>
-<div><span>Kernel</span><strong>3 × 3</strong></div>
-<div><span>Feature Map</span><strong id="cnn-dimension-feature">3 × 3</strong></div>
-<div><span>Pooling</span><strong id="cnn-dimension-pooling">1 × 1</strong></div>
+
+<div>
+
+<span class="label">
+Dimensions
+</span>
+
+<h3>
+How the selected parameters change the CNN
+</h3>
+
 </div>
-<code id="cnn-dimension-equation">floor((5 + 2(0) - 3) / 1) + 1 = 3</code>
-<div id="cnn-config-warning" class="cnn-warning" hidden></div>
+
+
+<div class="dimension-grid">
+
+<div>
+<span>Input</span>
+<strong>5 × 5</strong>
+</div>
+
+<div>
+<span>Kernel</span>
+<strong>3 × 3</strong>
+</div>
+
+<div>
+<span>Feature Map</span>
+<strong id="cnn-dimension-feature">
+3 × 3
+</strong>
+</div>
+
+<div>
+<span>Pooling</span>
+<strong id="cnn-dimension-pooling">
+1 × 1
+</strong>
+</div>
+
+</div>
+
+
+<code id="cnn-dimension-equation">
+floor((5 + 2(0) - 3) / 1) + 1 = 3
+</code>
+
+
+<div
+id="cnn-config-warning"
+class="cnn-warning"
+hidden
+></div>
+
 </section>
+
+
+<!-- =========================================
+     CNN - STEP CONTROLLER
+========================================= -->
 
 <section class="card cnn-step-controller">
+
 <div>
-<span class="label">Convolution Explorer</span>
-<h3>Move through convolution manually</h3>
-<p class="muted">Inspect each kernel position or automatically play the full convolution.</p>
+
+<span class="label">
+Convolution Explorer
+</span>
+
+<h3>
+Move through convolution manually
+</h3>
+
+<p class="muted">
+Inspect each kernel position or automatically
+play the full convolution.
+</p>
+
 </div>
+
 
 <div class="cnn-step-buttons">
-<button id="cnn-prev-step" class="btn" type="button">← Previous</button>
-<button id="cnn-next-step" class="btn primary" type="button">Next →</button>
-<button id="cnn-auto-play" class="btn primary" type="button">▶ Auto Play</button>
-<button id="cnn-reset-steps" class="btn" type="button">Reset Steps</button>
+
+<button
+id="cnn-prev-step"
+class="btn"
+type="button"
+>
+← Previous
+</button>
+
+<button
+id="cnn-next-step"
+class="btn primary"
+type="button"
+>
+Next →
+</button>
+
+<button
+id="cnn-auto-play"
+class="btn primary"
+type="button"
+>
+▶ Auto Play
+</button>
+
+<button
+id="cnn-reset-steps"
+class="btn"
+type="button"
+>
+Reset Steps
+</button>
+
 </div>
+
 
 <div class="cnn-progress">
-<div class="cnn-progress-bar"><div id="cnn-progress-fill"></div></div>
-<strong id="cnn-step-count">Step 0 / 0</strong>
+
+<div class="cnn-progress-bar">
+
+<div id="cnn-progress-fill"></div>
+
 </div>
+
+<strong id="cnn-step-count">
+Step 0 / 0
+</strong>
+
+</div>
+
 </section>
 
+
+<!-- =========================================
+     CNN - CURRENT CALCULATION
+========================================= -->
+
 <section class="card cnn-current-calculation">
-<span class="label">Current Calculation</span>
-<h3 id="cnn-current-title">No convolution step selected</h3>
-<code id="cnn-current-equation">Use Next or Auto Play to begin.</code>
+
+<span class="label">
+Current Calculation
+</span>
+
+<h3 id="cnn-current-title">
+No convolution step selected
+</h3>
+
+<code id="cnn-current-equation">
+Use Next or Auto Play to begin.
+</code>
+
 <strong id="cnn-current-result"></strong>
+
 </section>
+
+
+<!-- =========================================
+     CNN - WORKSPACE
+========================================= -->
 
 <div class="cnn-workspace">
 
-<section class="card cnn-panel">
-<div class="cnn-panel-heading"><span class="step">1</span><div><h3>Input Image</h3><p>Edit each pixel directly.</p></div></div>
-<div id="cnn-input-grid" class="matrix-grid matrix-5"></div>
-<p class="matrix-limit">Allowed pixel values: 0 to 9</p>
-</section>
 
 <section class="card cnn-panel">
-<div class="cnn-panel-heading"><span class="step">2</span><div><h3>Kernel / Filter</h3><p>The filter moves over the input image.</p></div></div>
-<div id="cnn-kernel-grid" class="matrix-grid matrix-3"></div>
-<p class="matrix-limit">Allowed kernel values: −3 to 3</p>
+
+<div class="cnn-panel-heading">
+
+<span class="step">1</span>
+
+<div>
+<h3>Input Image</h3>
+<p>Edit each pixel directly.</p>
+</div>
+
+</div>
+
+<div
+id="cnn-input-grid"
+class="matrix-grid matrix-5"
+></div>
+
+<p class="matrix-limit">
+Allowed pixel values: 0 to 9
+</p>
+
 </section>
 
-<section class="card cnn-panel">
-<div class="cnn-panel-heading"><span class="step">3</span><div><h3>Feature Map</h3><p>Convolution generates these values.</p></div></div>
-<div id="cnn-feature-map" class="cnn-result-grid"></div>
-<div class="cnn-stat"><span>Feature map size</span><strong id="cnn-feature-size">—</strong></div>
-</section>
 
 <section class="card cnn-panel">
-<div class="cnn-panel-heading"><span class="step">4</span><div><h3>Pooling</h3><p id="cnn-pooling-description">Max Pooling reduces the feature map.</p></div></div>
-<div id="cnn-pool-map" class="cnn-result-grid"></div>
-<div class="cnn-stat"><span>Result size</span><strong id="cnn-pool-size-result">—</strong></div>
+
+<div class="cnn-panel-heading">
+
+<span class="step">2</span>
+
+<div>
+<h3>Kernel / Filter</h3>
+<p>The filter moves over the input image.</p>
+</div>
+
+</div>
+
+<div
+id="cnn-kernel-grid"
+class="matrix-grid matrix-3"
+></div>
+
+<p class="matrix-limit">
+Allowed kernel values: −3 to 3
+</p>
+
+</section>
+
+
+<section class="card cnn-panel">
+
+<div class="cnn-panel-heading">
+
+<span class="step">3</span>
+
+<div>
+<h3>Feature Map</h3>
+<p>Convolution generates these values.</p>
+</div>
+
+</div>
+
+<div
+id="cnn-feature-map"
+class="cnn-result-grid"
+></div>
+
+<div class="cnn-stat">
+
+<span>
+Feature map size
+</span>
+
+<strong id="cnn-feature-size">
+—
+</strong>
+
+</div>
+
+</section>
+
+
+<section class="card cnn-panel">
+
+<div class="cnn-panel-heading">
+
+<span class="step">4</span>
+
+<div>
+<h3>Pooling</h3>
+
+<p id="cnn-pooling-description">
+Max Pooling reduces the feature map.
+</p>
+
+</div>
+
+</div>
+
+<div
+id="cnn-pool-map"
+class="cnn-result-grid"
+></div>
+
+<div class="cnn-stat">
+
+<span>
+Result size
+</span>
+
+<strong id="cnn-pool-size-result">
+—
+</strong>
+
+</div>
+
 </section>
 
 </div>
+
+
+<!-- =========================================
+     CNN - FLATTEN
+========================================= -->
 
 <section class="card cnn-flatten-panel">
-<div class="cnn-panel-heading"><span class="step">5</span><div><h3>Flattened Output</h3><p>The final matrix becomes a one-dimensional vector.</p></div></div>
-<div id="cnn-flatten-output" class="flatten-vector"><span>Run the CNN to generate the vector.</span></div>
+
+<div class="cnn-panel-heading">
+
+<span class="step">5</span>
+
+<div>
+<h3>Flattened Output</h3>
+
+<p>
+The final matrix becomes a one-dimensional vector.
+</p>
+</div>
+
+</div>
+
+<div
+id="cnn-flatten-output"
+class="flatten-vector"
+>
+
+<span>
+Run the CNN to generate the vector.
+</span>
+
+</div>
+
 </section>
+
+
+<!-- =========================================
+     CNN - CALCULATIONS
+========================================= -->
 
 <section class="card cnn-calculation-panel">
-<div class="cnn-panel-heading"><span class="step">6</span><div><h3>All Convolution Calculations</h3><p>Every feature-map calculation appears here.</p></div></div>
-<div id="cnn-calculation-output" class="cnn-calculation-output"><p>Run or step through the CNN to see calculations.</p></div>
+
+<div class="cnn-panel-heading">
+
+<span class="step">6</span>
+
+<div>
+<h3>All Convolution Calculations</h3>
+<p>Every feature-map calculation appears here.</p>
+</div>
+
+</div>
+
+<div
+id="cnn-calculation-output"
+class="cnn-calculation-output"
+>
+
+<p>
+Run or step through the CNN to see calculations.
+</p>
+
+</div>
+
 </section>
 
 </div>
 
-<!-- ===================== DECISION TREE ===================== -->
 
-<div id="tree-playground" hidden>
+<!-- =====================================================
+     DECISION TREE PLAYGROUND
+====================================================== -->
+
+<div
+id="tree-playground"
+hidden
+>
+
 
 <div class="heading">
-<span class="label">Decision Tree Playground</span>
-<h2>Experiment with more features and samples</h2>
-<p>Edit the dataset, add samples, choose a feature and threshold, then see exactly how the split changes.</p>
+
+<span class="label">
+Decision Tree Playground
+</span>
+
+<h2>
+Build and compare decision-tree splits
+</h2>
+
+<p>
+Choose how many features you want to explore,
+create a manual split, or let the playground
+search for the best split automatically.
+</p>
+
 </div>
+
+
+<!-- =========================================
+     DECISION TREE - TOOLBAR
+========================================= -->
 
 <div class="tree-toolbar card">
+
 <div>
-<small>DECISION TREE</small>
-<strong>Dataset → Feature → Threshold → Split → Leaf Prediction</strong>
+
+<small>
+DECISION TREE
+</small>
+
+<strong>
+Dataset → Features → Threshold → Split → Prediction
+</strong>
+
 </div>
+
 
 <div class="actions">
-<button id="tree-reset" class="btn" type="button">Reset</button>
-<button id="tree-run" class="btn primary" type="button">Build Tree</button>
-</div>
+
+<button
+id="tree-reset"
+class="btn"
+type="button"
+>
+Reset
+</button>
+
+<button
+id="tree-run"
+class="btn primary"
+type="button"
+>
+Build Manual Split
+</button>
+
+<button
+id="tree-best-split"
+class="btn primary"
+type="button"
+>
+Find Best Split
+</button>
+
 </div>
 
-<div id="tree-live-step" class="live-step">
-Ready. Edit the dataset or configure a split.
 </div>
 
-<!-- TREE SETTINGS -->
+
+<div
+id="tree-live-step"
+class="live-step"
+>
+Ready. Configure the dataset or search for the best split.
+</div>
+
+
+<!-- =========================================
+     DECISION TREE - FEATURE CONTROLS
+========================================= -->
 
 <section class="card tree-controls">
 
-<div class="tree-settings">
+<div class="tree-settings tree-settings-four">
+
+
+<label>
+Number of Features
+
+<select id="tree-feature-count">
+
+<option value="2" selected>
+2 Features
+</option>
+
+<option value="3">
+3 Features
+</option>
+
+<option value="4">
+4 Features
+</option>
+
+</select>
+
+</label>
+
 
 <label>
 Split Feature
+
 <select id="tree-feature">
-<option value="age" selected>Age</option>
-<option value="income">Income</option>
-<option value="score">Score</option>
-<option value="experience">Experience</option>
+
+<option value="age" selected>
+Age
+</option>
+
+<option value="income">
+Income
+</option>
+
 </select>
+
 </label>
+
 
 <label>
 Threshold
-<input id="tree-threshold" class="number-input" type="number" value="30">
+
+<input
+id="tree-threshold"
+class="number-input"
+type="number"
+value="30"
+>
+
 </label>
+
 
 <label>
 Split Criterion
+
 <select id="tree-criterion">
-<option value="gini" selected>Gini Impurity</option>
-<option value="entropy">Entropy</option>
+
+<option value="gini" selected>
+Gini Impurity
+</option>
+
+<option value="entropy">
+Entropy
+</option>
+
 </select>
+
 </label>
 
 </div>
 
+
 <div class="tree-control-actions">
-<button id="tree-add-sample" class="btn primary" type="button">+ Add Sample</button>
-<button id="tree-remove-sample" class="btn" type="button">− Remove Last Sample</button>
-<span id="tree-sample-count" class="tree-sample-count">6 / 15 samples</span>
+
+<button
+id="tree-add-sample"
+class="btn primary"
+type="button"
+>
++ Add Sample
+</button>
+
+<button
+id="tree-remove-sample"
+class="btn"
+type="button"
+>
+− Remove Last Sample
+</button>
+
+<span
+id="tree-sample-count"
+class="tree-sample-count"
+>
+6 / 15 samples
+</span>
+
 </div>
 
 </section>
 
-<!-- TREE DATASET SUMMARY -->
+
+<!-- =========================================
+     DECISION TREE - ACTIVE FEATURES
+========================================= -->
+
+<section class="card tree-feature-card">
+
+<div>
+
+<span class="label">
+Active Features
+</span>
+
+<h3>
+Features currently available to the tree
+</h3>
+
+</div>
+
+
+<div
+id="tree-active-features"
+class="tree-feature-chips"
+></div>
+
+
+<p class="muted">
+Start with two features for a simpler explanation.
+Add more features when you want to compare additional
+possible splits.
+</p>
+
+</section>
+
+
+<!-- =========================================
+     DECISION TREE - SUMMARY
+========================================= -->
 
 <section class="card tree-summary-card">
 
 <div class="tree-summary-grid">
 
+
 <div>
 <span>Total Samples</span>
-<strong id="tree-total-samples">6</strong>
+<strong id="tree-total-samples">
+6
+</strong>
 </div>
+
 
 <div>
 <span>Class A</span>
-<strong id="tree-class-a-count">3</strong>
+<strong id="tree-class-a-count">
+3
+</strong>
 </div>
+
 
 <div>
 <span>Class B</span>
-<strong id="tree-class-b-count">3</strong>
+<strong id="tree-class-b-count">
+3
+</strong>
 </div>
+
+
+<div>
+<span>Active Features</span>
+<strong id="tree-active-feature-count">
+2
+</strong>
+</div>
+
 
 <div>
 <span>Selected Feature</span>
-<strong id="tree-selected-feature">Age</strong>
+<strong id="tree-selected-feature">
+Age
+</strong>
 </div>
+
 
 </div>
 
 </section>
 
+
+<!-- =========================================
+     DECISION TREE - BEST SPLIT RESULT
+========================================= -->
+
+<section
+id="tree-best-result-card"
+class="card tree-best-result"
+hidden
+>
+
+<div>
+
+<span class="label">
+Best Split Search
+</span>
+
+<h3>
+Best split found
+</h3>
+
+</div>
+
+
+<div class="tree-best-grid">
+
+
+<div>
+<span>Feature</span>
+<strong id="tree-best-feature">
+—
+</strong>
+</div>
+
+
+<div>
+<span>Threshold</span>
+<strong id="tree-best-threshold">
+—
+</strong>
+</div>
+
+
+<div>
+<span>Information Gain</span>
+<strong id="tree-best-gain">
+—
+</strong>
+</div>
+
+
+<div>
+<span>Splits Tested</span>
+<strong id="tree-splits-tested">
+—
+</strong>
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     DECISION TREE - MAIN WORKSPACE
+========================================= -->
+
 <div class="tree-workspace">
+
 
 <!-- DATASET -->
 
 <section class="card tree-panel tree-dataset-panel">
 
 <div class="tree-panel-heading">
-<span class="step">1</span>
+
+<span class="step">
+1
+</span>
+
 <div>
-<h3>Editable Dataset</h3>
-<p>Use between 4 and 15 samples.</p>
+
+<h3>
+Editable Dataset
+</h3>
+
+<p>
+The table automatically changes when you select
+2, 3 or 4 features.
+</p>
+
 </div>
+
 </div>
+
 
 <div class="tree-table-wrap">
 
 <table class="tree-table">
 
-<thead>
-<tr>
-<th>ID</th>
-<th>Age</th>
-<th>Income</th>
-<th>Score</th>
-<th>Experience</th>
-<th>Class</th>
-</tr>
-</thead>
+<thead id="tree-data-head"></thead>
 
 <tbody id="tree-data-body"></tbody>
 
@@ -444,62 +1544,113 @@ Split Criterion
 
 </section>
 
-<!-- TREE VISUAL -->
+
+<!-- VISUALIZATION -->
 
 <section class="card tree-panel">
 
 <div class="tree-panel-heading">
-<span class="step">2</span>
+
+<span class="step">
+2
+</span>
+
 <div>
-<h3>Tree Visualization</h3>
-<p>Samples are routed according to your condition.</p>
-</div>
+
+<h3>
+Tree Visualization
+</h3>
+
+<p>
+Samples are routed according to the selected condition.
+</p>
+
 </div>
 
-<div id="tree-visualization" class="tree-visualization">
-<p class="muted">Build the tree to see the split.</p>
+</div>
+
+
+<div
+id="tree-visualization"
+class="tree-visualization"
+>
+
+<p class="muted">
+Build the tree to see the split.
+</p>
+
 </div>
 
 </section>
+
 
 <!-- SPLIT QUALITY -->
 
 <section class="card tree-panel">
 
 <div class="tree-panel-heading">
-<span class="step">3</span>
+
+<span class="step">
+3
+</span>
+
 <div>
-<h3>Split Quality</h3>
-<p>Compare the impurity before and after splitting.</p>
+
+<h3>
+Split Quality
+</h3>
+
+<p>
+Compare impurity before and after the split.
+</p>
+
 </div>
+
 </div>
+
 
 <div class="tree-stats">
 
+
 <div>
 <span>Parent impurity</span>
-<strong id="tree-parent-impurity">—</strong>
+<strong id="tree-parent-impurity">
+—
+</strong>
 </div>
+
 
 <div>
 <span>Left impurity</span>
-<strong id="tree-left-impurity">—</strong>
+<strong id="tree-left-impurity">
+—
+</strong>
 </div>
+
 
 <div>
 <span>Right impurity</span>
-<strong id="tree-right-impurity">—</strong>
+<strong id="tree-right-impurity">
+—
+</strong>
 </div>
+
 
 <div>
 <span>Weighted impurity</span>
-<strong id="tree-weighted-impurity">—</strong>
+<strong id="tree-weighted-impurity">
+—
+</strong>
 </div>
+
 
 <div>
 <span>Information gain</span>
-<strong id="tree-information-gain">—</strong>
+<strong id="tree-information-gain">
+—
+</strong>
 </div>
+
 
 </div>
 
@@ -507,30 +1658,111 @@ Split Criterion
 
 </div>
 
-<!-- SPLIT TABLE -->
 
-<section class="card tree-split-table-panel">
+<!-- =========================================
+     DECISION TREE - CANDIDATE COMPARISON
+========================================= -->
+
+<section
+id="tree-comparison-panel"
+class="card tree-comparison-panel"
+hidden
+>
 
 <div class="tree-panel-heading">
-<span class="step">4</span>
+
+<span class="step">
+4
+</span>
+
 <div>
-<h3>Where did each sample go?</h3>
-<p>See the branch selected for every sample.</p>
+
+<h3>
+Candidate Split Comparison
+</h3>
+
+<p>
+See the strongest candidate thresholds considered
+by the automatic search.
+</p>
+
 </div>
+
 </div>
+
 
 <div class="tree-table-wrap">
 
 <table class="tree-table">
 
 <thead>
+
 <tr>
+
+<th>Rank</th>
+<th>Feature</th>
+<th>Threshold</th>
+<th>Left</th>
+<th>Right</th>
+<th>Weighted Impurity</th>
+<th>Information Gain</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tree-comparison-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     DECISION TREE - SAMPLE ROUTING
+========================================= -->
+
+<section class="card tree-split-table-panel">
+
+<div class="tree-panel-heading">
+
+<span class="step">
+5
+</span>
+
+<div>
+
+<h3>
+Where did each sample go?
+</h3>
+
+<p>
+See how every sample was routed by the selected split.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="tree-table-wrap">
+
+<table class="tree-table">
+
+<thead>
+
+<tr>
+
 <th>ID</th>
 <th>Selected Value</th>
 <th>Condition</th>
 <th>Branch</th>
 <th>Class</th>
+
 </tr>
+
 </thead>
 
 <tbody id="tree-routing-body"></tbody>
@@ -541,188 +1773,697 @@ Split Criterion
 
 </section>
 
-<!-- CALCULATIONS -->
+
+<!-- =========================================
+     DECISION TREE - CALCULATIONS
+========================================= -->
 
 <section class="card tree-calculation-panel">
 
-<span class="label">Calculation</span>
-<h3>How was the split evaluated?</h3>
+<span class="label">
+Calculation
+</span>
+
+<h3>
+How was the split evaluated?
+</h3>
+
 
 <div id="tree-calculation-output">
-<p>Build the tree to see the calculations.</p>
+
+<p>
+Build the tree to see the calculations.
+</p>
+
 </div>
 
 </section>
 
 </div>
 
+
 </div>
+
 </section>
 
-<!-- ==================== NEURAL LEARNING ==================== -->
 
-<section class="section" id="neural-learn">
+<!-- =====================================================
+     NEURAL NETWORK LEARNING
+====================================================== -->
+
+<section
+class="section"
+id="neural-learn"
+>
+
 <div class="wrap">
 
+
 <div class="heading">
-<span class="label">Learn Neural Networks</span>
-<h2>What happened inside the neural network?</h2>
+
+<span class="label">
+Learn Neural Networks
+</span>
+
+<h2>
+What happened inside the neural network?
+</h2>
+
 </div>
+
 
 <div class="tabs">
-<button class="tab active" data-tab="beginner">Beginner</button>
-<button class="tab" data-tab="math">Mathematics</button>
-<button class="tab" data-tab="calc">Calculation</button>
+
+<button
+class="tab active"
+data-tab="beginner"
+type="button"
+>
+Beginner
+</button>
+
+<button
+class="tab"
+data-tab="math"
+type="button"
+>
+Mathematics
+</button>
+
+<button
+class="tab"
+data-tab="calc"
+type="button"
+>
+Calculation
+</button>
+
 </div>
 
-<div id="beginner-panel" class="learn-panel">
+
+<div
+id="beginner-panel"
+class="learn-panel"
+>
+
 <div class="learn-grid">
-<article><b>1</b><h3>Inputs enter</h3><p>Each neuron receives an input value.</p></article>
-<article><b>2</b><h3>Weights modify</h3><p>Connections multiply inputs by weights.</p></article>
-<article><b>3</b><h3>Bias shifts</h3><p>A bias is added before activation.</p></article>
-<article><b>4</b><h3>Activation transforms</h3><p>An activation function transforms the result.</p></article>
-<article><b>5</b><h3>Layers continue</h3><p>Activations become inputs to later layers.</p></article>
-<article><b>6</b><h3>Output appears</h3><p>The final neuron produces the output.</p></article>
-</div>
+
+<article>
+<b>1</b>
+<h3>Inputs enter</h3>
+<p>Each neuron receives an input value.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Weights modify</h3>
+<p>Connections multiply inputs by weights.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Bias shifts</h3>
+<p>A bias is added before activation.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Activation transforms</h3>
+<p>An activation function transforms the result.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Layers continue</h3>
+<p>Activations become inputs to later layers.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Output appears</h3>
+<p>The final neuron produces the output.</p>
+</article>
+
 </div>
 
-<div id="math-panel" class="learn-panel" hidden>
+</div>
+
+
+<div
+id="math-panel"
+class="learn-panel"
+hidden
+>
+
 <div class="math-grid">
-<article><h3>Weighted Sum</h3><p class="equation">z = Σ(xᵢ × wᵢ) + b</p></article>
-<article><h3>Activation</h3><p class="equation">a = f(z)</p></article>
-<article><h3>Sigmoid</h3><p class="equation">σ(z)=1/(1+e⁻ᶻ)</p></article>
-</div>
+
+<article>
+<h3>Weighted Sum</h3>
+<p class="equation">
+z = Σ(xᵢ × wᵢ) + b
+</p>
+</article>
+
+<article>
+<h3>Activation</h3>
+<p class="equation">
+a = f(z)
+</p>
+</article>
+
+<article>
+<h3>Sigmoid</h3>
+<p class="equation">
+σ(z)=1/(1+e⁻ᶻ)
+</p>
+</article>
+
 </div>
 
-<div id="calc-panel" class="learn-panel" hidden>
-<div id="calculation-output"><p>Run the network to see calculations.</p></div>
+</div>
+
+
+<div
+id="calc-panel"
+class="learn-panel"
+hidden
+>
+
+<div id="calculation-output">
+
+<p>
+Run the network to see calculations.
+</p>
+
 </div>
 
 </div>
+
+
+</div>
+
 </section>
 
-<!-- ====================== CNN LEARNING ====================== -->
 
-<section class="section" id="cnn-learn" hidden>
+<!-- =====================================================
+     CNN LEARNING
+====================================================== -->
+
+<section
+class="section"
+id="cnn-learn"
+hidden
+>
+
 <div class="wrap">
 
+
 <div class="heading">
-<span class="label">Learn CNN</span>
-<h2>What happened inside the CNN?</h2>
-<p>Understand convolution, stride, padding, pooling and flattening.</p>
+
+<span class="label">
+Learn CNN
+</span>
+
+<h2>
+What happened inside the CNN?
+</h2>
+
+<p>
+Understand convolution, stride, padding,
+pooling and flattening.
+</p>
+
 </div>
+
 
 <div class="tabs cnn-tabs">
-<button class="tab cnn-tab active" data-cnn-tab="beginner">Beginner</button>
-<button class="tab cnn-tab" data-cnn-tab="math">Mathematics</button>
-<button class="tab cnn-tab" data-cnn-tab="pipeline">CNN Pipeline</button>
+
+<button
+class="tab cnn-tab active"
+data-cnn-tab="beginner"
+type="button"
+>
+Beginner
+</button>
+
+<button
+class="tab cnn-tab"
+data-cnn-tab="math"
+type="button"
+>
+Mathematics
+</button>
+
+<button
+class="tab cnn-tab"
+data-cnn-tab="pipeline"
+type="button"
+>
+CNN Pipeline
+</button>
+
 </div>
 
-<div id="cnn-beginner-panel" class="learn-panel">
+
+<div
+id="cnn-beginner-panel"
+class="learn-panel"
+>
+
 <div class="learn-grid">
-<article><b>1</b><h3>Input image</h3><p>The image becomes a matrix of pixel values.</p></article>
-<article><b>2</b><h3>Kernel slides</h3><p>A filter moves across the input.</p></article>
-<article><b>3</b><h3>Stride controls movement</h3><p>Stride determines how far the kernel moves.</p></article>
-<article><b>4</b><h3>Padding adds borders</h3><p>Padding adds values around the input edges.</p></article>
-<article><b>5</b><h3>Pooling reduces</h3><p>Pooling summarizes feature-map regions.</p></article>
-<article><b>6</b><h3>Flatten creates vector</h3><p>The final matrix becomes a 1D vector.</p></article>
-</div>
+
+<article>
+<b>1</b>
+<h3>Input image</h3>
+<p>The image becomes a matrix of pixel values.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Kernel slides</h3>
+<p>A filter moves across the input.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Stride controls movement</h3>
+<p>Stride determines how far the kernel moves.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Padding adds borders</h3>
+<p>Padding adds values around the input edges.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Pooling reduces</h3>
+<p>Pooling summarizes feature-map regions.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Flatten creates vector</h3>
+<p>The final matrix becomes a 1D vector.</p>
+</article>
+
 </div>
 
-<div id="cnn-math-panel" class="learn-panel" hidden>
+</div>
+
+
+<div
+id="cnn-math-panel"
+class="learn-panel"
+hidden
+>
+
 <div class="math-grid">
-<article><h3>Convolution Output Size</h3><p class="equation">O=floor((N+2P−K)/S)+1</p></article>
-<article><h3>Pooling Output Size</h3><p class="equation">Oₚ=floor((N−F)/Sₚ)+1</p></article>
-<article><h3>Convolution</h3><p class="equation">y(i,j)=ΣₘΣₙx(i+m,j+n)k(m,n)</p></article>
-<article><h3>Max Pooling</h3><p class="equation">y=max(x₁,...,xₙ)</p></article>
-<article><h3>Average Pooling</h3><p class="equation">y=(x₁+...+xₙ)/n</p></article>
-<article><h3>No Pooling</h3><p>The feature map goes directly to flattening.</p></article>
-</div>
+
+<article>
+<h3>Convolution Output Size</h3>
+<p class="equation">
+O=floor((N+2P−K)/S)+1
+</p>
+</article>
+
+<article>
+<h3>Pooling Output Size</h3>
+<p class="equation">
+Oₚ=floor((N−F)/Sₚ)+1
+</p>
+</article>
+
+<article>
+<h3>Convolution</h3>
+<p class="equation">
+y(i,j)=ΣₘΣₙx(i+m,j+n)k(m,n)
+</p>
+</article>
+
+<article>
+<h3>Max Pooling</h3>
+<p class="equation">
+y=max(x₁,...,xₙ)
+</p>
+</article>
+
+<article>
+<h3>Average Pooling</h3>
+<p class="equation">
+y=(x₁+...+xₙ)/n
+</p>
+</article>
+
+<article>
+<h3>No Pooling</h3>
+<p>The feature map goes directly to flattening.</p>
+</article>
+
 </div>
 
-<div id="cnn-pipeline-panel" class="learn-panel" hidden>
+</div>
+
+
+<div
+id="cnn-pipeline-panel"
+class="learn-panel"
+hidden
+>
+
 <div class="cnn-pipeline">
-<div class="pipeline-box"><strong>Input</strong><span>5 × 5 matrix</span></div>
-<span class="pipeline-arrow">→</span>
-<div class="pipeline-box"><strong>Kernel</strong><span>3 × 3 filter</span></div>
-<span class="pipeline-arrow">→</span>
-<div class="pipeline-box"><strong>Feature Map</strong><span>Convolution output</span></div>
-<span class="pipeline-arrow">→</span>
-<div class="pipeline-box"><strong>Pooling</strong><span>Optional reduction</span></div>
-<span class="pipeline-arrow">→</span>
-<div class="pipeline-box"><strong>Flatten</strong><span>1D vector</span></div>
+
+<div class="pipeline-box">
+<strong>Input</strong>
+<span>5 × 5 matrix</span>
 </div>
+
+<span class="pipeline-arrow">
+→
+</span>
+
+<div class="pipeline-box">
+<strong>Kernel</strong>
+<span>3 × 3 filter</span>
+</div>
+
+<span class="pipeline-arrow">
+→
+</span>
+
+<div class="pipeline-box">
+<strong>Feature Map</strong>
+<span>Convolution output</span>
+</div>
+
+<span class="pipeline-arrow">
+→
+</span>
+
+<div class="pipeline-box">
+<strong>Pooling</strong>
+<span>Optional reduction</span>
+</div>
+
+<span class="pipeline-arrow">
+→
+</span>
+
+<div class="pipeline-box">
+<strong>Flatten</strong>
+<span>1D vector</span>
 </div>
 
 </div>
+
+</div>
+
+
+</div>
+
 </section>
 
-<!-- ==================== TREE LEARNING ==================== -->
 
-<section class="section" id="tree-learn" hidden>
+<!-- =====================================================
+     DECISION TREE LEARNING
+====================================================== -->
+
+<section
+class="section"
+id="tree-learn"
+hidden
+>
+
 <div class="wrap">
 
+
 <div class="heading">
-<span class="label">Learn Decision Trees</span>
-<h2>How does a decision tree make a decision?</h2>
-<p>Experiment with different features, thresholds and dataset sizes.</p>
+
+<span class="label">
+Learn Decision Trees
+</span>
+
+<h2>
+How does a decision tree make a decision?
+</h2>
+
+<p>
+Start with two features for a simple example,
+then activate three or four features to understand
+how the number of possible splits increases.
+</p>
+
 </div>
+
 
 <div class="tabs tree-tabs">
-<button class="tab tree-tab active" data-tree-tab="beginner">Beginner</button>
-<button class="tab tree-tab" data-tree-tab="math">Mathematics</button>
-<button class="tab tree-tab" data-tree-tab="split">Split Logic</button>
+
+<button
+class="tab tree-tab active"
+data-tree-tab="beginner"
+type="button"
+>
+Beginner
+</button>
+
+<button
+class="tab tree-tab"
+data-tree-tab="math"
+type="button"
+>
+Mathematics
+</button>
+
+<button
+class="tab tree-tab"
+data-tree-tab="split"
+type="button"
+>
+Split Logic
+</button>
+
 </div>
 
-<div id="tree-beginner-panel" class="learn-panel">
+
+<div
+id="tree-beginner-panel"
+class="learn-panel"
+>
+
 <div class="learn-grid">
-<article><b>1</b><h3>Start with samples</h3><p>The tree receives labelled examples.</p></article>
-<article><b>2</b><h3>Choose a feature</h3><p>Select Age, Income, Score or Experience.</p></article>
-<article><b>3</b><h3>Set a threshold</h3><p>The model asks a yes/no numerical question.</p></article>
-<article><b>4</b><h3>Split samples</h3><p>Samples move to the left or right branch.</p></article>
-<article><b>5</b><h3>Measure purity</h3><p>Gini or entropy evaluates each branch.</p></article>
-<article><b>6</b><h3>Predict class</h3><p>The majority class becomes the leaf prediction.</p></article>
-</div>
+
+<article>
+<b>1</b>
+<h3>Choose features</h3>
+<p>
+Start with 2 features, then increase to 3 or 4.
+</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Start with samples</h3>
+<p>
+The tree receives labelled examples.
+</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Choose a split</h3>
+<p>
+Select a feature and numerical threshold.
+</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Split samples</h3>
+<p>
+Samples move to the Yes or No branch.
+</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Measure purity</h3>
+<p>
+Gini or entropy measures the quality of the split.
+</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Find the best split</h3>
+<p>
+The automatic search compares possible thresholds
+across all active features.
+</p>
+</article>
+
 </div>
 
-<div id="tree-math-panel" class="learn-panel" hidden>
+</div>
+
+
+<div
+id="tree-math-panel"
+class="learn-panel"
+hidden
+>
+
 <div class="math-grid">
-<article><h3>Gini Impurity</h3><p class="equation">Gini = 1 − Σpᵢ²</p></article>
-<article><h3>Entropy</h3><p class="equation">H = −Σpᵢ log₂(pᵢ)</p></article>
-<article><h3>Weighted Impurity</h3><p class="equation">I = (nL/n)IL + (nR/n)IR</p></article>
-<article><h3>Information Gain</h3><p class="equation">Gain = Parent − Weighted Children</p></article>
-</div>
+
+<article>
+<h3>Gini Impurity</h3>
+<p class="equation">
+Gini = 1 − Σpᵢ²
+</p>
+</article>
+
+<article>
+<h3>Entropy</h3>
+<p class="equation">
+H = −Σpᵢ log₂(pᵢ)
+</p>
+</article>
+
+<article>
+<h3>Weighted Impurity</h3>
+<p class="equation">
+I = (nL/n)IL + (nR/n)IR
+</p>
+</article>
+
+<article>
+<h3>Information Gain</h3>
+<p class="equation">
+Gain = Parent − Weighted Children
+</p>
+</article>
+
+<article>
+<h3>Candidate Threshold</h3>
+<p class="equation">
+T = (xᵢ + xᵢ₊₁) / 2
+</p>
+</article>
+
+<article>
+<h3>Best Split</h3>
+<p>
+The candidate with the highest information gain
+is selected.
+</p>
+</article>
+
 </div>
 
-<div id="tree-split-panel" class="learn-panel" hidden>
+</div>
+
+
+<div
+id="tree-split-panel"
+class="learn-panel"
+hidden
+>
 
 <div class="tree-pipeline">
-<div class="pipeline-box"><strong>Dataset</strong><span>4–15 samples</span></div>
-<span class="pipeline-arrow">→</span>
-<div class="pipeline-box"><strong>Feature</strong><span>Age / Income / Score / Experience</span></div>
-<span class="pipeline-arrow">→</span>
-<div class="pipeline-box"><strong>Threshold</strong><span>Feature ≤ value?</span></div>
-<span class="pipeline-arrow">→</span>
-<div class="pipeline-box"><strong>Branches</strong><span>Left / Right</span></div>
-<span class="pipeline-arrow">→</span>
-<div class="pipeline-box"><strong>Leaves</strong><span>Majority prediction</span></div>
+
+<div class="pipeline-box">
+<strong>Features</strong>
+<span>Choose 2–4</span>
+</div>
+
+<span class="pipeline-arrow">
+→
+</span>
+
+<div class="pipeline-box">
+<strong>Dataset</strong>
+<span>4–15 samples</span>
+</div>
+
+<span class="pipeline-arrow">
+→
+</span>
+
+<div class="pipeline-box">
+<strong>Candidates</strong>
+<span>Features + thresholds</span>
+</div>
+
+<span class="pipeline-arrow">
+→
+</span>
+
+<div class="pipeline-box">
+<strong>Compare</strong>
+<span>Information gain</span>
+</div>
+
+<span class="pipeline-arrow">
+→
+</span>
+
+<div class="pipeline-box">
+<strong>Best Split</strong>
+<span>Highest gain</span>
+</div>
+
+<span class="pipeline-arrow">
+→
+</span>
+
+<div class="pipeline-box">
+<strong>Leaves</strong>
+<span>Class prediction</span>
 </div>
 
 </div>
 
 </div>
+
+
+</div>
+
 </section>
 
 </main>
 
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
 <footer>
+
 <div class="wrap footer">
-<strong>AI Model Playground</strong>
-<span>Educational simulation only.</span>
+
+<strong>
+AI Model Playground
+</strong>
+
+<span>
+Educational simulation only.
+</span>
+
 </div>
+
 </footer>
 
-<div id="weight-tooltip" class="weight-tooltip" hidden></div>
+
+<div
+id="weight-tooltip"
+class="weight-tooltip"
+hidden
+></div>
+
+
+<!-- =========================================
+     JAVASCRIPT FILES
+========================================= -->
 
 <script src="models/neural-network.js"></script>
 <script src="models/cnn.js"></script>
@@ -730,4 +2471,5 @@ Split Criterion
 <script src="script.js"></script>
 
 </body>
+
 </html>
