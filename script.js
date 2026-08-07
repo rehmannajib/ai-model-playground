@@ -25,6 +25,11 @@ document.getElementById(
 tree:
 document.getElementById(
 "tree-playground"
+),
+
+knn:
+document.getElementById(
+"knn-playground"
 )
 
 };
@@ -45,6 +50,11 @@ document.getElementById(
 tree:
 document.getElementById(
 "tree-learn"
+),
+
+knn:
+document.getElementById(
+"knn-learn"
 )
 
 };
@@ -113,6 +123,13 @@ model === "tree"
 
 learnLink.href =
 "#tree-learn";
+
+}else if(
+model === "knn"
+){
+
+learnLink.href =
+"#knn-learn";
 
 }else{
 
@@ -234,6 +251,22 @@ setupTabs(
 "beginner",
 "math",
 "split"
+]
+);
+
+
+/* =========================================
+   KNN LEARNING TABS
+========================================= */
+
+setupTabs(
+".knn-tab",
+"knnTab",
+"knn",
+[
+"beginner",
+"math",
+"process"
 ]
 );
 

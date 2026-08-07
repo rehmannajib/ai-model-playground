@@ -1708,3 +1708,625 @@ grid-template-columns:1fr
 }
 
 }
+
+/* =====================================================
+   MODEL SELECTOR - FIVE MODELS
+===================================================== */
+
+.model-selector{
+grid-template-columns:repeat(5,minmax(0,1fr))
+}
+
+
+/* =====================================================
+   KNN - TOOLBAR
+===================================================== */
+
+.knn-toolbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+padding:17px 20px;
+margin-bottom:14px
+}
+
+.knn-toolbar small{
+display:block;
+color:var(--muted)
+}
+
+
+/* =====================================================
+   KNN - CONTROLS
+===================================================== */
+
+.knn-controls{
+padding:22px;
+margin-bottom:18px
+}
+
+.knn-settings{
+display:grid;
+grid-template-columns:repeat(3,minmax(0,1fr));
+gap:18px
+}
+
+.knn-settings label{
+font-weight:700
+}
+
+.knn-settings select{
+display:block;
+width:100%;
+margin-top:7px;
+padding:10px 12px;
+min-height:44px;
+border:1px solid var(--border);
+border-radius:9px;
+background:#fff
+}
+
+.knn-control-actions{
+display:flex;
+gap:10px;
+align-items:center;
+flex-wrap:wrap;
+margin-top:20px
+}
+
+.knn-sample-count{
+margin-left:auto;
+color:var(--muted);
+font-size:13px;
+font-weight:700
+}
+
+
+/* =====================================================
+   KNN - ACTIVE FEATURES
+===================================================== */
+
+.knn-feature-card{
+padding:20px;
+margin-bottom:18px
+}
+
+.knn-feature-card h3{
+margin:4px 0 12px
+}
+
+.knn-feature-chips{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-bottom:10px
+}
+
+.knn-feature-chip{
+display:inline-flex;
+align-items:center;
+padding:7px 12px;
+border-radius:999px;
+background:#eff6ff;
+border:1px solid #bfdbfe;
+color:var(--blue);
+font-size:13px;
+font-weight:700
+}
+
+
+/* =====================================================
+   KNN - SUMMARY
+===================================================== */
+
+.knn-summary-card{
+padding:14px;
+margin-bottom:18px
+}
+
+.knn-summary-grid{
+display:grid;
+grid-template-columns:repeat(5,minmax(0,1fr));
+gap:10px
+}
+
+.knn-summary-grid div{
+padding:13px 14px;
+background:var(--soft);
+border-radius:10px
+}
+
+.knn-summary-grid span,
+.knn-summary-grid strong{
+display:block
+}
+
+.knn-summary-grid span{
+font-size:12px;
+color:var(--muted)
+}
+
+.knn-summary-grid strong{
+margin-top:3px;
+font-size:18px
+}
+
+
+/* =====================================================
+   KNN - UNKNOWN QUERY SAMPLE
+===================================================== */
+
+.knn-query-card{
+padding:20px;
+margin-bottom:18px
+}
+
+.knn-query-card h3{
+margin:4px 0
+}
+
+.knn-query-inputs{
+display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:14px;
+margin-top:18px
+}
+
+.knn-query-inputs label{
+font-weight:700
+}
+
+.knn-query-inputs input{
+display:block;
+width:100%;
+margin-top:6px;
+padding:9px;
+border:1px solid var(--border);
+border-radius:8px
+}
+
+
+/* =====================================================
+   KNN - WORKSPACE
+===================================================== */
+
+.knn-workspace{
+display:grid;
+grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+gap:18px
+}
+
+.knn-panel,
+.knn-neighbor-panel,
+.knn-calculation-panel,
+.knn-prediction-card{
+padding:22px
+}
+
+.knn-panel{
+min-width:0
+}
+
+.knn-neighbor-panel,
+.knn-calculation-panel,
+.knn-prediction-card{
+margin-top:18px
+}
+
+.knn-panel-heading{
+display:flex;
+gap:10px;
+align-items:flex-start;
+margin-bottom:20px
+}
+
+.knn-panel-heading .step{
+flex:0 0 30px
+}
+
+.knn-panel-heading h3{
+margin:0
+}
+
+.knn-panel-heading p{
+margin:4px 0 0;
+color:var(--muted);
+font-size:13px
+}
+
+
+/* =====================================================
+   KNN - TABLES
+===================================================== */
+
+.knn-table-wrap{
+width:100%;
+overflow-x:auto
+}
+
+.knn-table{
+width:100%;
+border-collapse:collapse
+}
+
+.knn-table th,
+.knn-table td{
+padding:8px 7px;
+border-bottom:1px solid var(--border);
+text-align:center;
+white-space:nowrap
+}
+
+.knn-table th{
+font-size:11px;
+color:var(--muted)
+}
+
+.knn-table input,
+.knn-table select{
+width:100%;
+min-width:75px;
+padding:7px;
+border:1px solid var(--border);
+border-radius:7px;
+background:#fff
+}
+
+.knn-table input.invalid{
+border-color:var(--red);
+background:#fef2f2
+}
+
+.knn-neighbor-row td{
+background:#eff6ff;
+font-weight:700
+}
+
+
+/* =====================================================
+   KNN - VISUALIZATION
+===================================================== */
+
+.knn-plot{
+width:100%;
+min-height:390px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#fafcff;
+border:1px solid var(--border);
+border-radius:12px;
+overflow:hidden
+}
+
+.knn-svg{
+width:100%;
+height:auto;
+min-height:380px
+}
+
+.knn-axis{
+stroke:#94a3b8;
+stroke-width:1.5
+}
+
+.knn-point-a{
+fill:#2563eb
+}
+
+.knn-point-b{
+fill:#dc2626
+}
+
+.knn-query-point{
+fill:#111827;
+stroke:#fff;
+stroke-width:3
+}
+
+.knn-neighbor-ring{
+fill:none;
+stroke:#8b5cf6;
+stroke-width:4
+}
+
+.knn-point-label,
+.knn-query-label{
+font-size:12px;
+font-weight:700;
+fill:#344054
+}
+
+.knn-axis-label{
+font-size:13px;
+font-weight:700;
+fill:#667085
+}
+
+.knn-legend{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:14px;
+font-size:12px;
+color:var(--muted)
+}
+
+.knn-dot{
+display:inline-block;
+width:11px;
+height:11px;
+border-radius:50%;
+margin-right:5px;
+vertical-align:middle
+}
+
+.knn-dot.class-a{
+background:#2563eb
+}
+
+.knn-dot.class-b{
+background:#dc2626
+}
+
+.knn-dot.query{
+background:#111827
+}
+
+.knn-ring{
+display:inline-block;
+width:14px;
+height:14px;
+border-radius:50%;
+border:3px solid #8b5cf6;
+margin-right:5px;
+vertical-align:middle
+}
+
+
+/* =====================================================
+   KNN - PREDICTION
+===================================================== */
+
+.knn-prediction-grid{
+display:grid;
+grid-template-columns:1.3fr repeat(4,minmax(0,1fr));
+gap:12px;
+align-items:stretch
+}
+
+.knn-prediction-grid > div{
+padding:14px;
+background:var(--soft);
+border-radius:10px
+}
+
+.knn-prediction-grid span,
+.knn-prediction-grid strong{
+display:block
+}
+
+.knn-prediction-grid span{
+font-size:12px;
+color:var(--muted)
+}
+
+.knn-prediction-grid strong{
+margin-top:4px;
+font-size:18px
+}
+
+.knn-prediction-result{
+background:#eff6ff!important;
+border:1px solid #bfdbfe
+}
+
+.knn-prediction-result strong{
+color:var(--blue);
+font-size:24px
+}
+
+
+/* =====================================================
+   KNN - CALCULATIONS
+===================================================== */
+
+#knn-calculation-output{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:12px;
+margin-top:18px
+}
+
+.knn-calc-step{
+padding:15px;
+background:var(--soft);
+border-radius:10px
+}
+
+.knn-calc-step strong{
+display:block;
+margin-bottom:7px
+}
+
+.knn-calc-step code{
+display:block;
+white-space:normal;
+overflow-wrap:anywhere;
+color:#475467
+}
+
+
+/* =====================================================
+   KNN - LEARNING PIPELINE
+===================================================== */
+
+.knn-pipeline{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap
+}
+
+
+/* =====================================================
+   KNN - RESPONSIVE
+===================================================== */
+
+@media(max-width:1100px){
+
+.model-selector{
+grid-template-columns:repeat(3,1fr)
+}
+
+.knn-workspace{
+grid-template-columns:1fr
+}
+
+.knn-prediction-grid{
+grid-template-columns:repeat(3,1fr)
+}
+
+.knn-summary-grid{
+grid-template-columns:repeat(3,1fr)
+}
+
+}
+
+
+@media(max-width:750px){
+
+.model-selector{
+grid-template-columns:1fr 1fr
+}
+
+.knn-settings{
+grid-template-columns:1fr
+}
+
+.knn-query-inputs{
+grid-template-columns:1fr 1fr
+}
+
+.knn-summary-grid{
+grid-template-columns:1fr 1fr
+}
+
+.knn-prediction-grid{
+grid-template-columns:1fr 1fr
+}
+
+#knn-calculation-output{
+grid-template-columns:1fr
+}
+
+.knn-pipeline{
+flex-direction:column
+}
+
+}
+
+
+@media(max-width:480px){
+
+.knn-query-inputs{
+grid-template-columns:1fr
+}
+
+.knn-summary-grid{
+grid-template-columns:1fr 1fr
+}
+
+.knn-prediction-grid{
+grid-template-columns:1fr
+}
+
+.knn-control-actions{
+flex-direction:column;
+align-items:stretch
+}
+
+.knn-control-actions .btn{
+width:100%
+}
+
+.knn-sample-count{
+margin-left:0;
+text-align:center
+}
+
+}
+
+/* =====================================================
+   TOP BAR - NAME + BACK TO PERSONAL WEBSITE
+===================================================== */
+
+.playground-topbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    padding: 14px 24px;
+    margin-bottom: 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.04);
+    box-sizing: border-box;
+}
+
+.playground-owner {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.owner-label {
+    opacity: 0.7;
+}
+
+.playground-owner strong {
+    font-weight: 600;
+}
+
+.back-website-btn {
+    text-decoration: none;
+    padding: 9px 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9px;
+
+    color: inherit;
+    font-size: 13px;
+    font-weight: 500;
+
+    transition: all 0.2s ease;
+}
+
+.back-website-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+
+    .playground-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 16px;
+    }
+
+    .back-website-btn {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
