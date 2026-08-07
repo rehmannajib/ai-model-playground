@@ -4,61 +4,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Interactive educational AI Model Playground">
+<meta name="description" content="Interactive educational AI and Machine Learning Playground">
 <title>AI Model Playground</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================================
-     HEADER
-========================================= -->
+<!-- =====================================================
+     TOP STRIP
+===================================================== -->
+
+<div class="top-strip">
+<div class="wrap top-strip-inner">
+
+<span>
+AI Playground by <strong>Najib Ur Rehman</strong>
+</span>
+
+<a href="https://najibrehman.weebly.com/">
+← Back to My Website
+</a>
+
+</div>
+</div>
+
 
 <!-- =====================================================
-     TOP BAR - NAME + BACK TO PERSONAL WEBSITE
+     HEADER
 ===================================================== -->
-<header class="playground-topbar">
-
-    <div class="playground-owner">
-        <span class="owner-label">AI Playground by</span>
-        <strong>Najib Ur Rehman</strong>
-    </div>
-
-    <a
-        href="https://najibrehman.weebly.com/"
-        class="back-website-btn"
-    >
-        ← Back to My Website
-    </a>
-
-</header>
 
 <header class="site-header">
+
 <div class="wrap header">
 
-<a href="#home" class="brand">
+<a href="#overview" class="brand">
 <span class="brand-icon">AI</span>
 AI Model Playground
 </a>
 
 <nav>
-<a href="#home">Home</a>
+<a href="#overview">Home</a>
 <a href="#playground">Playground</a>
 <a id="learn-nav-link" href="#neural-learn">Learn</a>
 </nav>
 
 </div>
+
 </header>
 
 
 <main>
 
-<!-- =========================================
-     HERO
-========================================= -->
 
-<section class="hero" id="home">
+<!-- =====================================================
+     HOME / OVERVIEW
+===================================================== -->
+
+<section class="hero" id="overview">
 
 <div class="wrap hero-inner">
 
@@ -71,114 +74,334 @@ See how AI models work.
 </h1>
 
 <p>
-Build models, change parameters and visually explore how
-information moves from input to output.
+An interactive learning environment for exploring Machine Learning,
+Deep Learning and modern AI models through editable examples,
+visualizations, calculations and step-by-step explanations.
 </p>
+
+<div class="hero-actions">
 
 <a href="#playground" class="btn primary">
 Open Playground
 </a>
+
+<a href="#how-it-works" class="btn">
+How It Works
+</a>
+
+</div>
 
 </div>
 
 </section>
 
 
-<!-- =========================================
-     MAIN PLAYGROUND
-========================================= -->
+<!-- =====================================================
+     ABOUT THE PLAYGROUND
+===================================================== -->
 
-<section class="section playground-bg" id="playground">
+<section class="section overview-section">
 
 <div class="wrap">
-
-
-<!-- =========================================
-     MODEL SELECTOR
-========================================= -->
-
-<div class="model-selector">
-
-<button
-class="model-option active"
-data-model="neural"
-type="button"
->
-<strong>Neural Network</strong>
-<span>Available</span>
-</button>
-
-
-<button
-class="model-option"
-data-model="cnn"
-type="button"
->
-<strong>CNN</strong>
-<span>Available</span>
-</button>
-
-
-<button
-class="model-option"
-data-model="tree"
-type="button"
->
-<strong>Decision Tree</strong>
-<span>Available</span>
-</button>
-
-
-<button
-class="model-option"
-data-model="knn"
-type="button"
->
-<strong>KNN</strong>
-<span>Available</span>
-</button>
-
-
-<button
-class="model-option disabled"
-disabled
-type="button"
->
-<strong>Transformer</strong>
-<span>Coming Soon</span>
-</button>
-
-</div>
-
-
-<!-- =====================================================
-     NEURAL NETWORK PLAYGROUND
-====================================================== -->
-
-<div id="neural-playground">
-
 
 <div class="heading">
 
 <span class="label">
-Neural Network Playground
+About the Playground
 </span>
 
 <h2>
-Build your own network
+Learn AI by interacting with it
 </h2>
 
 <p>
-Configure the architecture and explore how values travel
-from input to output.
+The AI Model Playground is designed to make important AI and
+Machine Learning concepts easier to understand. Instead of only
+reading formulas or looking at static diagrams, learners can change
+inputs, parameters and model settings and immediately see how the
+results change.
 </p>
 
 </div>
 
 
-<!-- =========================================
-     NEURAL NETWORK - ARCHITECTURE
-========================================= -->
+<div class="overview-grid">
+
+<article class="overview-card">
+
+<div class="overview-icon">
+01
+</div>
+
+<h3>
+Machine Learning
+</h3>
+
+<p>
+Explore supervised and unsupervised learning using regression,
+classification, clustering, dimensionality reduction and ensemble
+methods.
+</p>
+
+</article>
+
+
+<article class="overview-card">
+
+<div class="overview-icon">
+02
+</div>
+
+<h3>
+Deep Learning
+</h3>
+
+<p>
+Understand neural networks, convolution, recurrent architectures,
+memory mechanisms and attention-based models.
+</p>
+
+</article>
+
+
+<article class="overview-card">
+
+<div class="overview-icon">
+03
+</div>
+
+<h3>
+Interactive Learning
+</h3>
+
+<p>
+Change values directly and observe how model decisions,
+predictions, clusters, probabilities and internal calculations react.
+</p>
+
+</article>
+
+
+<article class="overview-card">
+
+<div class="overview-icon">
+04
+</div>
+
+<h3>
+Mathematics Explained
+</h3>
+
+<p>
+Move from a beginner-friendly explanation to the mathematical
+formula and then see the same calculation performed using real
+values.
+</p>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     HOW IT WORKS
+===================================================== -->
+
+<section class="section how-section" id="how-it-works">
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+How It Works
+</span>
+
+<h2>
+Choose, experiment, visualize and understand
+</h2>
+
+<p>
+Each playground follows the same learning structure so learners can
+move between different models without having to learn a new interface.
+</p>
+
+</div>
+
+
+<div class="how-grid">
+
+<article>
+<span>1</span>
+<h3>Choose a model</h3>
+<p>
+Browse the hierarchical menu and select a Machine Learning or
+Deep Learning model.
+</p>
+</article>
+
+<article>
+<span>2</span>
+<h3>Change the inputs</h3>
+<p>
+Edit data, model parameters, thresholds, weights, features or
+architecture settings.
+</p>
+</article>
+
+<article>
+<span>3</span>
+<h3>Run the model</h3>
+<p>
+The browser calculates the simplified educational model immediately.
+</p>
+</article>
+
+<article>
+<span>4</span>
+<h3>Watch the process</h3>
+<p>
+Visualizations show how samples, neurons, clusters, boundaries,
+attention or predictions are produced.
+</p>
+</article>
+
+<article>
+<span>5</span>
+<h3>Study the mathematics</h3>
+<p>
+See the formulas behind the algorithm and the values used in each
+calculation.
+</p>
+</article>
+
+<article>
+<span>6</span>
+<h3>Experiment again</h3>
+<p>
+Change one parameter at a time and learn how it influences model
+behavior.
+</p>
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     WHAT CAN BE ACHIEVED
+===================================================== -->
+
+<section class="section outcomes-section">
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learning Outcomes
+</span>
+
+<h2>
+What can you achieve with this playground?
+</h2>
+
+<p>
+The platform is intended to build intuition before learners move to
+full programming frameworks, large datasets or production AI systems.
+</p>
+
+</div>
+
+
+<div class="outcome-list">
+
+<div>
+<strong>Understand model logic</strong>
+<span>
+See what happens between an input and a prediction.
+</span>
+</div>
+
+<div>
+<strong>Compare algorithms</strong>
+<span>
+Understand why different algorithms solve different types of problems.
+</span>
+</div>
+
+<div>
+<strong>Build mathematical intuition</strong>
+<span>
+Connect equations to actual model calculations.
+</span>
+</div>
+
+<div>
+<strong>Understand model parameters</strong>
+<span>
+See how K, thresholds, weights, learning rates, filters and other
+settings influence results.
+</span>
+</div>
+
+<div>
+<strong>Explore AI visually</strong>
+<span>
+Learn from diagrams, plots, feature maps, trees, clusters and
+attention matrices.
+</span>
+</div>
+
+<div>
+<strong>Prepare for real ML development</strong>
+<span>
+Develop conceptual knowledge before using Python, TensorFlow,
+PyTorch or Scikit-learn.
+</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     PLAYGROUND
+===================================================== -->
+
+<section class="section playground-bg" id="playground">
+
+<div class="wrap">
+
+<!-- JavaScript builds the sidebar here -->
+<div id="model-navigation"></div>
+
+
+<!-- =====================================================
+     01. NEURAL NETWORK
+===================================================== -->
+
+<div id="neural-playground">
+
+<div class="heading">
+<span class="label">Neural Network Playground</span>
+<h2>Build your own network</h2>
+<p>
+Configure the architecture and explore how values travel
+from input to output.
+</p>
+</div>
+
 
 <section class="card architecture">
 
@@ -236,10 +459,7 @@ Hidden layers
 </label>
 
 
-<div
-id="hidden-layer-settings"
-class="hidden-settings"
-></div>
+<div id="hidden-layer-settings" class="hidden-settings"></div>
 
 
 <label>
@@ -252,19 +472,11 @@ Outputs
 
 <div class="actions">
 
-<button
-id="apply-architecture"
-class="btn primary"
-type="button"
->
+<button id="apply-architecture" class="btn primary" type="button">
 Apply Architecture
 </button>
 
-<button
-id="restore-default"
-class="btn"
-type="button"
->
+<button id="restore-default" class="btn" type="button">
 Restore Default
 </button>
 
@@ -272,10 +484,6 @@ Restore Default
 
 </section>
 
-
-<!-- =========================================
-     NEURAL NETWORK - TOOLBAR
-========================================= -->
 
 <div class="toolbar card">
 
@@ -286,19 +494,11 @@ Restore Default
 
 <div class="actions">
 
-<button
-id="reset-network"
-class="btn"
-type="button"
->
+<button id="reset-network" class="btn" type="button">
 Reset Values
 </button>
 
-<button
-id="run-network"
-class="btn primary"
-type="button"
->
+<button id="run-network" class="btn primary" type="button">
 Run Forward Pass
 </button>
 
@@ -311,10 +511,6 @@ Run Forward Pass
 Ready. Change the values and run the network.
 </div>
 
-
-<!-- =========================================
-     NEURAL NETWORK - WORKSPACE
-========================================= -->
 
 <div class="workspace">
 
@@ -334,7 +530,6 @@ Use the slider or type a value.
 
 
 <label class="field">
-
 Activation
 
 <select id="activation-function">
@@ -369,8 +564,7 @@ type="range"
 min="-1"
 max="1"
 step=".05"
-value=".10"
->
+value=".10">
 
 <input
 id="output-bias-number"
@@ -379,11 +573,9 @@ type="number"
 min="-1"
 max="1"
 step=".05"
-value=".10"
->
+value=".10">
 
 </div>
-
 
 <div class="limits">
 <span>Min −1</span>
@@ -413,8 +605,8 @@ In Advanced mode, click it to edit.
 id="network-svg"
 class="network-svg"
 role="img"
-aria-label="Neural network"
-></svg>
+aria-label="Neural network">
+</svg>
 
 </div>
 
@@ -448,13 +640,9 @@ Output
 
 <div class="prediction">
 
-<small>
-Prediction
-</small>
+<small>Prediction</small>
 
-<strong id="prediction-value">
-—
-</strong>
+<strong id="prediction-value">—</strong>
 
 <span id="prediction-description">
 Run the network to calculate an output.
@@ -497,15 +685,7 @@ Run the network to calculate an output.
 </div>
 
 
-<!-- =========================================
-     NEURAL NETWORK - ADVANCED EDITOR
-========================================= -->
-
-<section
-id="parameter-editor"
-class="card editor"
-hidden
->
+<section id="parameter-editor" class="card editor" hidden>
 
 <div>
 
@@ -517,10 +697,7 @@ Advanced Mode
 Edit parameter
 </h3>
 
-<p
-id="editor-description"
-class="muted"
-></p>
+<p id="editor-description" class="muted"></p>
 
 </div>
 
@@ -546,8 +723,7 @@ id="parameter-slider"
 type="range"
 min="-1"
 max="1"
-step=".05"
->
+step=".05">
 
 <input
 id="parameter-number"
@@ -555,24 +731,14 @@ class="number-input"
 type="number"
 min="-1"
 max="1"
-step=".05"
->
+step=".05">
 
-</div>
-
-<div class="limits">
-<span>Min −1</span>
-<span>Max 1</span>
 </div>
 
 </div>
 
 
-<button
-id="close-editor"
-class="btn"
-type="button"
->
+<button id="close-editor" class="btn" type="button">
 Close
 </button>
 
@@ -582,11 +748,10 @@ Close
 
 
 <!-- =====================================================
-     CNN PLAYGROUND
-====================================================== -->
+     02. CNN
+===================================================== -->
 
 <div id="cnn-playground" hidden>
-
 
 <div class="heading">
 
@@ -738,8 +903,8 @@ floor((5 + 2(0) - 3) / 1) + 1 = 3
 <div
 id="cnn-config-warning"
 class="cnn-warning"
-hidden
-></div>
+hidden>
+</div>
 
 </section>
 
@@ -779,6 +944,7 @@ Reset Steps
 
 </div>
 
+
 <div class="cnn-progress">
 
 <div class="cnn-progress-bar">
@@ -815,10 +981,10 @@ Use Next or Auto Play to begin.
 
 <div class="cnn-workspace">
 
-
 <section class="card cnn-panel">
 
 <div class="cnn-panel-heading">
+
 <span class="step">1</span>
 
 <div>
@@ -828,10 +994,7 @@ Use Next or Auto Play to begin.
 
 </div>
 
-<div
-id="cnn-input-grid"
-class="matrix-grid matrix-5"
-></div>
+<div id="cnn-input-grid" class="matrix-grid matrix-5"></div>
 
 <p class="matrix-limit">
 Allowed pixel values: 0 to 9
@@ -843,6 +1006,7 @@ Allowed pixel values: 0 to 9
 <section class="card cnn-panel">
 
 <div class="cnn-panel-heading">
+
 <span class="step">2</span>
 
 <div>
@@ -852,10 +1016,7 @@ Allowed pixel values: 0 to 9
 
 </div>
 
-<div
-id="cnn-kernel-grid"
-class="matrix-grid matrix-3"
-></div>
+<div id="cnn-kernel-grid" class="matrix-grid matrix-3"></div>
 
 <p class="matrix-limit">
 Allowed kernel values: −3 to 3
@@ -867,6 +1028,7 @@ Allowed kernel values: −3 to 3
 <section class="card cnn-panel">
 
 <div class="cnn-panel-heading">
+
 <span class="step">3</span>
 
 <div>
@@ -876,10 +1038,7 @@ Allowed kernel values: −3 to 3
 
 </div>
 
-<div
-id="cnn-feature-map"
-class="cnn-result-grid"
-></div>
+<div id="cnn-feature-map" class="cnn-result-grid"></div>
 
 <div class="cnn-stat">
 <span>Feature map size</span>
@@ -892,23 +1051,19 @@ class="cnn-result-grid"
 <section class="card cnn-panel">
 
 <div class="cnn-panel-heading">
+
 <span class="step">4</span>
 
 <div>
 <h3>Pooling</h3>
-
 <p id="cnn-pooling-description">
 Max Pooling reduces the feature map.
 </p>
-
 </div>
 
 </div>
 
-<div
-id="cnn-pool-map"
-class="cnn-result-grid"
-></div>
+<div id="cnn-pool-map" class="cnn-result-grid"></div>
 
 <div class="cnn-stat">
 <span>Result size</span>
@@ -923,6 +1078,7 @@ class="cnn-result-grid"
 <section class="card cnn-flatten-panel">
 
 <div class="cnn-panel-heading">
+
 <span class="step">5</span>
 
 <div>
@@ -932,11 +1088,12 @@ class="cnn-result-grid"
 
 </div>
 
-<div
-id="cnn-flatten-output"
-class="flatten-vector"
->
-<span>Run the CNN to generate the vector.</span>
+<div id="cnn-flatten-output" class="flatten-vector">
+
+<span>
+Run the CNN to generate the vector.
+</span>
+
 </div>
 
 </section>
@@ -945,6 +1102,7 @@ class="flatten-vector"
 <section class="card cnn-calculation-panel">
 
 <div class="cnn-panel-heading">
+
 <span class="step">6</span>
 
 <div>
@@ -956,9 +1114,12 @@ class="flatten-vector"
 
 <div
 id="cnn-calculation-output"
-class="cnn-calculation-output"
->
-<p>Run or step through the CNN to see calculations.</p>
+class="cnn-calculation-output">
+
+<p>
+Run or step through the CNN to see calculations.
+</p>
+
 </div>
 
 </section>
@@ -967,11 +1128,10 @@ class="cnn-calculation-output"
 
 
 <!-- =====================================================
-     DECISION TREE PLAYGROUND
-====================================================== -->
+     03. DECISION TREE
+===================================================== -->
 
 <div id="tree-playground" hidden>
-
 
 <div class="heading">
 
@@ -1031,48 +1191,36 @@ Ready. Configure the dataset or search for the best split.
 
 <label>
 Number of Features
-
 <select id="tree-feature-count">
 <option value="2" selected>2 Features</option>
 <option value="3">3 Features</option>
 <option value="4">4 Features</option>
 </select>
-
 </label>
-
 
 <label>
 Split Feature
-
 <select id="tree-feature">
 <option value="age" selected>Age</option>
 <option value="income">Income</option>
 </select>
-
 </label>
-
 
 <label>
 Threshold
-
 <input
 id="tree-threshold"
 class="number-input"
 type="number"
-value="30"
->
-
+value="30">
 </label>
-
 
 <label>
 Split Criterion
-
 <select id="tree-criterion">
 <option value="gini" selected>Gini Impurity</option>
 <option value="entropy">Entropy</option>
 </select>
-
 </label>
 
 </div>
@@ -1083,23 +1231,20 @@ Split Criterion
 <button
 id="tree-add-sample"
 class="btn primary"
-type="button"
->
+type="button">
 + Add Sample
 </button>
 
 <button
 id="tree-remove-sample"
 class="btn"
-type="button"
->
+type="button">
 − Remove Last Sample
 </button>
 
 <span
 id="tree-sample-count"
-class="tree-sample-count"
->
+class="tree-sample-count">
 6 / 15 samples
 </span>
 
@@ -1120,13 +1265,8 @@ Features currently available to the tree
 
 <div
 id="tree-active-features"
-class="tree-feature-chips"
-></div>
-
-<p class="muted">
-Start with two features for a simpler explanation.
-Add more features when you want to compare more possible splits.
-</p>
+class="tree-feature-chips">
+</div>
 
 </section>
 
@@ -1168,8 +1308,7 @@ Add more features when you want to compare more possible splits.
 <section
 id="tree-best-result-card"
 class="card tree-best-result"
-hidden
->
+hidden>
 
 <span class="label">
 Best Split Search
@@ -1249,11 +1388,12 @@ Best split found
 
 </div>
 
-<div
-id="tree-visualization"
-class="tree-visualization"
->
-<p class="muted">Build the tree to see the split.</p>
+<div id="tree-visualization" class="tree-visualization">
+
+<p class="muted">
+Build the tree to see the split.
+</p>
+
 </div>
 
 </section>
@@ -1271,7 +1411,6 @@ class="tree-visualization"
 </div>
 
 </div>
-
 
 <div class="tree-stats">
 
@@ -1310,8 +1449,7 @@ class="tree-visualization"
 <section
 id="tree-comparison-panel"
 class="card tree-comparison-panel"
-hidden
->
+hidden>
 
 <div class="tree-panel-heading">
 
@@ -1329,7 +1467,6 @@ hidden
 <table class="tree-table">
 
 <thead>
-
 <tr>
 <th>Rank</th>
 <th>Feature</th>
@@ -1339,7 +1476,6 @@ hidden
 <th>Weighted Impurity</th>
 <th>Information Gain</th>
 </tr>
-
 </thead>
 
 <tbody id="tree-comparison-body"></tbody>
@@ -1369,7 +1505,6 @@ hidden
 <table class="tree-table">
 
 <thead>
-
 <tr>
 <th>ID</th>
 <th>Selected Value</th>
@@ -1377,7 +1512,6 @@ hidden
 <th>Branch</th>
 <th>Class</th>
 </tr>
-
 </thead>
 
 <tbody id="tree-routing-body"></tbody>
@@ -1409,11 +1543,10 @@ How was the split evaluated?
 
 
 <!-- =====================================================
-     KNN PLAYGROUND
-====================================================== -->
+     04. KNN
+===================================================== -->
 
 <div id="knn-playground" hidden>
-
 
 <div class="heading">
 
@@ -1427,47 +1560,29 @@ See how neighbors make a prediction
 
 <p>
 Choose the number of features and K, edit the training
-samples, create a new unknown sample, and watch KNN find
-the nearest neighbors and vote for a class.
+samples, create an unknown sample, and watch nearby
+examples vote for its class.
 </p>
 
 </div>
 
 
-<!-- =========================================
-     KNN - TOOLBAR
-========================================= -->
-
 <div class="knn-toolbar card">
 
 <div>
-
-<small>
-KNN PIPELINE
-</small>
-
+<small>KNN PIPELINE</small>
 <strong>
 Training Data → Distance → Nearest Neighbors → Vote → Prediction
 </strong>
-
 </div>
-
 
 <div class="actions">
 
-<button
-id="knn-reset"
-class="btn"
-type="button"
->
+<button id="knn-reset" class="btn" type="button">
 Reset
 </button>
 
-<button
-id="knn-run"
-class="btn primary"
-type="button"
->
+<button id="knn-run" class="btn primary" type="button">
 Predict Class
 </button>
 
@@ -1477,36 +1592,21 @@ Predict Class
 
 
 <div id="knn-live-step" class="live-step">
-Ready. Configure K and the unknown sample, then predict its class.
+Ready. Configure K and the unknown sample.
 </div>
 
-
-<!-- =========================================
-     KNN - SETTINGS
-========================================= -->
 
 <section class="card knn-controls">
 
 <div class="knn-settings">
 
-
 <label>
 Number of Features
 
 <select id="knn-feature-count">
-
-<option value="2" selected>
-2 Features
-</option>
-
-<option value="3">
-3 Features
-</option>
-
-<option value="4">
-4 Features
-</option>
-
+<option value="2" selected>2 Features</option>
+<option value="3">3 Features</option>
+<option value="4">4 Features</option>
 </select>
 
 </label>
@@ -1516,7 +1616,6 @@ Number of Features
 Number of Neighbors (K)
 
 <select id="knn-k">
-
 <option value="1">1</option>
 <option value="2">2</option>
 <option value="3" selected>3</option>
@@ -1527,7 +1626,6 @@ Number of Neighbors (K)
 <option value="8">8</option>
 <option value="9">9</option>
 <option value="10">10</option>
-
 </select>
 
 </label>
@@ -1537,15 +1635,8 @@ Number of Neighbors (K)
 Distance Metric
 
 <select id="knn-distance">
-
-<option value="euclidean" selected>
-Euclidean Distance
-</option>
-
-<option value="manhattan">
-Manhattan Distance
-</option>
-
+<option value="euclidean" selected>Euclidean Distance</option>
+<option value="manhattan">Manhattan Distance</option>
 </select>
 
 </label>
@@ -1558,23 +1649,20 @@ Manhattan Distance
 <button
 id="knn-add-sample"
 class="btn primary"
-type="button"
->
+type="button">
 + Add Training Sample
 </button>
 
 <button
 id="knn-remove-sample"
 class="btn"
-type="button"
->
+type="button">
 − Remove Last Sample
 </button>
 
 <span
 id="knn-sample-count"
-class="knn-sample-count"
->
+class="knn-sample-count">
 8 / 20 training samples
 </span>
 
@@ -1582,10 +1670,6 @@ class="knn-sample-count"
 
 </section>
 
-
-<!-- =========================================
-     KNN - ACTIVE FEATURES
-========================================= -->
 
 <section class="card knn-feature-card">
 
@@ -1599,21 +1683,11 @@ Features used to calculate distance
 
 <div
 id="knn-active-features"
-class="knn-feature-chips"
-></div>
-
-<p class="muted">
-Start with two features to understand the distance visually.
-Then use three or four features to see how KNN works in
-higher-dimensional data.
-</p>
+class="knn-feature-chips">
+</div>
 
 </section>
 
-
-<!-- =========================================
-     KNN - SUMMARY
-========================================= -->
 
 <section class="card knn-summary-card">
 
@@ -1649,10 +1723,6 @@ higher-dimensional data.
 </section>
 
 
-<!-- =========================================
-     KNN - UNKNOWN SAMPLE
-========================================= -->
-
 <section class="card knn-query-card">
 
 <span class="label">
@@ -1663,26 +1733,16 @@ Unknown Sample
 What should KNN classify?
 </h3>
 
-<p class="muted">
-Enter the feature values of a new sample whose class is unknown.
-</p>
-
 <div
 id="knn-query-inputs"
-class="knn-query-inputs"
-></div>
+class="knn-query-inputs">
+</div>
 
 </section>
 
 
-<!-- =========================================
-     KNN - MAIN WORKSPACE
-========================================= -->
-
 <div class="knn-workspace">
 
-
-<!-- TRAINING DATA -->
 
 <section class="card knn-panel knn-dataset-panel">
 
@@ -1697,13 +1757,11 @@ class="knn-query-inputs"
 
 </div>
 
-
 <div class="knn-table-wrap">
 
 <table class="knn-table">
 
 <thead id="knn-data-head"></thead>
-
 <tbody id="knn-data-body"></tbody>
 
 </table>
@@ -1713,8 +1771,6 @@ class="knn-query-inputs"
 </section>
 
 
-<!-- VISUALIZATION -->
-
 <section class="card knn-panel">
 
 <div class="knn-panel-heading">
@@ -1723,20 +1779,12 @@ class="knn-query-inputs"
 
 <div>
 <h3>2D Neighbor Visualization</h3>
-
-<p>
-The first two active features are displayed on the chart.
-</p>
-
+<p>The first two active features appear on the chart.</p>
 </div>
 
 </div>
 
-
-<div
-id="knn-plot"
-class="knn-plot"
->
+<div id="knn-plot" class="knn-plot">
 
 <p class="muted">
 Run a prediction to visualize neighbors.
@@ -1744,116 +1792,44 @@ Run a prediction to visualize neighbors.
 
 </div>
 
-
-<div class="knn-legend">
-
-<span>
-<i class="knn-dot class-a"></i>
-Class A
-</span>
-
-<span>
-<i class="knn-dot class-b"></i>
-Class B
-</span>
-
-<span>
-<i class="knn-dot query"></i>
-Unknown Sample
-</span>
-
-<span>
-<i class="knn-ring"></i>
-Selected Neighbor
-</span>
-
-</div>
-
 </section>
 
 </div>
 
-
-<!-- =========================================
-     KNN - PREDICTION
-========================================= -->
 
 <section class="card knn-prediction-card">
 
 <div class="knn-prediction-grid">
 
 <div>
-
-<span class="label">
-Prediction
-</span>
-
-<h3>
-Nearest-neighbor vote
-</h3>
-
+<span class="label">Prediction</span>
+<h3>Nearest-neighbor vote</h3>
 </div>
-
 
 <div class="knn-prediction-result">
-
-<span>
-Predicted Class
-</span>
-
-<strong id="knn-prediction">
-—
-</strong>
-
+<span>Predicted Class</span>
+<strong id="knn-prediction">—</strong>
 </div>
 
-
 <div>
-
-<span>
-Class A Votes
-</span>
-
-<strong id="knn-a-votes">
-—
-</strong>
-
+<span>Class A Votes</span>
+<strong id="knn-a-votes">—</strong>
 </div>
 
-
 <div>
-
-<span>
-Class B Votes
-</span>
-
-<strong id="knn-b-votes">
-—
-</strong>
-
+<span>Class B Votes</span>
+<strong id="knn-b-votes">—</strong>
 </div>
 
-
 <div>
-
-<span>
-Nearest Distance
-</span>
-
-<strong id="knn-nearest-distance">
-—
-</strong>
-
+<span>Nearest Distance</span>
+<strong id="knn-nearest-distance">—</strong>
 </div>
 
 </div>
 
 </section>
 
-
-<!-- =========================================
-     KNN - NEIGHBOR TABLE
-========================================= -->
 
 <section class="card knn-neighbor-panel">
 
@@ -1862,26 +1838,17 @@ Nearest Distance
 <span class="step">3</span>
 
 <div>
-
-<h3>
-Distance Ranking
-</h3>
-
-<p>
-All training samples are ranked from nearest to farthest.
-</p>
-
+<h3>Distance Ranking</h3>
+<p>Samples are ranked from nearest to farthest.</p>
 </div>
 
 </div>
-
 
 <div class="knn-table-wrap">
 
 <table class="knn-table">
 
 <thead>
-
 <tr>
 <th>Rank</th>
 <th>ID</th>
@@ -1889,7 +1856,6 @@ All training samples are ranked from nearest to farthest.
 <th>Distance</th>
 <th>Neighbor?</th>
 </tr>
-
 </thead>
 
 <tbody id="knn-distance-body"></tbody>
@@ -1900,10 +1866,6 @@ All training samples are ranked from nearest to farthest.
 
 </section>
 
-
-<!-- =========================================
-     KNN - CALCULATIONS
-========================================= -->
 
 <section class="card knn-calculation-panel">
 
@@ -1928,80 +1890,2125 @@ Run KNN to see the distance calculations.
 </div>
 
 
+<!-- =====================================================
+     05. LINEAR REGRESSION
+===================================================== -->
+
+<div id="linear-regression-playground" hidden>
+
+<div class="heading">
+
+<span class="label">
+Linear Regression Playground
+</span>
+
+<h2>
+Discover the best-fit line
+</h2>
+
+<p>
+Edit numerical samples and see how Linear Regression
+finds the relationship between X and Y.
+</p>
+
+</div>
+
+
+<div class="toolbar card">
+
+<div>
+<small>REGRESSION PIPELINE</small>
+<strong>
+Samples → Best-Fit Line → Prediction → Residual
+</strong>
+</div>
+
+<div class="actions">
+
+<button id="lr-reset" class="btn" type="button">
+Reset
+</button>
+
+<button id="lr-run" class="btn primary" type="button">
+Run Linear Regression
+</button>
+
+</div>
+
+</div>
+
+
+<div id="lr-live-step" class="live-step">
+Ready. Edit the samples and run Linear Regression.
+</div>
+
+
+<section class="card model-control-card">
+
+<div class="actions">
+
+<button id="lr-add-sample" class="btn primary" type="button">
++ Add Sample
+</button>
+
+<button id="lr-remove-sample" class="btn" type="button">
+− Remove Sample
+</button>
+
+<strong id="lr-sample-count">
+6 samples
+</strong>
+
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     NEURAL NETWORK LEARNING
-====================================================== -->
+<div class="model-two-column">
 
-<section class="section" id="neural-learn">
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">1</span>
+Training Samples
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>X</th>
+<th>Y</th>
+</tr>
+</thead>
+
+<tbody id="lr-data-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">2</span>
+Regression Visualization
+</h3>
+
+<div id="lr-plot" class="model-plot">
+
+<p class="muted">
+Run regression to visualize the best-fit line.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<section class="card model-summary-card">
+
+<div class="model-summary-grid">
+
+<div>
+<span>Slope</span>
+<strong id="lr-slope-result">—</strong>
+</div>
+
+<div>
+<span>Intercept</span>
+<strong id="lr-intercept-result">—</strong>
+</div>
+
+<div>
+<span>MSE</span>
+<strong id="lr-mse-result">—</strong>
+</div>
+
+<div>
+<span>R²</span>
+<strong id="lr-r2-result">—</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+Predictions and Residuals
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>X</th>
+<th>Observed Y</th>
+<th>Predicted Y</th>
+<th>Residual</th>
+</tr>
+</thead>
+
+<tbody id="lr-result-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="card model-calculation-card">
+
+<span class="label">
+Calculation
+</span>
+
+<h3>
+How was the regression line calculated?
+</h3>
+
+<div id="lr-calculation-output">
+
+<p>
+Run regression to see the calculations.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- =====================================================
+     06. LOGISTIC REGRESSION
+===================================================== -->
+
+<div id="logistic-regression-playground" hidden>
+
+<div class="heading">
+
+<span class="label">
+Logistic Regression Playground
+</span>
+
+<h2>
+Turn a score into a probability
+</h2>
+
+<p>
+Explore how a linear score passes through the sigmoid
+function to produce a classification probability.
+</p>
+
+</div>
+
+
+<div class="toolbar card">
+
+<div>
+<small>CLASSIFICATION PIPELINE</small>
+<strong>
+Features → Linear Score → Sigmoid → Probability → Class
+</strong>
+</div>
+
+<div class="actions">
+
+<button id="log-reset" class="btn" type="button">
+Reset
+</button>
+
+<button id="log-run" class="btn primary" type="button">
+Run Logistic Regression
+</button>
+
+</div>
+
+</div>
+
+
+<div id="log-live-step" class="live-step">
+Ready. Configure the coefficients and query sample.
+</div>
+
+
+<section class="card model-control-card">
+
+<div class="model-control-grid">
+
+<label>
+Intercept β₀
+<input id="log-b0" type="number" step=".1" value="-4">
+</label>
+
+<label>
+Coefficient β₁
+<input id="log-b1" type="number" step=".1" value=".8">
+</label>
+
+<label>
+Coefficient β₂
+<input id="log-b2" type="number" step=".1" value=".8">
+</label>
+
+<label>
+Decision Threshold
+<input
+id="log-threshold"
+type="number"
+min="0"
+max="1"
+step=".05"
+value=".5">
+</label>
+
+<label>
+Unknown X₁
+<input id="log-query-x1" type="number" step=".1" value="3.5">
+</label>
+
+<label>
+Unknown X₂
+<input id="log-query-x2" type="number" step=".1" value="3.5">
+</label>
+
+</div>
+
+</section>
+
+
+<div class="model-two-column">
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">1</span>
+Training Dataset
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>X₁</th>
+<th>X₂</th>
+<th>Class</th>
+</tr>
+</thead>
+
+<tbody id="log-data-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">2</span>
+Decision Boundary
+</h3>
+
+<div id="log-plot" class="model-plot">
+
+<p class="muted">
+Run Logistic Regression to see the boundary.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<section class="card model-summary-card">
+
+<div class="model-summary-grid">
+
+<div>
+<span>Linear Score z</span>
+<strong id="log-z-result">—</strong>
+</div>
+
+<div>
+<span>Probability</span>
+<strong id="log-probability-result">—</strong>
+</div>
+
+<div>
+<span>Predicted Class</span>
+<strong id="log-class-result">—</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+Training Sample Predictions
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>True Class</th>
+<th>Probability</th>
+<th>Prediction</th>
+</tr>
+</thead>
+
+<tbody id="log-result-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="card model-calculation-card">
+
+<span class="label">
+Calculation
+</span>
+
+<h3>
+From linear score to classification
+</h3>
+
+<div id="log-calculation-output">
+
+<p>
+Run the model to see the probability calculation.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- =====================================================
+     07. SVM
+===================================================== -->
+
+<div id="svm-playground" hidden>
+
+<div class="heading">
+
+<span class="label">
+Support Vector Machine Playground
+</span>
+
+<h2>
+Explore margins and support vectors
+</h2>
+
+<p>
+See how a linear SVM separates two classes and identifies
+the observations closest to its decision boundary.
+</p>
+
+</div>
+
+
+<div class="toolbar card">
+
+<div>
+<small>SVM PIPELINE</small>
+<strong>
+Samples → Hyperplane → Margin → Support Vectors → Prediction
+</strong>
+</div>
+
+<div class="actions">
+
+<button id="svm-reset" class="btn" type="button">
+Reset
+</button>
+
+<button id="svm-run" class="btn primary" type="button">
+Run SVM
+</button>
+
+</div>
+
+</div>
+
+
+<div id="svm-live-step" class="live-step">
+Ready. Configure the decision function and run SVM.
+</div>
+
+
+<section class="card model-control-card">
+
+<div class="model-control-grid">
+
+<label>
+Weight w₁
+<input id="svm-w1" type="number" step=".1" value="1">
+</label>
+
+<label>
+Weight w₂
+<input id="svm-w2" type="number" step=".1" value="1">
+</label>
+
+<label>
+Bias b
+<input id="svm-b" type="number" step=".1" value="-6">
+</label>
+
+<label>
+Unknown X
+<input id="svm-query-x" type="number" step=".1" value="3.5">
+</label>
+
+<label>
+Unknown Y
+<input id="svm-query-y" type="number" step=".1" value="3.5">
+</label>
+
+</div>
+
+</section>
+
+
+<div class="model-two-column">
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">1</span>
+Training Dataset
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>X</th>
+<th>Y</th>
+<th>Class</th>
+</tr>
+</thead>
+
+<tbody id="svm-data-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">2</span>
+Margin Visualization
+</h3>
+
+<div id="svm-plot" class="model-plot">
+
+<p class="muted">
+Run SVM to see the margin and support vectors.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<section class="card model-summary-card">
+
+<div class="model-summary-grid">
+
+<div>
+<span>Decision Score</span>
+<strong id="svm-score-result">—</strong>
+</div>
+
+<div>
+<span>Predicted Class</span>
+<strong id="svm-class-result">—</strong>
+</div>
+
+<div>
+<span>Support Vectors</span>
+<strong id="svm-support-count">—</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+Support Vectors
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>Rank</th>
+<th>ID</th>
+<th>Class</th>
+<th>Distance to Margin</th>
+</tr>
+</thead>
+
+<tbody id="svm-support-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="card model-calculation-card">
+
+<span class="label">
+Calculation
+</span>
+
+<h3>
+Decision Function
+</h3>
+
+<div id="svm-calculation-output">
+
+<p>
+Run SVM to see the decision calculation.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- =====================================================
+     08. NAIVE BAYES
+===================================================== -->
+
+<div id="naive-bayes-playground" hidden>
+
+<div class="heading">
+
+<span class="label">
+Naive Bayes Playground
+</span>
+
+<h2>
+Classify using probability
+</h2>
+
+<p>
+Explore priors, likelihoods and posterior probabilities
+using a simplified Gaussian Naive Bayes classifier.
+</p>
+
+</div>
+
+
+<div class="toolbar card">
+
+<div>
+<small>BAYES PIPELINE</small>
+<strong>
+Prior → Likelihood → Posterior → Prediction
+</strong>
+</div>
+
+<div class="actions">
+
+<button id="nb-reset" class="btn" type="button">
+Reset
+</button>
+
+<button id="nb-run" class="btn primary" type="button">
+Run Naive Bayes
+</button>
+
+</div>
+
+</div>
+
+
+<div id="nb-live-step" class="live-step">
+Ready. Configure the features and run Naive Bayes.
+</div>
+
+
+<section class="card model-control-card">
+
+<div class="model-control-grid">
+
+<label>
+Number of Features
+<select id="nb-feature-count">
+<option value="2" selected>2 Features</option>
+<option value="3">3 Features</option>
+<option value="4">4 Features</option>
+</select>
+</label>
+
+<label>
+Unknown Feature 1
+<input id="nb-query-1" type="number" value="50">
+</label>
+
+<label>
+Unknown Feature 2
+<input id="nb-query-2" type="number" value="50">
+</label>
+
+<label>
+Unknown Feature 3
+<input id="nb-query-3" type="number" value="50">
+</label>
+
+<label>
+Unknown Feature 4
+<input id="nb-query-4" type="number" value="50">
+</label>
+
+</div>
+
+</section>
+
+
+<section class="card model-summary-card">
+
+<div class="model-summary-grid">
+
+<div>
+<span>Prior A</span>
+<strong id="nb-prior-a">—</strong>
+</div>
+
+<div>
+<span>Prior B</span>
+<strong id="nb-prior-b">—</strong>
+</div>
+
+<div>
+<span>Posterior A</span>
+<strong id="nb-prob-a">—</strong>
+</div>
+
+<div>
+<span>Posterior B</span>
+<strong id="nb-prob-b">—</strong>
+</div>
+
+<div>
+<span>Prediction</span>
+<strong id="nb-prediction">—</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+Class Statistics
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>Class</th>
+<th>Feature</th>
+<th>Mean</th>
+<th>Variance</th>
+</tr>
+</thead>
+
+<tbody id="nb-stat-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="card model-calculation-card">
+
+<span class="label">
+Calculation
+</span>
+
+<h3>
+Posterior Probability
+</h3>
+
+<div id="nb-calculation-output">
+
+<p>
+Run Naive Bayes to see probability calculations.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- =====================================================
+     09. RANDOM FOREST
+===================================================== -->
+
+<div id="random-forest-playground" hidden>
+
+<div class="heading">
+
+<span class="label">
+Random Forest Playground
+</span>
+
+<h2>
+Let multiple trees vote
+</h2>
+
+<p>
+Explore how several decision trees combine their
+predictions to make a final ensemble classification.
+</p>
+
+</div>
+
+
+<div class="toolbar card">
+
+<div>
+<small>FOREST PIPELINE</small>
+<strong>
+Dataset → Multiple Trees → Votes → Final Prediction
+</strong>
+</div>
+
+<div class="actions">
+
+<button id="rf-reset" class="btn" type="button">
+Reset
+</button>
+
+<button id="rf-run" class="btn primary" type="button">
+Run Random Forest
+</button>
+
+</div>
+
+</div>
+
+
+<div id="rf-live-step" class="live-step">
+Ready. Configure the forest and run the model.
+</div>
+
+
+<section class="card model-control-card">
+
+<div class="model-control-grid">
+
+<label>
+Number of Trees
+<select id="rf-tree-count">
+<option value="3">3 Trees</option>
+<option value="5" selected>5 Trees</option>
+<option value="7">7 Trees</option>
+<option value="9">9 Trees</option>
+</select>
+</label>
+
+<label>
+Number of Features
+<select id="rf-feature-count">
+<option value="2" selected>2 Features</option>
+<option value="3">3 Features</option>
+<option value="4">4 Features</option>
+</select>
+</label>
+
+<label>
+Unknown Feature 1
+<input id="rf-query-1" type="number" value="50">
+</label>
+
+<label>
+Unknown Feature 2
+<input id="rf-query-2" type="number" value="50">
+</label>
+
+<label>
+Unknown Feature 3
+<input id="rf-query-3" type="number" value="50">
+</label>
+
+<label>
+Unknown Feature 4
+<input id="rf-query-4" type="number" value="50">
+</label>
+
+</div>
+
+</section>
+
+
+<section class="card model-summary-card">
+
+<div class="model-summary-grid">
+
+<div>
+<span>Class A Votes</span>
+<strong id="rf-a-votes">—</strong>
+</div>
+
+<div>
+<span>Class B Votes</span>
+<strong id="rf-b-votes">—</strong>
+</div>
+
+<div>
+<span>Forest Prediction</span>
+<strong id="rf-prediction">—</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+Individual Tree Decisions
+</h3>
+
+<div id="rf-tree-output">
+
+<p>
+Run the forest to see each tree vote.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- =====================================================
+     10. GRADIENT BOOSTING
+===================================================== -->
+
+<div id="gradient-boosting-playground" hidden>
+
+<div class="heading">
+
+<span class="label">
+Gradient Boosting Playground
+</span>
+
+<h2>
+Learn from errors sequentially
+</h2>
+
+<p>
+See how boosting repeatedly models residual errors and
+combines small learners into a stronger model.
+</p>
+
+</div>
+
+
+<div class="toolbar card">
+
+<div>
+<small>BOOSTING PIPELINE</small>
+<strong>
+Initial Prediction → Residual → Learner → Update → Repeat
+</strong>
+</div>
+
+<div class="actions">
+
+<button id="gb-reset" class="btn" type="button">
+Reset
+</button>
+
+<button id="gb-run" class="btn primary" type="button">
+Run Gradient Boosting
+</button>
+
+</div>
+
+</div>
+
+
+<div id="gb-live-step" class="live-step">
+Ready. Choose the learning rate and boosting rounds.
+</div>
+
+
+<section class="card model-control-card">
+
+<div class="model-control-grid">
+
+<label>
+Boosting Rounds
+<select id="gb-rounds">
+<option value="1">1 Round</option>
+<option value="2">2 Rounds</option>
+<option value="3" selected>3 Rounds</option>
+<option value="4">4 Rounds</option>
+<option value="5">5 Rounds</option>
+</select>
+</label>
+
+<label>
+Learning Rate
+<input
+id="gb-learning-rate"
+type="number"
+min=".1"
+max="1"
+step=".1"
+value=".5">
+</label>
+
+</div>
+
+</section>
+
+
+<section class="card model-summary-card">
+
+<div class="model-summary-grid">
+
+<div>
+<span>Boosting Rounds</span>
+<strong id="gb-round-result">—</strong>
+</div>
+
+<div>
+<span>Final MSE</span>
+<strong id="gb-mse-result">—</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+Sequential Learners
+</h3>
+
+<div id="gb-stage-output">
+
+<p>
+Run boosting to see sequential learners.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+Final Predictions
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>X</th>
+<th>Observed Y</th>
+<th>Prediction</th>
+<th>Residual</th>
+</tr>
+</thead>
+
+<tbody id="gb-result-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- =====================================================
+     11. K-MEANS
+===================================================== -->
+
+<div id="kmeans-playground" hidden>
+
+<div class="heading">
+
+<span class="label">
+K-Means Clustering Playground
+</span>
+
+<h2>
+Watch clusters form around centroids
+</h2>
+
+<p>
+Choose K and observe the repeated assignment and centroid
+update process used by K-Means clustering.
+</p>
+
+</div>
+
+
+<div class="toolbar card">
+
+<div>
+<small>CLUSTERING PIPELINE</small>
+<strong>
+Points → Centroids → Assignment → Update → Repeat
+</strong>
+</div>
+
+<div class="actions">
+
+<button id="kmeans-reset" class="btn" type="button">
+Reset
+</button>
+
+<button id="kmeans-step" class="btn" type="button">
+Run One Step
+</button>
+
+<button id="kmeans-run" class="btn primary" type="button">
+Run K-Means
+</button>
+
+</div>
+
+</div>
+
+
+<div id="kmeans-live-step" class="live-step">
+Ready. Choose K and run clustering.
+</div>
+
+
+<section class="card model-control-card">
+
+<div class="model-control-grid">
+
+<label>
+Number of Clusters (K)
+
+<select id="kmeans-k">
+<option value="2">2 Clusters</option>
+<option value="3" selected>3 Clusters</option>
+<option value="4">4 Clusters</option>
+<option value="5">5 Clusters</option>
+</select>
+
+</label>
+
+</div>
+
+</section>
+
+
+<div class="model-two-column">
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">1</span>
+Cluster Visualization
+</h3>
+
+<div id="kmeans-plot" class="model-plot">
+
+<p class="muted">
+Run K-Means to see clusters.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">2</span>
+Centroids
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>Centroid</th>
+<th>X</th>
+<th>Y</th>
+</tr>
+</thead>
+
+<tbody id="kmeans-centroid-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</div>
+
+
+<section class="card model-panel-card">
+
+<h3>
+Point Assignments
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>X</th>
+<th>Y</th>
+<th>Cluster</th>
+</tr>
+</thead>
+
+<tbody id="kmeans-result-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- =====================================================
+     12. DBSCAN
+===================================================== -->
+
+<div id="dbscan-playground" hidden>
+
+<div class="heading">
+
+<span class="label">
+DBSCAN Playground
+</span>
+
+<h2>
+Find clusters using density
+</h2>
+
+<p>
+Experiment with neighborhood radius and minimum points
+to discover dense clusters and noise points.
+</p>
+
+</div>
+
+
+<div class="toolbar card">
+
+<div>
+<small>DENSITY CLUSTERING</small>
+<strong>
+Neighborhood → Core Points → Expansion → Noise
+</strong>
+</div>
+
+<div class="actions">
+
+<button id="dbscan-reset" class="btn" type="button">
+Reset
+</button>
+
+<button id="dbscan-run" class="btn primary" type="button">
+Run DBSCAN
+</button>
+
+</div>
+
+</div>
+
+
+<div id="dbscan-live-step" class="live-step">
+Ready. Configure epsilon and MinPts.
+</div>
+
+
+<section class="card model-control-card">
+
+<div class="model-control-grid">
+
+<label>
+Epsilon Radius (ε)
+<input
+id="dbscan-epsilon"
+type="number"
+min="1"
+max="50"
+step="1"
+value="12">
+</label>
+
+<label>
+Minimum Points
+<input
+id="dbscan-minpts"
+type="number"
+min="2"
+max="10"
+step="1"
+value="2">
+</label>
+
+</div>
+
+</section>
+
+
+<section class="card model-summary-card">
+
+<div class="model-summary-grid">
+
+<div>
+<span>Clusters Found</span>
+<strong id="dbscan-cluster-count">—</strong>
+</div>
+
+<div>
+<span>Noise Points</span>
+<strong id="dbscan-noise-count">—</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<div class="model-two-column">
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">1</span>
+Density Visualization
+</h3>
+
+<div id="dbscan-plot" class="model-plot">
+
+<p class="muted">
+Run DBSCAN to identify dense regions.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">2</span>
+Cluster Assignments
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>X</th>
+<th>Y</th>
+<th>Result</th>
+</tr>
+</thead>
+
+<tbody id="dbscan-result-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     13. PCA
+===================================================== -->
+
+<div id="pca-playground" hidden>
+
+<div class="heading">
+
+<span class="label">
+Principal Component Analysis Playground
+</span>
+
+<h2>
+Reduce dimensions while preserving variance
+</h2>
+
+<p>
+Explore covariance, eigenvalues and the principal direction
+that captures the greatest variation in the data.
+</p>
+
+</div>
+
+
+<div class="toolbar card">
+
+<div>
+<small>DIMENSION REDUCTION</small>
+<strong>
+Center Data → Covariance → Eigenvectors → Projection
+</strong>
+</div>
+
+<div class="actions">
+
+<button id="pca-reset" class="btn" type="button">
+Reset
+</button>
+
+<button id="pca-run" class="btn primary" type="button">
+Run PCA
+</button>
+
+</div>
+
+</div>
+
+
+<div id="pca-live-step" class="live-step">
+Ready. Run PCA to identify the principal component.
+</div>
+
+
+<section class="card model-summary-card">
+
+<div class="model-summary-grid">
+
+<div>
+<span>PC1 X</span>
+<strong id="pca-pc1-x">—</strong>
+</div>
+
+<div>
+<span>PC1 Y</span>
+<strong id="pca-pc1-y">—</strong>
+</div>
+
+<div>
+<span>Eigenvalue λ₁</span>
+<strong id="pca-lambda1">—</strong>
+</div>
+
+<div>
+<span>Eigenvalue λ₂</span>
+<strong id="pca-lambda2">—</strong>
+</div>
+
+<div>
+<span>Variance Explained</span>
+<strong id="pca-explained">—</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<div class="model-two-column">
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">1</span>
+Principal Component
+</h3>
+
+<div id="pca-plot" class="model-plot">
+
+<p class="muted">
+Run PCA to visualize the principal direction.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">2</span>
+Projected Data
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>X</th>
+<th>Y</th>
+<th>PC1 Projection</th>
+</tr>
+</thead>
+
+<tbody id="pca-result-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</div>
+
+
+<section class="card model-calculation-card">
+
+<span class="label">
+Calculation
+</span>
+
+<h3>
+Covariance and principal direction
+</h3>
+
+<div id="pca-calculation-output">
+
+<p>
+Run PCA to see the calculations.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- =====================================================
+     14. RNN
+===================================================== -->
+
+<div id="rnn-playground" hidden>
+
+<div class="heading">
+
+<span class="label">
+Recurrent Neural Network Playground
+</span>
+
+<h2>
+Process information through time
+</h2>
+
+<p>
+Enter a sequence and observe how each value updates the
+network's hidden state.
+</p>
+
+</div>
+
+
+<div class="toolbar card">
+
+<div>
+<small>RNN PIPELINE</small>
+<strong>
+Sequence → Input → Previous State → New Hidden State
+</strong>
+</div>
+
+<div class="actions">
+
+<button id="rnn-reset" class="btn" type="button">
+Reset
+</button>
+
+<button id="rnn-run" class="btn primary" type="button">
+Run RNN
+</button>
+
+</div>
+
+</div>
+
+
+<div id="rnn-live-step" class="live-step">
+Ready. Enter a sequence and run the RNN.
+</div>
+
+
+<section class="card model-control-card">
+
+<div class="model-control-grid">
+
+<label>
+Input Sequence
+<input
+id="rnn-sequence"
+type="text"
+value="0.2, 0.5, -0.1, 0.8, 0.3">
+</label>
+
+<label>
+Input Weight wx
+<input id="rnn-wx" type="number" step=".1" value=".8">
+</label>
+
+<label>
+Recurrent Weight wh
+<input id="rnn-wh" type="number" step=".1" value=".5">
+</label>
+
+<label>
+Bias
+<input id="rnn-b" type="number" step=".1" value=".1">
+</label>
+
+<label>
+Initial Hidden State
+<input id="rnn-h0" type="number" step=".1" value="0">
+</label>
+
+</div>
+
+</section>
+
+
+<section class="card model-summary-card">
+
+<div class="model-summary-grid">
+
+<div>
+<span>Final Hidden State</span>
+<strong id="rnn-final-hidden">—</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+Hidden State Through Time
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>Step</th>
+<th>Input</th>
+<th>Previous h</th>
+<th>Weighted z</th>
+<th>New h</th>
+</tr>
+</thead>
+
+<tbody id="rnn-step-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="card model-calculation-card">
+
+<span class="label">
+Calculation
+</span>
+
+<h3>
+Hidden-state calculations
+</h3>
+
+<div id="rnn-calculation-output">
+
+<p>
+Run the RNN to see hidden-state calculations.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- =====================================================
+     15. LSTM
+===================================================== -->
+
+<div id="lstm-playground" hidden>
+
+<div class="heading">
+
+<span class="label">
+LSTM Playground
+</span>
+
+<h2>
+Explore memory and gates
+</h2>
+
+<p>
+See how forget, input and output gates control
+information flow through an LSTM memory cell.
+</p>
+
+</div>
+
+
+<div class="toolbar card">
+
+<div>
+<small>LSTM PIPELINE</small>
+<strong>
+Input → Forget Gate → Input Gate → Cell State → Output Gate
+</strong>
+</div>
+
+<div class="actions">
+
+<button id="lstm-reset" class="btn" type="button">
+Reset
+</button>
+
+<button id="lstm-run" class="btn primary" type="button">
+Run LSTM
+</button>
+
+</div>
+
+</div>
+
+
+<div id="lstm-live-step" class="live-step">
+Ready. Enter a sequence and inspect the LSTM gates.
+</div>
+
+
+<section class="card model-control-card">
+
+<label>
+Input Sequence
+
+<input
+id="lstm-sequence"
+type="text"
+value="0.2, 0.5, -0.1, 0.8">
+
+</label>
+
+</section>
+
+
+<section class="card model-summary-card">
+
+<div class="model-summary-grid">
+
+<div>
+<span>Final Cell State</span>
+<strong id="lstm-final-cell">—</strong>
+</div>
+
+<div>
+<span>Final Hidden State</span>
+<strong id="lstm-final-hidden">—</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+LSTM Gate Values
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>Step</th>
+<th>Input</th>
+<th>Forget</th>
+<th>Input Gate</th>
+<th>Output Gate</th>
+<th>Cell State</th>
+<th>Hidden State</th>
+</tr>
+</thead>
+
+<tbody id="lstm-step-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="card model-calculation-card">
+
+<span class="label">
+Calculation
+</span>
+
+<h3>
+Gate and memory calculations
+</h3>
+
+<div id="lstm-calculation-output">
+
+<p>
+Run the LSTM to see gate calculations.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- =====================================================
+     16. TRANSFORMER
+===================================================== -->
+
+<div id="transformer-playground" hidden>
+
+<div class="heading">
+
+<span class="label">
+Transformer Playground
+</span>
+
+<h2>
+Explore self-attention
+</h2>
+
+<p>
+Enter a short sentence and see how tokens create embeddings,
+attention scores and contextualized outputs.
+</p>
+
+</div>
+
+
+<div class="toolbar card">
+
+<div>
+<small>TRANSFORMER PIPELINE</small>
+<strong>
+Tokens → Embeddings → Q / K / V → Attention → Context
+</strong>
+</div>
+
+<div class="actions">
+
+<button
+id="transformer-reset"
+class="btn"
+type="button">
+Reset
+</button>
+
+<button
+id="transformer-run"
+class="btn primary"
+type="button">
+Run Self-Attention
+</button>
+
+</div>
+
+</div>
+
+
+<div id="transformer-live-step" class="live-step">
+Ready. Enter tokens and run self-attention.
+</div>
+
+
+<section class="card model-control-card">
+
+<label>
+Input Text
+
+<input
+id="transformer-tokens"
+type="text"
+value="AI learns from context">
+
+</label>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">1</span>
+Tokens and Embeddings
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>Position</th>
+<th>Token</th>
+<th>Embedding</th>
+</tr>
+</thead>
+
+<tbody id="transformer-token-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">2</span>
+Attention Matrix
+</h3>
+
+<div
+id="transformer-attention-output"
+class="transformer-attention-output">
+
+<p>
+Run self-attention to see the attention matrix.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="card model-panel-card">
+
+<h3>
+<span class="step">3</span>
+Contextualized Output
+</h3>
+
+<div class="model-table-wrap">
+
+<table class="model-table">
+
+<thead>
+<tr>
+<th>Token</th>
+<th>Attention Output</th>
+</tr>
+</thead>
+
+<tbody id="transformer-output-body"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</div>
+
+
+</div>
+</section>
+
+
+<!-- =====================================================
+     LEARNING AREA
+===================================================== -->
+
+
+<!-- =====================================================
+     NEURAL NETWORK LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="neural-learn"
+data-learn-model="neural">
 
 <div class="wrap">
 
 <div class="heading">
 <span class="label">Learn Neural Networks</span>
 <h2>What happened inside the neural network?</h2>
+<p>
+Understand neurons, weights, biases, activations and the
+forward-pass process.
+</p>
 </div>
 
+<div class="tabs model-learn-tabs">
 
-<div class="tabs">
-
-<button class="tab active" data-tab="beginner" type="button">
+<button class="tab active" data-learn-tab="beginner">
 Beginner
 </button>
 
-<button class="tab" data-tab="math" type="button">
+<button class="tab" data-learn-tab="math">
 Mathematics
 </button>
 
-<button class="tab" data-tab="calc" type="button">
+<button class="tab" data-learn-tab="process">
 Calculation
 </button>
 
 </div>
 
 
-<div id="beginner-panel" class="learn-panel">
+<div class="learn-panel" data-learn-panel="beginner">
 
 <div class="learn-grid">
 
 <article>
 <b>1</b>
 <h3>Inputs enter</h3>
-<p>Each neuron receives an input value.</p>
+<p>Each input neuron receives one numerical value.</p>
 </article>
 
 <article>
 <b>2</b>
 <h3>Weights modify</h3>
-<p>Connections multiply inputs by weights.</p>
+<p>Each connection multiplies a value by its weight.</p>
 </article>
 
 <article>
 <b>3</b>
 <h3>Bias shifts</h3>
-<p>A bias is added before activation.</p>
+<p>A bias is added to the weighted sum.</p>
 </article>
 
 <article>
 <b>4</b>
 <h3>Activation transforms</h3>
-<p>An activation function transforms the result.</p>
+<p>ReLU, Sigmoid or Tanh transforms the result.</p>
 </article>
 
 <article>
 <b>5</b>
 <h3>Layers continue</h3>
-<p>Activations become inputs to later layers.</p>
+<p>One layer's activation becomes the next layer's input.</p>
 </article>
 
 <article>
 <b>6</b>
 <h3>Output appears</h3>
-<p>The final neuron produces the output.</p>
+<p>The final neuron produces the network prediction.</p>
 </article>
 
 </div>
@@ -2009,14 +4016,17 @@ Calculation
 </div>
 
 
-<div id="math-panel" class="learn-panel" hidden>
+<div
+class="learn-panel"
+data-learn-panel="math"
+hidden>
 
 <div class="math-grid">
 
 <article>
 <h3>Weighted Sum</h3>
 <p class="equation">
-z = Σ(xᵢ × wᵢ) + b
+z = Σ(xᵢwᵢ) + b
 </p>
 </article>
 
@@ -2039,10 +4049,39 @@ a = f(z)
 </div>
 
 
-<div id="calc-panel" class="learn-panel" hidden>
+<div
+class="learn-panel"
+data-learn-panel="process"
+hidden>
 
-<div id="calculation-output">
-<p>Run the network to see calculations.</p>
+<div class="process-grid">
+
+<article>
+<strong>Input</strong>
+<span>Receive feature values</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Weighted Sum</strong>
+<span>Multiply by weights and add bias</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Activation</strong>
+<span>Transform the weighted result</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Output</strong>
+<span>Produce the final value</span>
+</article>
+
 </div>
 
 </div>
@@ -2053,98 +4092,81 @@ a = f(z)
 
 
 <!-- =====================================================
-     CNN LEARNING
-====================================================== -->
+     CNN LEARN
+===================================================== -->
 
-<section class="section" id="cnn-learn" hidden>
+<section
+class="section model-learn-section"
+id="cnn-learn"
+data-learn-model="cnn"
+hidden>
 
 <div class="wrap">
 
 <div class="heading">
-
-<span class="label">
-Learn CNN
-</span>
-
-<h2>
-What happened inside the CNN?
-</h2>
-
+<span class="label">Learn CNN</span>
+<h2>How does a CNN understand an image?</h2>
 <p>
-Understand convolution, stride, padding,
-pooling and flattening.
+Learn how convolution extracts visual patterns and how
+pooling reduces feature-map size.
 </p>
-
 </div>
 
+<div class="tabs model-learn-tabs">
 
-<div class="tabs cnn-tabs">
-
-<button
-class="tab cnn-tab active"
-data-cnn-tab="beginner"
-type="button"
->
+<button class="tab active" data-learn-tab="beginner">
 Beginner
 </button>
 
-<button
-class="tab cnn-tab"
-data-cnn-tab="math"
-type="button"
->
+<button class="tab" data-learn-tab="math">
 Mathematics
 </button>
 
-<button
-class="tab cnn-tab"
-data-cnn-tab="pipeline"
-type="button"
->
-CNN Pipeline
+<button class="tab" data-learn-tab="process">
+CNN Process
 </button>
 
 </div>
 
 
-<div id="cnn-beginner-panel" class="learn-panel">
+<div class="learn-panel" data-learn-panel="beginner">
 
 <div class="learn-grid">
 
 <article>
 <b>1</b>
 <h3>Input image</h3>
-<p>The image becomes a matrix of pixel values.</p>
+<p>The image is represented by numerical pixel values.</p>
 </article>
 
 <article>
 <b>2</b>
-<h3>Kernel slides</h3>
-<p>A filter moves across the input.</p>
+<h3>Kernel</h3>
+<p>A small filter looks for a particular visual pattern.</p>
 </article>
 
 <article>
 <b>3</b>
-<h3>Stride controls movement</h3>
-<p>Stride determines how far the kernel moves.</p>
+<h3>Convolution</h3>
+<p>The filter moves across the input and performs calculations.</p>
 </article>
 
 <article>
 <b>4</b>
-<h3>Padding adds borders</h3>
-<p>Padding adds values around the input edges.</p>
+<h3>Feature map</h3>
+<p>The convolution results form a new feature map.</p>
 </article>
 
 <article>
 <b>5</b>
-<h3>Pooling reduces</h3>
-<p>Pooling summarizes feature-map regions.</p>
+<h3>Pooling</h3>
+<p>Pooling summarizes local feature-map regions.</p>
 </article>
 
 <article>
 <b>6</b>
-<h3>Flatten creates vector</h3>
-<p>The final matrix becomes a 1D vector.</p>
+<h3>Flatten</h3>
+<p>The final matrix becomes a one-dimensional vector.</p>
 </article>
 
 </div>
@@ -2152,21 +4174,14 @@ CNN Pipeline
 </div>
 
 
-<div id="cnn-math-panel" class="learn-panel" hidden>
+<div class="learn-panel" data-learn-panel="math" hidden>
 
 <div class="math-grid">
 
 <article>
-<h3>Convolution Output Size</h3>
+<h3>Output Size</h3>
 <p class="equation">
-O=floor((N+2P−K)/S)+1
-</p>
-</article>
-
-<article>
-<h3>Pooling Output Size</h3>
-<p class="equation">
-Oₚ=floor((N−F)/Sₚ)+1
+O = floor((N + 2P − K)/S) + 1
 </p>
 </article>
 
@@ -2180,20 +4195,8 @@ y(i,j)=ΣₘΣₙx(i+m,j+n)k(m,n)
 <article>
 <h3>Max Pooling</h3>
 <p class="equation">
-y=max(x₁,...,xₙ)
+y = max(x₁,...,xₙ)
 </p>
-</article>
-
-<article>
-<h3>Average Pooling</h3>
-<p class="equation">
-y=(x₁+...+xₙ)/n
-</p>
-</article>
-
-<article>
-<h3>No Pooling</h3>
-<p>The feature map goes directly to flattening.</p>
 </article>
 
 </div>
@@ -2201,42 +4204,42 @@ y=(x₁+...+xₙ)/n
 </div>
 
 
-<div id="cnn-pipeline-panel" class="learn-panel" hidden>
+<div class="learn-panel" data-learn-panel="process" hidden>
 
-<div class="cnn-pipeline">
+<div class="process-grid">
 
-<div class="pipeline-box">
+<article>
 <strong>Input</strong>
-<span>5 × 5 matrix</span>
-</div>
+<span>Pixel matrix</span>
+</article>
 
-<span class="pipeline-arrow">→</span>
+<span>→</span>
 
-<div class="pipeline-box">
+<article>
 <strong>Kernel</strong>
-<span>3 × 3 filter</span>
-</div>
+<span>Extract local patterns</span>
+</article>
 
-<span class="pipeline-arrow">→</span>
+<span>→</span>
 
-<div class="pipeline-box">
+<article>
 <strong>Feature Map</strong>
-<span>Convolution output</span>
-</div>
+<span>Store convolution results</span>
+</article>
 
-<span class="pipeline-arrow">→</span>
+<span>→</span>
 
-<div class="pipeline-box">
+<article>
 <strong>Pooling</strong>
-<span>Optional reduction</span>
-</div>
+<span>Reduce dimensions</span>
+</article>
 
-<span class="pipeline-arrow">→</span>
+<span>→</span>
 
-<div class="pipeline-box">
+<article>
 <strong>Flatten</strong>
-<span>1D vector</span>
-</div>
+<span>Create a vector</span>
+</article>
 
 </div>
 
@@ -2248,10 +4251,14 @@ y=(x₁+...+xₙ)/n
 
 
 <!-- =====================================================
-     DECISION TREE LEARNING
-====================================================== -->
+     DECISION TREE LEARN
+===================================================== -->
 
-<section class="section" id="tree-learn" hidden>
+<section
+class="section model-learn-section"
+id="tree-learn"
+data-learn-model="tree"
+hidden>
 
 <div class="wrap">
 
@@ -2262,84 +4269,72 @@ Learn Decision Trees
 </span>
 
 <h2>
-How does a decision tree make a decision?
+How does a decision tree choose a split?
 </h2>
 
 <p>
-Start with two features, then activate more features
-to explore additional candidate splits.
+Understand thresholds, impurity, information gain and
+leaf predictions.
 </p>
 
 </div>
 
 
-<div class="tabs tree-tabs">
+<div class="tabs model-learn-tabs">
 
-<button
-class="tab tree-tab active"
-data-tree-tab="beginner"
-type="button"
->
+<button class="tab active" data-learn-tab="beginner">
 Beginner
 </button>
 
-<button
-class="tab tree-tab"
-data-tree-tab="math"
-type="button"
->
+<button class="tab" data-learn-tab="math">
 Mathematics
 </button>
 
-<button
-class="tab tree-tab"
-data-tree-tab="split"
-type="button"
->
-Split Logic
+<button class="tab" data-learn-tab="process">
+Split Process
 </button>
 
 </div>
 
 
-<div id="tree-beginner-panel" class="learn-panel">
+<div class="learn-panel" data-learn-panel="beginner">
 
 <div class="learn-grid">
 
 <article>
 <b>1</b>
-<h3>Choose features</h3>
-<p>Start with 2 features, then increase to 3 or 4.</p>
+<h3>Start with samples</h3>
+<p>The tree receives labelled training examples.</p>
 </article>
 
 <article>
 <b>2</b>
-<h3>Start with samples</h3>
-<p>The tree receives labelled examples.</p>
+<h3>Choose a feature</h3>
+<p>A feature is considered for splitting the data.</p>
 </article>
 
 <article>
 <b>3</b>
-<h3>Choose a split</h3>
-<p>Select a feature and numerical threshold.</p>
+<h3>Try a threshold</h3>
+<p>The samples are divided according to a numerical condition.</p>
 </article>
 
 <article>
 <b>4</b>
-<h3>Split samples</h3>
-<p>Samples move to the Yes or No branch.</p>
+<h3>Measure purity</h3>
+<p>The tree evaluates how pure the resulting groups are.</p>
 </article>
 
 <article>
 <b>5</b>
-<h3>Measure purity</h3>
-<p>Gini or entropy measures split quality.</p>
+<h3>Compare candidates</h3>
+<p>Different features and thresholds can be evaluated.</p>
 </article>
 
 <article>
 <b>6</b>
-<h3>Find the best split</h3>
-<p>Candidate thresholds are compared automatically.</p>
+<h3>Select the best</h3>
+<p>The split with the strongest improvement is selected.</p>
 </article>
 
 </div>
@@ -2347,7 +4342,7 @@ Split Logic
 </div>
 
 
-<div id="tree-math-panel" class="learn-panel" hidden>
+<div class="learn-panel" data-learn-panel="math" hidden>
 
 <div class="math-grid">
 
@@ -2361,77 +4356,58 @@ Gini = 1 − Σpᵢ²
 <article>
 <h3>Entropy</h3>
 <p class="equation">
-H = −Σpᵢ log₂(pᵢ)
-</p>
-</article>
-
-<article>
-<h3>Weighted Impurity</h3>
-<p class="equation">
-I = (nL/n)IL + (nR/n)IR
+H = −Σpᵢlog₂(pᵢ)
 </p>
 </article>
 
 <article>
 <h3>Information Gain</h3>
 <p class="equation">
-Gain = Parent − Weighted Children
+Gain = Iparent − Ichildren
 </p>
 </article>
 
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
 <article>
-<h3>Candidate Threshold</h3>
-<p class="equation">
-T = (xᵢ + xᵢ₊₁) / 2
-</p>
-</article>
-
-<article>
-<h3>Best Split</h3>
-<p>The highest-information-gain candidate is selected.</p>
-</article>
-
-</div>
-
-</div>
-
-
-<div id="tree-split-panel" class="learn-panel" hidden>
-
-<div class="tree-pipeline">
-
-<div class="pipeline-box">
-<strong>Features</strong>
-<span>Choose 2–4</span>
-</div>
-
-<span class="pipeline-arrow">→</span>
-
-<div class="pipeline-box">
 <strong>Dataset</strong>
-<span>4–15 samples</span>
-</div>
+<span>Labelled examples</span>
+</article>
 
-<span class="pipeline-arrow">→</span>
+<span>→</span>
 
-<div class="pipeline-box">
-<strong>Candidates</strong>
-<span>Features + thresholds</span>
-</div>
+<article>
+<strong>Candidate Split</strong>
+<span>Feature + threshold</span>
+</article>
 
-<span class="pipeline-arrow">→</span>
+<span>→</span>
 
-<div class="pipeline-box">
-<strong>Compare</strong>
-<span>Information gain</span>
-</div>
+<article>
+<strong>Impurity</strong>
+<span>Evaluate child nodes</span>
+</article>
 
-<span class="pipeline-arrow">→</span>
+<span>→</span>
 
-<div class="pipeline-box">
+<article>
 <strong>Best Split</strong>
-<span>Highest gain</span>
-</div>
+<span>Choose highest gain</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Leaf</strong>
+<span>Predict a class</span>
+</article>
 
 </div>
 
@@ -2443,10 +4419,14 @@ T = (xᵢ + xᵢ₊₁) / 2
 
 
 <!-- =====================================================
-     KNN LEARNING
-====================================================== -->
+     KNN LEARN
+===================================================== -->
 
-<section class="section" id="knn-learn" hidden>
+<section
+class="section model-learn-section"
+id="knn-learn"
+data-learn-model="knn"
+hidden>
 
 <div class="wrap">
 
@@ -2457,85 +4437,72 @@ Learn K-Nearest Neighbors
 </span>
 
 <h2>
-How does KNN classify a new sample?
+How does KNN classify an unknown sample?
 </h2>
 
 <p>
-KNN does not build a traditional model.
-It compares a new sample with stored training examples,
-finds the nearest ones, and lets them vote.
+Understand distance calculation, neighbor selection
+and majority voting.
 </p>
 
 </div>
 
 
-<div class="tabs knn-tabs">
+<div class="tabs model-learn-tabs">
 
-<button
-class="tab knn-tab active"
-data-knn-tab="beginner"
-type="button"
->
+<button class="tab active" data-learn-tab="beginner">
 Beginner
 </button>
 
-<button
-class="tab knn-tab"
-data-knn-tab="math"
-type="button"
->
+<button class="tab" data-learn-tab="math">
 Mathematics
 </button>
 
-<button
-class="tab knn-tab"
-data-knn-tab="process"
-type="button"
->
+<button class="tab" data-learn-tab="process">
 KNN Process
 </button>
 
 </div>
 
 
-<div id="knn-beginner-panel" class="learn-panel">
+<div class="learn-panel" data-learn-panel="beginner">
 
 <div class="learn-grid">
 
 <article>
 <b>1</b>
-<h3>Store training data</h3>
-<p>KNN remembers labelled examples.</p>
+<h3>Store examples</h3>
+<p>KNN keeps labelled training samples.</p>
 </article>
 
 <article>
 <b>2</b>
-<h3>Create an unknown sample</h3>
-<p>A new sample needs a class prediction.</p>
+<h3>Receive a query</h3>
+<p>A new sample needs a prediction.</p>
 </article>
 
 <article>
 <b>3</b>
-<h3>Calculate distances</h3>
-<p>KNN measures how far every training example is from it.</p>
+<h3>Measure distance</h3>
+<p>The query is compared with every training sample.</p>
 </article>
 
 <article>
 <b>4</b>
-<h3>Sort neighbors</h3>
-<p>The samples are ranked from nearest to farthest.</p>
+<h3>Rank samples</h3>
+<p>Samples are sorted from nearest to farthest.</p>
 </article>
 
 <article>
 <b>5</b>
-<h3>Select K neighbors</h3>
-<p>Only the K closest samples participate in voting.</p>
+<h3>Select K</h3>
+<p>The K closest samples become the neighbors.</p>
 </article>
 
 <article>
 <b>6</b>
-<h3>Majority vote</h3>
-<p>The most common class among the neighbors is predicted.</p>
+<h3>Vote</h3>
+<p>The most frequent neighboring class is predicted.</p>
 </article>
 
 </div>
@@ -2543,37 +4510,28 @@ KNN Process
 </div>
 
 
-<div id="knn-math-panel" class="learn-panel" hidden>
+<div class="learn-panel" data-learn-panel="math" hidden>
 
 <div class="math-grid">
 
 <article>
 <h3>Euclidean Distance</h3>
 <p class="equation">
-d = √Σ(xᵢ − qᵢ)²
-</p>
-<p>
-Measures straight-line distance.
+d = √Σ(xᵢ−qᵢ)²
 </p>
 </article>
 
 <article>
 <h3>Manhattan Distance</h3>
 <p class="equation">
-d = Σ|xᵢ − qᵢ|
-</p>
-<p>
-Adds the absolute differences.
+d = Σ|xᵢ−qᵢ|
 </p>
 </article>
 
 <article>
-<h3>Majority Vote</h3>
+<h3>Vote</h3>
 <p class="equation">
 ŷ = mode(y₁,...,yₖ)
-</p>
-<p>
-The most frequent class wins.
 </p>
 </article>
 
@@ -2582,49 +4540,42 @@ The most frequent class wins.
 </div>
 
 
-<div id="knn-process-panel" class="learn-panel" hidden>
+<div class="learn-panel" data-learn-panel="process" hidden>
 
-<div class="knn-pipeline">
+<div class="process-grid">
 
-<div class="pipeline-box">
-<strong>Training Data</strong>
-<span>Labelled samples</span>
-</div>
-
-<span class="pipeline-arrow">→</span>
-
-<div class="pipeline-box">
+<article>
 <strong>Unknown Sample</strong>
-<span>Needs prediction</span>
-</div>
+<span>Needs classification</span>
+</article>
 
-<span class="pipeline-arrow">→</span>
+<span>→</span>
 
-<div class="pipeline-box">
-<strong>Distance</strong>
-<span>Compare samples</span>
-</div>
+<article>
+<strong>Distances</strong>
+<span>Compare with all samples</span>
+</article>
 
-<span class="pipeline-arrow">→</span>
+<span>→</span>
 
-<div class="pipeline-box">
-<strong>Nearest K</strong>
-<span>Choose neighbors</span>
-</div>
+<article>
+<strong>K Closest</strong>
+<span>Select neighbors</span>
+</article>
 
-<span class="pipeline-arrow">→</span>
+<span>→</span>
 
-<div class="pipeline-box">
+<article>
 <strong>Vote</strong>
-<span>Count classes</span>
-</div>
+<span>Count the classes</span>
+</article>
 
-<span class="pipeline-arrow">→</span>
+<span>→</span>
 
-<div class="pipeline-box">
+<article>
 <strong>Prediction</strong>
-<span>Majority class</span>
-</div>
+<span>Return majority class</span>
+</article>
 
 </div>
 
@@ -2634,12 +4585,2057 @@ The most frequent class wins.
 
 </section>
 
+
+<!-- =====================================================
+     LINEAR REGRESSION LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="linear-regression-learn"
+data-learn-model="linear-regression"
+hidden>
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learn Linear Regression
+</span>
+
+<h2>
+How does Linear Regression find the best-fit line?
+</h2>
+
+<p>
+Understand slope, intercept, prediction errors,
+Mean Squared Error and R².
+</p>
+
+</div>
+
+
+<div class="tabs model-learn-tabs">
+
+<button class="tab active" data-learn-tab="beginner">
+Beginner
+</button>
+
+<button class="tab" data-learn-tab="math">
+Mathematics
+</button>
+
+<button class="tab" data-learn-tab="process">
+Regression Process
+</button>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="beginner">
+
+<div class="learn-grid">
+
+<article>
+<b>1</b>
+<h3>Observe paired data</h3>
+<p>Each sample contains an X value and a Y value.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Look for a trend</h3>
+<p>The model tries to describe how Y changes when X changes.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Calculate slope</h3>
+<p>The slope describes the direction and strength of the relationship.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Find intercept</h3>
+<p>The intercept positions the fitted line vertically.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Calculate residuals</h3>
+<p>Residuals measure the difference between actual and predicted Y.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Evaluate fit</h3>
+<p>MSE and R² summarize prediction error and explained variation.</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="math" hidden>
+
+<div class="math-grid">
+
+<article>
+<h3>Prediction</h3>
+<p class="equation">
+ŷ = β₀ + β₁x
+</p>
+</article>
+
+<article>
+<h3>Residual</h3>
+<p class="equation">
+e = y − ŷ
+</p>
+</article>
+
+<article>
+<h3>Mean Squared Error</h3>
+<p class="equation">
+MSE = Σ(y−ŷ)² / n
+</p>
+</article>
+
+<article>
+<h3>R²</h3>
+<p class="equation">
+R² = 1 − SSE/SST
+</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
+<article>
+<strong>Samples</strong>
+<span>X and Y observations</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Estimate Line</strong>
+<span>Calculate slope and intercept</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Predict</strong>
+<span>Calculate ŷ</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Residuals</strong>
+<span>Compare y and ŷ</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Evaluate</strong>
+<span>MSE and R²</span>
+</article>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     LOGISTIC REGRESSION LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="logistic-regression-learn"
+data-learn-model="logistic-regression"
+hidden>
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learn Logistic Regression
+</span>
+
+<h2>
+How does Logistic Regression classify data?
+</h2>
+
+<p>
+Understand linear scores, sigmoid probability,
+decision thresholds and binary classification.
+</p>
+
+</div>
+
+
+<div class="tabs model-learn-tabs">
+
+<button class="tab active" data-learn-tab="beginner">
+Beginner
+</button>
+
+<button class="tab" data-learn-tab="math">
+Mathematics
+</button>
+
+<button class="tab" data-learn-tab="process">
+Classification Process
+</button>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="beginner">
+
+<div class="learn-grid">
+
+<article>
+<b>1</b>
+<h3>Receive features</h3>
+<p>The model receives numerical information about a sample.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Multiply by coefficients</h3>
+<p>Each feature contributes according to its coefficient.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Create linear score</h3>
+<p>The contributions and intercept form a score called z.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Apply sigmoid</h3>
+<p>The sigmoid converts the score into a number between 0 and 1.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Compare threshold</h3>
+<p>The probability is compared with a decision threshold.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Predict class</h3>
+<p>The threshold determines the final binary prediction.</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="math" hidden>
+
+<div class="math-grid">
+
+<article>
+<h3>Linear Score</h3>
+<p class="equation">
+z = β₀ + β₁x₁ + β₂x₂
+</p>
+</article>
+
+<article>
+<h3>Sigmoid</h3>
+<p class="equation">
+p = 1/(1+e⁻ᶻ)
+</p>
+</article>
+
+<article>
+<h3>Decision</h3>
+<p class="equation">
+ŷ = 1 if p ≥ threshold
+</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
+<article>
+<strong>Features</strong>
+<span>x₁, x₂, ...</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Linear Score</strong>
+<span>Weighted combination</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Sigmoid</strong>
+<span>Convert to probability</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Threshold</strong>
+<span>Compare probability</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Class</strong>
+<span>0 or 1</span>
+</article>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SVM LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="svm-learn"
+data-learn-model="svm"
+hidden>
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learn Support Vector Machines
+</span>
+
+<h2>
+How does an SVM separate two classes?
+</h2>
+
+<p>
+Understand decision boundaries, margins,
+support vectors and the linear decision function.
+</p>
+
+</div>
+
+
+<div class="tabs model-learn-tabs">
+
+<button class="tab active" data-learn-tab="beginner">
+Beginner
+</button>
+
+<button class="tab" data-learn-tab="math">
+Mathematics
+</button>
+
+<button class="tab" data-learn-tab="process">
+Margin Process
+</button>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="beginner">
+
+<div class="learn-grid">
+
+<article>
+<b>1</b>
+<h3>Two classes</h3>
+<p>Training samples belong to one of two classes.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Draw a boundary</h3>
+<p>The model searches for a line or hyperplane separating the classes.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Create a margin</h3>
+<p>SVM prefers a boundary with a large separation between classes.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Find support vectors</h3>
+<p>The closest observations are especially important.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Calculate score</h3>
+<p>A new sample receives a decision-function score.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Predict side</h3>
+<p>The sign of the score determines the predicted class.</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="math" hidden>
+
+<div class="math-grid">
+
+<article>
+<h3>Decision Function</h3>
+<p class="equation">
+f(x)=wᵀx+b
+</p>
+</article>
+
+<article>
+<h3>Classification</h3>
+<p class="equation">
+ŷ = sign(f(x))
+</p>
+</article>
+
+<article>
+<h3>Margin Width</h3>
+<p class="equation">
+2 / ||w||
+</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
+<article>
+<strong>Samples</strong>
+<span>Two classes</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Boundary</strong>
+<span>Separate the classes</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Margin</strong>
+<span>Maximize separation</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Support Vectors</strong>
+<span>Closest points</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Prediction</strong>
+<span>Select side of boundary</span>
+</article>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     NAIVE BAYES LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="naive-bayes-learn"
+data-learn-model="naive-bayes"
+hidden>
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learn Naive Bayes
+</span>
+
+<h2>
+How can probability produce a classification?
+</h2>
+
+<p>
+Understand priors, likelihoods, Gaussian distributions
+and posterior probabilities.
+</p>
+
+</div>
+
+
+<div class="tabs model-learn-tabs">
+
+<button class="tab active" data-learn-tab="beginner">
+Beginner
+</button>
+
+<button class="tab" data-learn-tab="math">
+Mathematics
+</button>
+
+<button class="tab" data-learn-tab="process">
+Probability Process
+</button>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="beginner">
+
+<div class="learn-grid">
+
+<article>
+<b>1</b>
+<h3>Count classes</h3>
+<p>The model first considers how common each class is.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Learn distributions</h3>
+<p>Feature values are summarized separately within each class.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Receive unknown sample</h3>
+<p>The model observes the new feature values.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Calculate likelihoods</h3>
+<p>The probability of those values under each class is estimated.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Combine evidence</h3>
+<p>Priors and likelihoods are combined.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Choose posterior</h3>
+<p>The class with the stronger posterior probability wins.</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="math" hidden>
+
+<div class="math-grid">
+
+<article>
+<h3>Bayes Rule</h3>
+<p class="equation">
+P(C|X) ∝ P(C)P(X|C)
+</p>
+</article>
+
+<article>
+<h3>Gaussian Likelihood</h3>
+<p class="equation">
+P(x|C)=N(x;μ,σ²)
+</p>
+</article>
+
+<article>
+<h3>Prediction</h3>
+<p class="equation">
+ŷ = argmax P(C|X)
+</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
+<article>
+<strong>Prior</strong>
+<span>Class frequency</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Likelihood</strong>
+<span>Feature probability</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Posterior</strong>
+<span>Combine evidence</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Compare</strong>
+<span>Class A vs Class B</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Prediction</strong>
+<span>Highest posterior</span>
+</article>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     RANDOM FOREST LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="random-forest-learn"
+data-learn-model="random-forest"
+hidden>
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learn Random Forest
+</span>
+
+<h2>
+Why can many trees perform better than one?
+</h2>
+
+<p>
+Understand tree diversity, ensemble predictions
+and majority voting.
+</p>
+
+</div>
+
+
+<div class="tabs model-learn-tabs">
+
+<button class="tab active" data-learn-tab="beginner">
+Beginner
+</button>
+
+<button class="tab" data-learn-tab="math">
+Mathematics
+</button>
+
+<button class="tab" data-learn-tab="process">
+Forest Process
+</button>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="beginner">
+
+<div class="learn-grid">
+
+<article>
+<b>1</b>
+<h3>Build many trees</h3>
+<p>The forest contains multiple decision trees.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Create diversity</h3>
+<p>Different trees can use different samples and features.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Make tree predictions</h3>
+<p>Every tree produces its own prediction.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Collect votes</h3>
+<p>The forest counts how many trees predict each class.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Use majority</h3>
+<p>The most common tree prediction becomes the forest result.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Reduce instability</h3>
+<p>Combining trees can be more stable than relying on one tree.</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="math" hidden>
+
+<div class="math-grid">
+
+<article>
+<h3>Tree Prediction</h3>
+<p class="equation">
+ŷₜ = hₜ(x)
+</p>
+</article>
+
+<article>
+<h3>Classification Vote</h3>
+<p class="equation">
+ŷ = mode(ŷ₁,...,ŷT)
+</p>
+</article>
+
+<article>
+<h3>Regression Forest</h3>
+<p class="equation">
+ŷ = Σŷₜ / T
+</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
+<article>
+<strong>Dataset</strong>
+<span>Training examples</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Many Trees</strong>
+<span>Create diverse learners</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Predictions</strong>
+<span>Each tree decides</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Voting</strong>
+<span>Count tree outputs</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Forest Output</strong>
+<span>Majority prediction</span>
+</article>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     GRADIENT BOOSTING LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="gradient-boosting-learn"
+data-learn-model="gradient-boosting"
+hidden>
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learn Gradient Boosting
+</span>
+
+<h2>
+How does Gradient Boosting learn from previous errors?
+</h2>
+
+<p>
+Understand residuals, sequential weak learners
+and learning-rate controlled updates.
+</p>
+
+</div>
+
+
+<div class="tabs model-learn-tabs">
+
+<button class="tab active" data-learn-tab="beginner">
+Beginner
+</button>
+
+<button class="tab" data-learn-tab="math">
+Mathematics
+</button>
+
+<button class="tab" data-learn-tab="process">
+Boosting Process
+</button>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="beginner">
+
+<div class="learn-grid">
+
+<article>
+<b>1</b>
+<h3>Start simple</h3>
+<p>The model begins with a basic initial prediction.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Measure errors</h3>
+<p>The difference between actual and predicted values is calculated.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Fit an error learner</h3>
+<p>A small learner tries to explain the remaining residuals.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Apply learning rate</h3>
+<p>The new learner contributes only a controlled amount.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Update prediction</h3>
+<p>The model combines the previous prediction and new correction.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Repeat</h3>
+<p>Additional learners continue reducing the remaining error.</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="math" hidden>
+
+<div class="math-grid">
+
+<article>
+<h3>Residual</h3>
+<p class="equation">
+r = y − ŷ
+</p>
+</article>
+
+<article>
+<h3>Update</h3>
+<p class="equation">
+Fₘ = Fₘ₋₁ + ηhₘ
+</p>
+</article>
+
+<article>
+<h3>Learning Rate</h3>
+<p class="equation">
+0 &lt; η ≤ 1
+</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
+<article>
+<strong>Initial Model</strong>
+<span>Make first prediction</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Residuals</strong>
+<span>Find remaining errors</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Weak Learner</strong>
+<span>Model the errors</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Update</strong>
+<span>Add scaled correction</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Repeat</strong>
+<span>Improve sequentially</span>
+</article>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     K-MEANS LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="kmeans-learn"
+data-learn-model="kmeans"
+hidden>
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learn K-Means Clustering
+</span>
+
+<h2>
+How do centroids create clusters?
+</h2>
+
+<p>
+Understand cluster centers, distance-based assignment
+and iterative centroid updates.
+</p>
+
+</div>
+
+
+<div class="tabs model-learn-tabs">
+
+<button class="tab active" data-learn-tab="beginner">
+Beginner
+</button>
+
+<button class="tab" data-learn-tab="math">
+Mathematics
+</button>
+
+<button class="tab" data-learn-tab="process">
+Clustering Process
+</button>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="beginner">
+
+<div class="learn-grid">
+
+<article>
+<b>1</b>
+<h3>Choose K</h3>
+<p>K specifies how many clusters should be created.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Initialize centroids</h3>
+<p>The algorithm begins with K cluster centers.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Calculate distances</h3>
+<p>Each point is compared with every centroid.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Assign clusters</h3>
+<p>A point joins the cluster with the closest centroid.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Update centroids</h3>
+<p>Each centroid moves to the average of its assigned points.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Repeat</h3>
+<p>Assignment and updating continue until the clusters stabilize.</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="math" hidden>
+
+<div class="math-grid">
+
+<article>
+<h3>Distance</h3>
+<p class="equation">
+d(x,c)=√Σ(xᵢ−cᵢ)²
+</p>
+</article>
+
+<article>
+<h3>Assignment</h3>
+<p class="equation">
+cluster(x)=argmin d(x,cₖ)
+</p>
+</article>
+
+<article>
+<h3>Centroid</h3>
+<p class="equation">
+cₖ = mean(points in cluster k)
+</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
+<article>
+<strong>Choose K</strong>
+<span>Number of clusters</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Centroids</strong>
+<span>Initialize centers</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Assignment</strong>
+<span>Nearest center</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Update</strong>
+<span>Move centroids</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Repeat</strong>
+<span>Converge to clusters</span>
+</article>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     DBSCAN LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="dbscan-learn"
+data-learn-model="dbscan"
+hidden>
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learn DBSCAN
+</span>
+
+<h2>
+How does density reveal clusters?
+</h2>
+
+<p>
+Understand epsilon neighborhoods, minimum points,
+core observations and noise detection.
+</p>
+
+</div>
+
+
+<div class="tabs model-learn-tabs">
+
+<button class="tab active" data-learn-tab="beginner">
+Beginner
+</button>
+
+<button class="tab" data-learn-tab="math">
+Mathematics
+</button>
+
+<button class="tab" data-learn-tab="process">
+Density Process
+</button>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="beginner">
+
+<div class="learn-grid">
+
+<article>
+<b>1</b>
+<h3>Choose epsilon</h3>
+<p>Epsilon defines the radius of a local neighborhood.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Choose MinPts</h3>
+<p>MinPts defines how many nearby samples indicate a dense region.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Find neighbors</h3>
+<p>The algorithm searches for samples inside each epsilon radius.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Identify core points</h3>
+<p>Dense observations become cluster starting points.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Expand clusters</h3>
+<p>Connected dense regions are combined.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Mark noise</h3>
+<p>Isolated samples that belong to no dense region become noise.</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="math" hidden>
+
+<div class="math-grid">
+
+<article>
+<h3>Epsilon Neighborhood</h3>
+<p class="equation">
+Nε(p)={q | d(p,q)≤ε}
+</p>
+</article>
+
+<article>
+<h3>Core Point</h3>
+<p class="equation">
+|Nε(p)| ≥ MinPts
+</p>
+</article>
+
+<article>
+<h3>Noise</h3>
+<p class="equation">
+p ∉ any density-connected cluster
+</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
+<article>
+<strong>Point</strong>
+<span>Choose observation</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Neighborhood</strong>
+<span>Search within ε</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Core?</strong>
+<span>Check MinPts</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Expand</strong>
+<span>Connect dense points</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Noise</strong>
+<span>Mark isolated points</span>
+</article>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     PCA LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="pca-learn"
+data-learn-model="pca"
+hidden>
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learn Principal Component Analysis
+</span>
+
+<h2>
+How can PCA reduce dimensions?
+</h2>
+
+<p>
+Understand centering, covariance, eigenvectors,
+variance and projection.
+</p>
+
+</div>
+
+
+<div class="tabs model-learn-tabs">
+
+<button class="tab active" data-learn-tab="beginner">
+Beginner
+</button>
+
+<button class="tab" data-learn-tab="math">
+Mathematics
+</button>
+
+<button class="tab" data-learn-tab="process">
+PCA Process
+</button>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="beginner">
+
+<div class="learn-grid">
+
+<article>
+<b>1</b>
+<h3>Start with features</h3>
+<p>The dataset contains multiple numerical dimensions.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Center the data</h3>
+<p>The mean of each feature is subtracted.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Measure covariance</h3>
+<p>Covariance describes how features vary together.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Find directions</h3>
+<p>Eigenvectors identify important directions in the data.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Rank variance</h3>
+<p>Eigenvalues describe how much variation each direction explains.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Project data</h3>
+<p>Samples are represented using the selected principal components.</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="math" hidden>
+
+<div class="math-grid">
+
+<article>
+<h3>Centering</h3>
+<p class="equation">
+Xc = X − μ
+</p>
+</article>
+
+<article>
+<h3>Covariance</h3>
+<p class="equation">
+Σ = (XcᵀXc)/n
+</p>
+</article>
+
+<article>
+<h3>Eigenproblem</h3>
+<p class="equation">
+Σv = λv
+</p>
+</article>
+
+<article>
+<h3>Projection</h3>
+<p class="equation">
+z = Xc·v
+</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
+<article>
+<strong>Original Data</strong>
+<span>Multiple dimensions</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Center</strong>
+<span>Subtract means</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Covariance</strong>
+<span>Measure variation</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Eigenvectors</strong>
+<span>Find important directions</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Projection</strong>
+<span>Reduce dimensions</span>
+</article>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     RNN LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="rnn-learn"
+data-learn-model="rnn"
+hidden>
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learn Recurrent Neural Networks
+</span>
+
+<h2>
+How does an RNN process a sequence?
+</h2>
+
+<p>
+Understand recurrent connections, time steps
+and hidden-state memory.
+</p>
+
+</div>
+
+
+<div class="tabs model-learn-tabs">
+
+<button class="tab active" data-learn-tab="beginner">
+Beginner
+</button>
+
+<button class="tab" data-learn-tab="math">
+Mathematics
+</button>
+
+<button class="tab" data-learn-tab="process">
+Sequence Process
+</button>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="beginner">
+
+<div class="learn-grid">
+
+<article>
+<b>1</b>
+<h3>Receive a sequence</h3>
+<p>Inputs arrive in an ordered sequence of time steps.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Read current input</h3>
+<p>The network processes one element at a time.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Use previous state</h3>
+<p>The previous hidden state carries earlier information.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Combine information</h3>
+<p>Current input and previous state are weighted together.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Create new state</h3>
+<p>An activation produces the next hidden state.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Continue through time</h3>
+<p>The updated state is passed to the next time step.</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="math" hidden>
+
+<div class="math-grid">
+
+<article>
+<h3>Hidden State</h3>
+<p class="equation">
+hₜ=tanh(Wₓxₜ+Wₕhₜ₋₁+b)
+</p>
+</article>
+
+<article>
+<h3>Current Input</h3>
+<p class="equation">
+Wₓxₜ
+</p>
+</article>
+
+<article>
+<h3>Recurrent Memory</h3>
+<p class="equation">
+Wₕhₜ₋₁
+</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
+<article>
+<strong>x₁</strong>
+<span>Input 1</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>h₁</strong>
+<span>Hidden state</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>x₂</strong>
+<span>Input 2</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>h₂</strong>
+<span>Updated state</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>...</strong>
+<span>Continue sequence</span>
+</article>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     LSTM LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="lstm-learn"
+data-learn-model="lstm"
+hidden>
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learn LSTM
+</span>
+
+<h2>
+How do LSTM gates control memory?
+</h2>
+
+<p>
+Understand the forget gate, input gate,
+cell state and output gate.
+</p>
+
+</div>
+
+
+<div class="tabs model-learn-tabs">
+
+<button class="tab active" data-learn-tab="beginner">
+Beginner
+</button>
+
+<button class="tab" data-learn-tab="math">
+Mathematics
+</button>
+
+<button class="tab" data-learn-tab="process">
+Gate Process
+</button>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="beginner">
+
+<div class="learn-grid">
+
+<article>
+<b>1</b>
+<h3>Receive input</h3>
+<p>The LSTM receives the current input and previous hidden state.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Forget gate</h3>
+<p>The forget gate decides what old cell information to retain.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Input gate</h3>
+<p>The input gate decides what new information should be stored.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Update cell</h3>
+<p>The long-term cell state is updated.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Output gate</h3>
+<p>The output gate decides what part of memory becomes visible.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>New hidden state</h3>
+<p>The LSTM produces a new hidden representation.</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="math" hidden>
+
+<div class="math-grid">
+
+<article>
+<h3>Forget Gate</h3>
+<p class="equation">
+fₜ=σ(Wf[xₜ,hₜ₋₁]+bf)
+</p>
+</article>
+
+<article>
+<h3>Input Gate</h3>
+<p class="equation">
+iₜ=σ(Wi[xₜ,hₜ₋₁]+bi)
+</p>
+</article>
+
+<article>
+<h3>Cell State</h3>
+<p class="equation">
+cₜ=fₜcₜ₋₁+iₜc̃ₜ
+</p>
+</article>
+
+<article>
+<h3>Hidden State</h3>
+<p class="equation">
+hₜ=oₜtanh(cₜ)
+</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
+<article>
+<strong>Input</strong>
+<span>xₜ + previous state</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Forget Gate</strong>
+<span>Remove old information</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Input Gate</strong>
+<span>Add new information</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Cell State</strong>
+<span>Update memory</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Output Gate</strong>
+<span>Create hidden state</span>
+</article>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     TRANSFORMER LEARN
+===================================================== -->
+
+<section
+class="section model-learn-section"
+id="transformer-learn"
+data-learn-model="transformer"
+hidden>
+
+<div class="wrap">
+
+<div class="heading">
+
+<span class="label">
+Learn Transformers
+</span>
+
+<h2>
+How does self-attention understand context?
+</h2>
+
+<p>
+Understand tokens, embeddings, queries, keys,
+values, attention scores and contextual representations.
+</p>
+
+</div>
+
+
+<div class="tabs model-learn-tabs">
+
+<button class="tab active" data-learn-tab="beginner">
+Beginner
+</button>
+
+<button class="tab" data-learn-tab="math">
+Mathematics
+</button>
+
+<button class="tab" data-learn-tab="process">
+Attention Process
+</button>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="beginner">
+
+<div class="learn-grid">
+
+<article>
+<b>1</b>
+<h3>Tokenize input</h3>
+<p>The sentence is divided into individual tokens.</p>
+</article>
+
+<article>
+<b>2</b>
+<h3>Create embeddings</h3>
+<p>Each token is represented by numerical features.</p>
+</article>
+
+<article>
+<b>3</b>
+<h3>Create Q, K and V</h3>
+<p>Each token generates Query, Key and Value representations.</p>
+</article>
+
+<article>
+<b>4</b>
+<h3>Compare tokens</h3>
+<p>Queries are compared with Keys to calculate attention scores.</p>
+</article>
+
+<article>
+<b>5</b>
+<h3>Apply softmax</h3>
+<p>Scores become normalized attention weights.</p>
+</article>
+
+<article>
+<b>6</b>
+<h3>Combine context</h3>
+<p>Weighted Values create context-aware token representations.</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="math" hidden>
+
+<div class="math-grid">
+
+<article>
+<h3>Queries</h3>
+<p class="equation">
+Q = XWQ
+</p>
+</article>
+
+<article>
+<h3>Keys</h3>
+<p class="equation">
+K = XWK
+</p>
+</article>
+
+<article>
+<h3>Values</h3>
+<p class="equation">
+V = XWV
+</p>
+</article>
+
+<article>
+<h3>Attention</h3>
+<p class="equation">
+softmax(QKᵀ/√dₖ)V
+</p>
+</article>
+
+</div>
+
+</div>
+
+
+<div class="learn-panel" data-learn-panel="process" hidden>
+
+<div class="process-grid">
+
+<article>
+<strong>Tokens</strong>
+<span>Split input text</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Embeddings</strong>
+<span>Numerical representation</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Q / K / V</strong>
+<span>Create attention vectors</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Attention</strong>
+<span>Compare token relationships</span>
+</article>
+
+<span>→</span>
+
+<article>
+<strong>Context</strong>
+<span>Produce contextual output</span>
+</article>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
 </main>
 
 
-<!-- =========================================
+<!-- =====================================================
      FOOTER
-========================================= -->
+===================================================== -->
 
 <footer>
 
@@ -2650,7 +6646,7 @@ AI Model Playground
 </strong>
 
 <span>
-Educational simulation only.
+Interactive educational simulations
 </span>
 
 </div>
@@ -2661,18 +6657,34 @@ Educational simulation only.
 <div
 id="weight-tooltip"
 class="weight-tooltip"
-hidden
-></div>
+hidden>
+</div>
 
 
-<!-- =========================================
-     JAVASCRIPT FILES
-========================================= -->
+<!-- =====================================================
+     MODEL JAVASCRIPT FILES
+===================================================== -->
 
 <script src="models/neural-network.js"></script>
 <script src="models/cnn.js"></script>
 <script src="models/decision-tree.js"></script>
 <script src="models/knn.js"></script>
+
+<script src="models/linear-regression.js"></script>
+<script src="models/logistic-regression.js"></script>
+<script src="models/svm.js"></script>
+<script src="models/naive-bayes.js"></script>
+<script src="models/random-forest.js"></script>
+<script src="models/gradient-boosting.js"></script>
+
+<script src="models/kmeans.js"></script>
+<script src="models/dbscan.js"></script>
+<script src="models/pca.js"></script>
+
+<script src="models/rnn.js"></script>
+<script src="models/lstm.js"></script>
+<script src="models/transformer.js"></script>
+
 <script src="script.js"></script>
 
 </body>
