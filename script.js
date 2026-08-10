@@ -93,18 +93,18 @@ const MODEL_STRUCTURE = [
             id: "regression",
             label: "Regression",
             models: [
-              { id: "linear-regression", label: "Linear Regression", available: false },
-              { id: "gradient-boosting", label: "Gradient Boosting", available: false }
+              { id: "linear-regression", label: "Linear Regression", available: true },
+              { id: "gradient-boosting", label: "Gradient Boosting", available: true }
             ]
           },
           {
             id: "classification",
             label: "Classification",
             models: [
-              { id: "logistic-regression", label: "Logistic Regression", available: false },
+              { id: "logistic-regression", label: "Logistic Regression", available: true },
               { id: "knn", label: "K-Nearest Neighbors", available: true },
-              { id: "svm", label: "Support Vector Machine", available: false },
-              { id: "naive-bayes", label: "Naive Bayes", available: false },
+              { id: "svm", label: "Support Vector Machine", available: true },
+              { id: "naive-bayes", label: "Naive Bayes", available: true },
               { id: "tree", label: "Decision Tree", available: true }
             ]
           },
@@ -112,7 +112,7 @@ const MODEL_STRUCTURE = [
             id: "ensemble",
             label: "Ensemble Learning",
             models: [
-              { id: "random-forest", label: "Random Forest", available: false }
+              { id: "random-forest", label: "Random Forest", available: true }
             ]
           }
         ]
@@ -125,15 +125,15 @@ const MODEL_STRUCTURE = [
             id: "clustering",
             label: "Clustering",
             models: [
-              { id: "kmeans", label: "K-Means", available: false },
-              { id: "dbscan", label: "DBSCAN", available: false }
+              { id: "kmeans", label: "K-Means", available: true },
+              { id: "dbscan", label: "DBSCAN", available: true }
             ]
           },
           {
             id: "dimensionality",
             label: "Dimensionality Reduction",
             models: [
-              { id: "pca", label: "PCA", available: false }
+              { id: "pca", label: "PCA", available: true }
             ]
           }
         ]
@@ -179,8 +179,8 @@ const MODEL_STRUCTURE = [
             id: "sequence",
             label: "Sequential Architectures",
             models: [
-              { id: "rnn", label: "RNN", available: false },
-              { id: "lstm", label: "LSTM", available: false }
+              { id: "rnn", label: "RNN", available: true },
+              { id: "lstm", label: "LSTM", available: true }
             ]
           }
         ]
@@ -193,7 +193,7 @@ const MODEL_STRUCTURE = [
             id: "transformers",
             label: "Attention-Based Models",
             models: [
-              { id: "transformer", label: "Transformer", available: false }
+              { id: "transformer", label: "Transformer", available: true }
             ]
           }
         ]
@@ -207,19 +207,19 @@ const MODEL_STRUCTURE = [
    CURRENT PLAYGROUND + LEARNING SECTIONS
 ===================================================== */
 
-const PLAYGROUND_SECTIONS = {
-  neural: document.getElementById("neural-playground"),
-  cnn: document.getElementById("cnn-playground"),
-  tree: document.getElementById("tree-playground"),
-  knn: document.getElementById("knn-playground")
-};
+const ALL_MODEL_IDS = MODEL_STRUCTURE.flatMap(category =>
+  category.sections.flatMap(section =>
+    section.groups.flatMap(group => group.models.map(model => model.id))
+  )
+);
 
-const LEARNING_SECTIONS = {
-  neural: document.getElementById("neural-learn"),
-  cnn: document.getElementById("cnn-learn"),
-  tree: document.getElementById("tree-learn"),
-  knn: document.getElementById("knn-learn")
-};
+const PLAYGROUND_SECTIONS = Object.fromEntries(
+  ALL_MODEL_IDS.map(id => [id, document.getElementById(`${id}-playground`)])
+);
+
+const LEARNING_SECTIONS = Object.fromEntries(
+  ALL_MODEL_IDS.map(id => [id, document.getElementById(`${id}-learn`)])
+);
 
 let currentModel = null;
 let mobileToggleButton = null;
@@ -291,40 +291,13 @@ function createModelWelcome() {
   const groups = document.createElement("div");
   groups.className = "model-welcome-groups";
 
-  const welcomeGroups = [
-    {
-      icon: "DL",
-      title: "Deep Learning",
-      models: [
-        {
-          id: "neural",
-          label: "Neural Network / MLP",
-          description: "Explore layers, neurons, weights, biases and forward propagation."
-        },
-        {
-          id: "cnn",
-          label: "Convolutional Neural Network",
-          description: "Explore convolution, filters, feature maps, pooling and flattening."
-        }
-      ]
-    },
-    {
-      icon: "ML",
-      title: "Machine Learning",
-      models: [
-        {
-          id: "tree",
-          label: "Decision Tree",
-          description: "Explore features, thresholds, splits, impurity and routing decisions."
-        },
-        {
-          id: "knn",
-          label: "K-Nearest Neighbors",
-          description: "Explore distances, nearest neighbors, K values and majority voting."
-        }
-      ]
-    }
-  ];
+  const welcomeGroups = MODEL_STRUCTURE.map(category => ({
+    icon: category.icon,
+    title: category.label,
+    models: category.sections.flatMap(section =>
+      section.groups.flatMap(group => group.models)
+    ).filter(model => model.available && PLAYGROUND_SECTIONS[model.id])
+  }));
 
   welcomeGroups.forEach(groupData => {
     const group = document.createElement("div");
@@ -347,7 +320,7 @@ function createModelWelcome() {
       const text = document.createElement("span");
       text.innerHTML = `
         <strong>${modelData.label}</strong>
-        <small>${modelData.description}</small>
+        <small>${modelData.description || "Open the interactive educational simulation."}</small>
       `;
 
       const arrow = document.createElement("span");
@@ -370,7 +343,7 @@ function createModelWelcome() {
 
   const note = document.createElement("p");
   note.className = "model-welcome-note";
-  note.textContent = "Additional AI and Machine Learning models will appear in the model browser as they become available.";
+  note.textContent = "You can also use the model browser to search or switch between any model.";
 
   welcome.append(head, groups, note);
   return welcome;
