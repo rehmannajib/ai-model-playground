@@ -7,27 +7,10 @@
 <meta name="description" content="Interactive educational AI and Machine Learning Playground">
 <title>AI Model Playground</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page-split.css">
 </head>
 
-<body>
-
-<!-- =====================================================
-     TOP STRIP
-===================================================== -->
-
-<div class="top-strip">
-<div class="wrap top-strip-inner">
-
-<span>
-AI Playground by <strong>Najib Ur Rehman</strong>
-</span>
-
-<a href="https://najibrehman.weebly.com/">
-← Back to My Website
-</a>
-
-</div>
-</div>
+<body class="playground-page">
 
 
 <!-- =====================================================
@@ -38,15 +21,15 @@ AI Playground by <strong>Najib Ur Rehman</strong>
 
 <div class="wrap header">
 
-<a href="#overview" class="brand">
+<a href="index.html" class="brand" aria-label="AI Model Playground home">
 <span class="brand-icon">AI</span>
 AI Model Playground
 </a>
 
-<nav>
-<a href="#overview">Home</a>
-<a href="#playground">Playground</a>
-<a id="learn-nav-link" href="#neural-learn">Learn</a>
+<nav class="main-nav" aria-label="Main navigation">
+<a href="index.html">Home</a>
+<a href="playground.html" class="active" aria-current="page">Playground</a>
+<a href="about.html">About Author</a>
 </nav>
 
 </div>
@@ -55,324 +38,6 @@ AI Model Playground
 
 
 <main>
-
-
-<!-- =====================================================
-     HOME / OVERVIEW
-===================================================== -->
-
-<section class="hero" id="overview">
-
-<div class="wrap hero-inner">
-
-<span class="label">
-Interactive AI Education
-</span>
-
-<h1>
-See how AI models work.
-</h1>
-
-<p>
-An interactive learning environment for exploring Machine Learning,
-Deep Learning and modern AI models through editable examples,
-visualizations, calculations and step-by-step explanations.
-</p>
-
-<div class="hero-actions">
-
-<a href="#playground" class="btn primary">
-Open Playground
-</a>
-
-<a href="#how-it-works" class="btn">
-How It Works
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     ABOUT THE PLAYGROUND
-===================================================== -->
-
-<section class="section overview-section">
-
-<div class="wrap">
-
-<div class="heading">
-
-<span class="label">
-About the Playground
-</span>
-
-<h2>
-Learn AI by interacting with it
-</h2>
-
-<p>
-The AI Model Playground is designed to make important AI and
-Machine Learning concepts easier to understand. Instead of only
-reading formulas or looking at static diagrams, learners can change
-inputs, parameters and model settings and immediately see how the
-results change.
-</p>
-
-</div>
-
-
-<div class="overview-grid">
-
-<article class="overview-card">
-
-<div class="overview-icon">
-01
-</div>
-
-<h3>
-Machine Learning
-</h3>
-
-<p>
-Explore supervised and unsupervised learning using regression,
-classification, clustering, dimensionality reduction and ensemble
-methods.
-</p>
-
-</article>
-
-
-<article class="overview-card">
-
-<div class="overview-icon">
-02
-</div>
-
-<h3>
-Deep Learning
-</h3>
-
-<p>
-Understand neural networks, convolution, recurrent architectures,
-memory mechanisms and attention-based models.
-</p>
-
-</article>
-
-
-<article class="overview-card">
-
-<div class="overview-icon">
-03
-</div>
-
-<h3>
-Interactive Learning
-</h3>
-
-<p>
-Change values directly and observe how model decisions,
-predictions, clusters, probabilities and internal calculations react.
-</p>
-
-</article>
-
-
-<article class="overview-card">
-
-<div class="overview-icon">
-04
-</div>
-
-<h3>
-Mathematics Explained
-</h3>
-
-<p>
-Move from a beginner-friendly explanation to the mathematical
-formula and then see the same calculation performed using real
-values.
-</p>
-
-</article>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     HOW IT WORKS
-===================================================== -->
-
-<section class="section how-section" id="how-it-works">
-
-<div class="wrap">
-
-<div class="heading">
-
-<span class="label">
-How It Works
-</span>
-
-<h2>
-Choose, experiment, visualize and understand
-</h2>
-
-<p>
-Each playground follows the same learning structure so learners can
-move between different models without having to learn a new interface.
-</p>
-
-</div>
-
-
-<div class="how-grid">
-
-<article>
-<span>1</span>
-<h3>Choose a model</h3>
-<p>
-Browse the hierarchical menu and select a Machine Learning or
-Deep Learning model.
-</p>
-</article>
-
-<article>
-<span>2</span>
-<h3>Change the inputs</h3>
-<p>
-Edit data, model parameters, thresholds, weights, features or
-architecture settings.
-</p>
-</article>
-
-<article>
-<span>3</span>
-<h3>Run the model</h3>
-<p>
-The browser calculates the simplified educational model immediately.
-</p>
-</article>
-
-<article>
-<span>4</span>
-<h3>Watch the process</h3>
-<p>
-Visualizations show how samples, neurons, clusters, boundaries,
-attention or predictions are produced.
-</p>
-</article>
-
-<article>
-<span>5</span>
-<h3>Study the mathematics</h3>
-<p>
-See the formulas behind the algorithm and the values used in each
-calculation.
-</p>
-</article>
-
-<article>
-<span>6</span>
-<h3>Experiment again</h3>
-<p>
-Change one parameter at a time and learn how it influences model
-behavior.
-</p>
-</article>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     WHAT CAN BE ACHIEVED
-===================================================== -->
-
-<section class="section outcomes-section">
-
-<div class="wrap">
-
-<div class="heading">
-
-<span class="label">
-Learning Outcomes
-</span>
-
-<h2>
-What can you achieve with this playground?
-</h2>
-
-<p>
-The platform is intended to build intuition before learners move to
-full programming frameworks, large datasets or production AI systems.
-</p>
-
-</div>
-
-
-<div class="outcome-list">
-
-<div>
-<strong>Understand model logic</strong>
-<span>
-See what happens between an input and a prediction.
-</span>
-</div>
-
-<div>
-<strong>Compare algorithms</strong>
-<span>
-Understand why different algorithms solve different types of problems.
-</span>
-</div>
-
-<div>
-<strong>Build mathematical intuition</strong>
-<span>
-Connect equations to actual model calculations.
-</span>
-</div>
-
-<div>
-<strong>Understand model parameters</strong>
-<span>
-See how K, thresholds, weights, learning rates, filters and other
-settings influence results.
-</span>
-</div>
-
-<div>
-<strong>Explore AI visually</strong>
-<span>
-Learn from diagrams, plots, feature maps, trees, clusters and
-attention matrices.
-</span>
-</div>
-
-<div>
-<strong>Prepare for real ML development</strong>
-<span>
-Develop conceptual knowledge before using Python, TensorFlow,
-PyTorch or Scikit-learn.
-</span>
-</div>
-
-</div>
-
-</div>
-
-</section>
 
 
 <!-- =====================================================
@@ -6646,7 +6311,7 @@ AI Model Playground
 </strong>
 
 <span>
-Interactive educational simulations
+Developed by Najib Ur Rehman · Educational simulation only.
 </span>
 
 </div>
@@ -6685,7 +6350,16 @@ hidden>
 <script src="models/lstm.js"></script>
 <script src="models/transformer.js"></script>
 
-<script src="script.js"></script>
+<!-- =====================================================
+     SHARED PLAYGROUND JAVASCRIPT
+     Kept separate so each responsibility is easy to find.
+===================================================== -->
+
+<script src="scripts/model-config.js"></script>
+<script src="scripts/header.js"></script>
+<script src="scripts/learning-tabs.js"></script>
+<script src="scripts/model-browser.js"></script>
+<script src="scripts/app.js"></script>
 
 </body>
 </html>
