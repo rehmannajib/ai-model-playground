@@ -66,6 +66,10 @@ AIPlayground.modelBrowser = (() => {
     });
   }
 
+  function updateLayoutMode(hasSelectedModel) {
+    document.body.classList.toggle("model-selected-view", hasSelectedModel);
+  }
+
   function createModelWelcome() {
     const welcome = document.createElement("section");
     welcome.className = "model-welcome";
@@ -265,6 +269,7 @@ AIPlayground.modelBrowser = (() => {
     if (!meta || !meta.model.available || !playgroundSections[modelId]) return;
 
     currentModel = modelId;
+    updateLayoutMode(true);
     switchModel(modelId);
     activateNavigationPath(modelId);
     updateBreadcrumb(meta.main, meta.section, meta.group, meta.model.label);
@@ -274,6 +279,7 @@ AIPlayground.modelBrowser = (() => {
 
   function showModelChooser(scroll = true) {
     currentModel = null;
+    updateLayoutMode(false);
     hideAllModels();
 
     if (modelWelcome) modelWelcome.hidden = false;
@@ -374,7 +380,7 @@ AIPlayground.modelBrowser = (() => {
     if (!mobileToggleButton) return;
 
     const current = mobileToggleButton.querySelector(".mobile-current-model");
-    if (current) current.textContent = modelLabel || "No model selected";
+    if (current) current.textContent = modelLabel || "Choose a model";
   }
 
   function filterNavigation(tree, query) {
@@ -427,12 +433,13 @@ AIPlayground.modelBrowser = (() => {
     mobileToggleButton.className = "model-mobile-toggle";
     mobileToggleButton.type = "button";
     mobileToggleButton.setAttribute("aria-expanded", "false");
+    mobileToggleButton.setAttribute("aria-controls", "model-sidebar");
     mobileToggleButton.innerHTML = `
-      <span>
-        <strong>Choose / Change Model</strong>
-        <span class="mobile-current-model">No model selected</span>
+      <span class="model-toggle-copy">
+        <strong>Models</strong>
+        <span class="mobile-current-model">Choose a model</span>
       </span>
-      <span aria-hidden="true">☰</span>
+      <span class="model-toggle-icon" aria-hidden="true">☰</span>
     `;
 
     const sidebar = document.createElement("aside");
@@ -445,6 +452,7 @@ AIPlayground.modelBrowser = (() => {
       <small>AI Playground</small>
       <h3>Explore Models</h3>
       <p>Choose a learning category and model.</p>
+      <button class="model-sidebar-close" type="button" aria-label="Close model browser">×</button>
     `;
 
     const searchWrap = document.createElement("div");
@@ -466,6 +474,10 @@ AIPlayground.modelBrowser = (() => {
     sidebarFooter.textContent = "Interactive educational simulations";
 
     sidebar.append(sidebarHeader, searchWrap, tree, sidebarFooter);
+
+    sidebarHeader.querySelector(".model-sidebar-close")?.addEventListener("click", () => {
+      setMobileMenu(false);
+    });
 
     const content = document.createElement("div");
     content.className = "model-content";

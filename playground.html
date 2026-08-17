@@ -12,7 +12,6 @@
 
 <body class="playground-page">
 
-
 <!-- =====================================================
      HEADER
 ===================================================== -->
@@ -1215,50 +1214,57 @@ How was the split evaluated?
 
 <div class="heading">
 
-<span class="label">
-K-Nearest Neighbors Playground
-</span>
+<span class="label">K-Nearest Neighbors Playground</span>
 
-<h2>
-See how neighbors make a prediction
-</h2>
+<h2>Classify something familiar by finding its nearest neighbors</h2>
 
 <p>
-Choose the number of features and K, edit the training
-samples, create an unknown sample, and watch nearby
-examples vote for its class.
+Choose an example, create an unknown sample, then watch KNN measure
+similarity, select the nearest examples and vote for the final class.
+The values stay numerical, but every feature now has a real-world meaning.
 </p>
 
 </div>
 
 
-<div class="knn-toolbar card">
+<section class="card knn-example-card">
 
+<div class="knn-example-heading">
 <div>
-<small>KNN PIPELINE</small>
-<strong>
-Training Data → Distance → Nearest Neighbors → Vote → Prediction
-</strong>
+<span class="label">CHOOSE AN EXAMPLE</span>
+<h3>What would you like KNN to classify?</h3>
+<p>Switching the example changes the feature names, training data and class labels while the KNN algorithm stays the same.</p>
+</div>
 </div>
 
-<div class="actions">
+<div class="knn-example-options" role="group" aria-label="KNN example dataset">
 
-<button id="knn-reset" class="btn" type="button">
-Reset
+<button class="knn-example-option is-active" type="button" data-knn-dataset="human">
+<span class="knn-example-icon">👤👽</span>
+<strong>Human vs Alien</strong>
+<small>Height, weight, head size and eye size</small>
 </button>
 
-<button id="knn-run" class="btn primary" type="button">
-Predict Class
+<button class="knn-example-option" type="button" data-knn-dataset="fruit">
+<span class="knn-example-icon">🍎🍊</span>
+<strong>Fruits</strong>
+<small>Weight, sweetness, firmness and roundness</small>
+</button>
+
+<button class="knn-example-option" type="button" data-knn-dataset="shape">
+<span class="knn-example-icon">●■</span>
+<strong>Shapes</strong>
+<small>Size, roundness, width and height</small>
 </button>
 
 </div>
 
+<div class="knn-example-description">
+<strong id="knn-dataset-title">Human vs Alien</strong>
+<span id="knn-dataset-description">Use physical measurements to decide whether an unknown sample is more similar to the Humans or the Aliens in the training data.</span>
 </div>
 
-
-<div id="knn-live-step" class="live-step">
-Ready. Configure K and the unknown sample.
-</div>
+</section>
 
 
 <section class="card knn-controls">
@@ -1266,20 +1272,16 @@ Ready. Configure K and the unknown sample.
 <div class="knn-settings">
 
 <label>
-Number of Features
-
+Features Used by KNN
 <select id="knn-feature-count">
 <option value="2" selected>2 Features</option>
 <option value="3">3 Features</option>
 <option value="4">4 Features</option>
 </select>
-
 </label>
-
 
 <label>
 Number of Neighbors (K)
-
 <select id="knn-k">
 <option value="1">1</option>
 <option value="2">2</option>
@@ -1292,43 +1294,38 @@ Number of Neighbors (K)
 <option value="9">9</option>
 <option value="10">10</option>
 </select>
-
 </label>
-
 
 <label>
 Distance Metric
-
 <select id="knn-distance">
 <option value="euclidean" selected>Euclidean Distance</option>
 <option value="manhattan">Manhattan Distance</option>
 </select>
-
 </label>
 
 </div>
 
+<p class="knn-normalization-note">
+<strong>Fair comparison:</strong> KNN automatically scales the active features to 0–1 before measuring distance, so a feature such as height does not dominate another feature only because it uses larger numbers.
+</p>
 
 <div class="knn-control-actions">
 
-<button
-id="knn-add-sample"
-class="btn primary"
-type="button">
+<button id="knn-randomize" class="btn primary" type="button">
+↻ Generate New Data
+</button>
+
+<button id="knn-add-sample" class="btn" type="button">
 + Add Training Sample
 </button>
 
-<button
-id="knn-remove-sample"
-class="btn"
-type="button">
+<button id="knn-remove-sample" class="btn" type="button">
 − Remove Last Sample
 </button>
 
-<span
-id="knn-sample-count"
-class="knn-sample-count">
-8 / 20 training samples
+<span id="knn-sample-count" class="knn-sample-count">
+10 / 20 training samples
 </span>
 
 </div>
@@ -1338,18 +1335,10 @@ class="knn-sample-count">
 
 <section class="card knn-feature-card">
 
-<span class="label">
-Active Features
-</span>
+<span class="label">Active Features</span>
+<h3>Features currently used to calculate distance</h3>
 
-<h3>
-Features used to calculate distance
-</h3>
-
-<div
-id="knn-active-features"
-class="knn-feature-chips">
-</div>
+<div id="knn-active-features" class="knn-feature-chips"></div>
 
 </section>
 
@@ -1358,30 +1347,11 @@ class="knn-feature-chips">
 
 <div class="knn-summary-grid">
 
-<div>
-<span>Training Samples</span>
-<strong id="knn-total-samples">8</strong>
-</div>
-
-<div>
-<span>Class A</span>
-<strong id="knn-class-a-count">4</strong>
-</div>
-
-<div>
-<span>Class B</span>
-<strong id="knn-class-b-count">4</strong>
-</div>
-
-<div>
-<span>K</span>
-<strong id="knn-current-k">3</strong>
-</div>
-
-<div>
-<span>Active Features</span>
-<strong id="knn-active-feature-count">2</strong>
-</div>
+<div><span>Training Samples</span><strong id="knn-total-samples">10</strong></div>
+<div><span id="knn-class-a-label">Humans</span><strong id="knn-class-a-count">5</strong></div>
+<div><span id="knn-class-b-label">Aliens</span><strong id="knn-class-b-count">5</strong></div>
+<div><span>K</span><strong id="knn-current-k">3</strong></div>
+<div><span>Active Features</span><strong id="knn-active-feature-count">2</strong></div>
 
 </div>
 
@@ -1390,47 +1360,39 @@ class="knn-feature-chips">
 
 <section class="card knn-query-card">
 
-<span class="label">
-Unknown Sample
-</span>
-
-<h3>
-What should KNN classify?
-</h3>
-
-<div
-id="knn-query-inputs"
-class="knn-query-inputs">
+<div class="knn-query-heading">
+<div>
+<span class="label">UNKNOWN SAMPLE</span>
+<h3 id="knn-query-title">Who is this — Human or Alien?</h3>
+<p class="muted" id="knn-query-help">
+Adjust the measurements below. You can also click the chart to change the two features currently shown on its axes.
+</p>
 </div>
+<div class="knn-query-badge" id="knn-query-badge" aria-hidden="true">❓</div>
+</div>
+
+<div id="knn-query-inputs" class="knn-query-inputs"></div>
 
 </section>
 
 
 <div class="knn-workspace">
 
-
 <section class="card knn-panel knn-dataset-panel">
 
 <div class="knn-panel-heading">
-
 <span class="step">1</span>
-
 <div>
 <h3>Training Dataset</h3>
-<p>Edit the labelled training samples.</p>
+<p>Edit the labelled examples KNN will compare against.</p>
 </div>
-
 </div>
 
 <div class="knn-table-wrap">
-
 <table class="knn-table">
-
 <thead id="knn-data-head"></thead>
 <tbody id="knn-data-body"></tbody>
-
 </table>
-
 </div>
 
 </section>
@@ -1438,28 +1400,115 @@ class="knn-query-inputs">
 
 <section class="card knn-panel">
 
-<div class="knn-panel-heading">
-
+<div class="knn-panel-heading knn-visual-heading">
 <span class="step">2</span>
-
 <div>
-<h3>2D Neighbor Visualization</h3>
-<p>The first two active features appear on the chart.</p>
+<h3>Live Neighbor Visualization</h3>
+<p>KNN can use up to four features, while this chart shows two of them at a time.</p>
+</div>
 </div>
 
+<div class="knn-axis-controls">
+<label>
+X Axis
+<select id="knn-x-axis"></select>
+</label>
+<label>
+Y Axis
+<select id="knn-y-axis"></select>
+</label>
 </div>
 
-<div id="knn-plot" class="knn-plot">
+<div id="knn-plot" class="knn-plot"></div>
 
-<p class="muted">
-Run a prediction to visualize neighbors.
-</p>
-
+<div class="knn-legend">
+<span><i class="knn-dot class-a"></i><span id="knn-legend-a">👤 Human</span></span>
+<span><i class="knn-dot class-b"></i><span id="knn-legend-b">👽 Alien</span></span>
+<span><i class="knn-dot query"></i>Unknown sample</span>
+<span><i class="knn-ring"></i>Selected neighbor</span>
 </div>
+
+<p class="knn-chart-hint">Tip: click anywhere inside the plot area to reposition the unknown sample on the two displayed features.</p>
 
 </section>
 
 </div>
+
+
+<div class="knn-toolbar card">
+
+<div>
+<small>KNN PIPELINE</small>
+<strong>
+Unknown Sample → Measure Distances → Rank → Select K → Vote → Prediction
+</strong>
+</div>
+
+<div class="actions knn-main-actions">
+
+<button id="knn-run" class="btn primary" type="button">
+Instant Predict
+</button>
+
+<button id="knn-reset" class="btn" type="button">
+Reset Example
+</button>
+
+</div>
+
+</div>
+
+
+<section class="card knn-animation-card">
+
+<div class="knn-animation-heading">
+
+<div>
+<span class="label">STEP-BY-STEP MODE</span>
+<h3>Watch KNN think</h3>
+<p>
+Play automatically, pause at any point, or move through the algorithm one step at a time.
+</p>
+</div>
+
+<div class="knn-animation-status">
+<span id="knn-animation-stage">Ready</span>
+<strong id="knn-animation-counter">0 / 0</strong>
+</div>
+
+</div>
+
+<div class="knn-animation-controls">
+
+<button id="knn-play" class="btn primary" type="button">
+▶ Play Animation
+</button>
+
+<button id="knn-pause" class="btn" type="button" disabled>
+Ⅱ Pause
+</button>
+
+<button id="knn-next" class="btn" type="button">
+Next Step →
+</button>
+
+<label class="knn-speed-control">
+<span>Animation Speed</span>
+<input id="knn-speed" type="range" min="1" max="5" step="1" value="3">
+<strong id="knn-speed-label">Normal</strong>
+</label>
+
+</div>
+
+<div class="knn-progress-track" aria-hidden="true">
+<div id="knn-progress" class="knn-progress-bar"></div>
+</div>
+
+<div id="knn-live-step" class="live-step knn-live-step">
+Set up the unknown sample, then use Instant Predict or Play Animation to watch KNN classify it.
+</div>
+
+</section>
 
 
 <section class="card knn-prediction-card">
@@ -1476,20 +1525,9 @@ Run a prediction to visualize neighbors.
 <strong id="knn-prediction">—</strong>
 </div>
 
-<div>
-<span>Class A Votes</span>
-<strong id="knn-a-votes">—</strong>
-</div>
-
-<div>
-<span>Class B Votes</span>
-<strong id="knn-b-votes">—</strong>
-</div>
-
-<div>
-<span>Nearest Distance</span>
-<strong id="knn-nearest-distance">—</strong>
-</div>
+<div><span id="knn-a-vote-label">Human Votes</span><strong id="knn-a-votes">—</strong></div>
+<div><span id="knn-b-vote-label">Alien Votes</span><strong id="knn-b-votes">—</strong></div>
+<div><span>Nearest Distance</span><strong id="knn-nearest-distance">—</strong></div>
 
 </div>
 
@@ -1499,34 +1537,26 @@ Run a prediction to visualize neighbors.
 <section class="card knn-neighbor-panel">
 
 <div class="knn-panel-heading">
-
 <span class="step">3</span>
-
 <div>
 <h3>Distance Ranking</h3>
-<p>Samples are ranked from nearest to farthest.</p>
+<p>During animation, distances appear one by one before the samples are ranked.</p>
 </div>
-
 </div>
 
 <div class="knn-table-wrap">
-
 <table class="knn-table">
-
 <thead>
 <tr>
 <th>Rank</th>
 <th>ID</th>
 <th>Class</th>
-<th>Distance</th>
+<th>Scaled Distance</th>
 <th>Neighbor?</th>
 </tr>
 </thead>
-
 <tbody id="knn-distance-body"></tbody>
-
 </table>
-
 </div>
 
 </section>
@@ -1534,20 +1564,12 @@ Run a prediction to visualize neighbors.
 
 <section class="card knn-calculation-panel">
 
-<span class="label">
-Calculation
-</span>
-
-<h3>
-How were the distances calculated?
-</h3>
+<span class="label">Live Calculation</span>
+<h3>How is KNN calculating similarity?</h3>
+<p class="muted">The raw measurements are shown for understanding; the distance itself uses their 0–1 scaled values.</p>
 
 <div id="knn-calculation-output">
-
-<p>
-Run KNN to see the distance calculations.
-</p>
-
+<p>Run KNN or start the animation to see the distance calculations.</p>
 </div>
 
 </section>
@@ -4097,17 +4119,13 @@ hidden>
 
 <div class="heading">
 
-<span class="label">
-Learn K-Nearest Neighbors
-</span>
+<span class="label">Learn K-Nearest Neighbors</span>
 
-<h2>
-How does KNN classify an unknown sample?
-</h2>
+<h2>How does KNN classify an unknown sample?</h2>
 
 <p>
-Understand distance calculation, neighbor selection
-and majority voting.
+KNN learns by comparison. It measures how close the unknown sample is
+to labelled examples, selects the K nearest ones, and lets them vote.
 </p>
 
 </div>
@@ -4115,17 +4133,9 @@ and majority voting.
 
 <div class="tabs model-learn-tabs">
 
-<button class="tab active" data-learn-tab="beginner">
-Beginner
-</button>
-
-<button class="tab" data-learn-tab="math">
-Mathematics
-</button>
-
-<button class="tab" data-learn-tab="process">
-KNN Process
-</button>
+<button class="tab active" data-learn-tab="beginner">Beginner</button>
+<button class="tab" data-learn-tab="math">Mathematics</button>
+<button class="tab" data-learn-tab="process">KNN Process</button>
 
 </div>
 
@@ -4136,40 +4146,48 @@ KNN Process
 
 <article>
 <b>1</b>
-<h3>Store examples</h3>
-<p>KNN keeps labelled training samples.</p>
+<h3>Store labelled examples</h3>
+<p>KNN keeps the training samples instead of building a complex fitted model.</p>
 </article>
 
 <article>
 <b>2</b>
 <h3>Receive a query</h3>
-<p>A new sample needs a prediction.</p>
+<p>A new, unknown sample needs to be assigned to a class.</p>
 </article>
 
 <article>
 <b>3</b>
 <h3>Measure distance</h3>
-<p>The query is compared with every training sample.</p>
+<p>The query is compared with every training sample using the selected distance metric.</p>
 </article>
 
 <article>
 <b>4</b>
-<h3>Rank samples</h3>
-<p>Samples are sorted from nearest to farthest.</p>
+<h3>Rank the samples</h3>
+<p>Samples are ordered from the smallest distance to the largest.</p>
 </article>
 
 <article>
 <b>5</b>
-<h3>Select K</h3>
-<p>The K closest samples become the neighbors.</p>
+<h3>Select K neighbors</h3>
+<p>Only the K closest samples are used for the final decision.</p>
 </article>
 
 <article>
 <b>6</b>
 <h3>Vote</h3>
-<p>The most frequent neighboring class is predicted.</p>
+<p>The class receiving the most votes becomes the prediction.</p>
 </article>
 
+</div>
+
+<div class="knn-try-card">
+<strong>Try this experiment</strong>
+<p>
+Try Human vs Alien, Fruits and Shapes with the same K. Then keep one example and compare K = 1, K = 3 and K = 7. Watch how the selected neighbors and final vote change.
+</p>
+<a href="#knn-playground" class="knn-jump-link">Go to the KNN experiment ↑</a>
 </div>
 
 </div>
@@ -4181,24 +4199,59 @@ KNN Process
 
 <article>
 <h3>Euclidean Distance</h3>
-<p class="equation">
-d = √Σ(xᵢ−qᵢ)²
-</p>
+<p class="equation">d = √Σ(xᵢ−qᵢ)²</p>
+<p>Straight-line distance between the unknown sample q and a training sample x.</p>
 </article>
 
 <article>
 <h3>Manhattan Distance</h3>
-<p class="equation">
-d = Σ|xᵢ−qᵢ|
-</p>
+<p class="equation">d = Σ|xᵢ−qᵢ|</p>
+<p>Adds the absolute difference along each active feature.</p>
 </article>
 
 <article>
-<h3>Vote</h3>
-<p class="equation">
-ŷ = mode(y₁,...,yₖ)
-</p>
+<h3>Feature Scaling</h3>
+<p class="equation">x′ = (x − min) / (max − min)</p>
+<p>The playground scales active features to 0–1 so measurements with different units can be compared fairly.</p>
 </article>
+
+<article>
+<h3>Majority Vote</h3>
+<p class="equation">ŷ = mode(y₁,...,yₖ)</p>
+<p>The most common class among the K selected neighbors becomes the prediction.</p>
+</article>
+
+</div>
+
+<div class="knn-live-math-card">
+
+<span class="label">YOUR CURRENT EXPERIMENT</span>
+<h3>Live mathematics</h3>
+
+<div class="knn-live-math-grid">
+
+<div>
+<span>Nearest-distance calculation</span>
+<strong id="knn-live-math-distance">
+Run KNN to substitute your current values into the distance equation.
+</strong>
+</div>
+
+<div>
+<span>Selected-neighbor vote</span>
+<strong id="knn-live-math-vote">
+The K nearest class labels will appear here.
+</strong>
+</div>
+
+<div>
+<span>Prediction</span>
+<strong id="knn-live-math-prediction">
+The majority vote will determine the predicted class.
+</strong>
+</div>
+
+</div>
 
 </div>
 
@@ -4207,38 +4260,49 @@ d = Σ|xᵢ−qᵢ|
 
 <div class="learn-panel" data-learn-panel="process" hidden>
 
-<div class="process-grid">
+<p class="knn-process-note">
+When you run the step-by-step animation above, these same stages are highlighted as KNN moves through them.
+</p>
 
-<article>
-<strong>Unknown Sample</strong>
-<span>Needs classification</span>
+<div class="process-grid knn-process-grid">
+
+<article data-knn-process-step="query">
+<strong>1. Unknown Sample</strong>
+<span>Receive the query</span>
 </article>
 
 <span>→</span>
 
-<article>
-<strong>Distances</strong>
-<span>Compare with all samples</span>
+<article data-knn-process-step="distance">
+<strong>2. Distances</strong>
+<span>Compare with every sample</span>
 </article>
 
 <span>→</span>
 
-<article>
-<strong>K Closest</strong>
-<span>Select neighbors</span>
+<article data-knn-process-step="rank">
+<strong>3. Rank</strong>
+<span>Nearest to farthest</span>
 </article>
 
 <span>→</span>
 
-<article>
-<strong>Vote</strong>
-<span>Count the classes</span>
+<article data-knn-process-step="select">
+<strong>4. Select K</strong>
+<span>Keep closest neighbors</span>
 </article>
 
 <span>→</span>
 
-<article>
-<strong>Prediction</strong>
+<article data-knn-process-step="vote">
+<strong>5. Vote</strong>
+<span>Count neighboring classes</span>
+</article>
+
+<span>→</span>
+
+<article data-knn-process-step="prediction">
+<strong>6. Prediction</strong>
 <span>Return majority class</span>
 </article>
 
