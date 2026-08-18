@@ -666,3 +666,377 @@ body.model-menu-open {
     display: none !important;
   }
 }
+
+/* =========================================================
+   FLUID HOME-PAGE TYPOGRAPHY / LARGE-SCREEN PROPORTIONS
+   =========================================================
+   page-split.css loads after style.css, so these rules keep
+   the Home page hierarchy proportional on laptop, desktop,
+   high-DPI and ultrawide screens without making mobile huge.
+   ========================================================= */
+
+.home-page .brand{
+  font-size:clamp(16px,0.42vw + 10px,21px);
+}
+
+.home-page .main-nav a,
+.home-page .header nav a{
+  font-size:clamp(14.5px,0.34vw + 9.5px,18px);
+}
+
+.home-hero{
+  padding-block:clamp(70px,5.5vw,118px) clamp(62px,4.8vw,104px);
+}
+
+.home-hero-inner{
+  max-width:clamp(880px,56vw,1160px);
+}
+
+.home-hero h1{
+  margin:clamp(10px,0.8vw,16px) 0 clamp(18px,1.25vw,28px);
+  font-size:clamp(46px,4.1vw,84px);
+  line-height:1.04;
+}
+
+.home-hero p{
+  max-width:clamp(740px,48vw,960px);
+  font-size:clamp(17px,0.60vw + 9px,24px);
+  line-height:1.72;
+}
+
+.home-actions{
+  gap:clamp(10px,0.7vw,15px);
+  margin-top:clamp(27px,1.8vw,38px);
+}
+
+.home-actions .btn{
+  min-height:clamp(42px,2.6vw,52px);
+  padding-inline:clamp(16px,1.1vw,24px);
+  font-size:clamp(14.5px,0.36vw + 10px,18px);
+}
+
+.home-section{
+  padding-block:clamp(58px,4.4vw,92px);
+}
+
+.home-narrow{
+  max-width:clamp(820px,54vw,1080px);
+}
+
+.home-narrow h2,
+.home-model-overview h2,
+.home-cta h2{
+  font-size:clamp(30px,2.35vw,50px);
+  line-height:1.15;
+}
+
+.home-narrow>p,
+.home-model-overview p{
+  font-size:clamp(16px,0.46vw + 10px,21px);
+  line-height:1.78;
+}
+
+.home-feature-grid,
+.home-process-grid{
+  gap:clamp(16px,1.15vw,24px);
+  margin-top:clamp(30px,2vw,42px);
+}
+
+.home-feature-card,
+.home-process-grid article{
+  padding:clamp(22px,1.45vw,32px);
+  border-radius:clamp(11px,0.7vw,15px);
+}
+
+.home-feature-icon,
+.home-process-grid strong{
+  min-width:clamp(36px,2.3vw,46px);
+  height:clamp(36px,2.3vw,46px);
+  font-size:clamp(14px,0.30vw + 9px,17px);
+}
+
+.home-feature-card h3,
+.home-process-grid h3{
+  margin-top:clamp(12px,0.8vw,17px);
+  font-size:clamp(18px,0.52vw + 11px,24px);
+}
+
+.home-feature-card p,
+.home-process-grid p{
+  font-size:clamp(14.5px,0.38vw + 9px,19px);
+  line-height:1.68;
+}
+
+.home-category-list span{
+  font-size:clamp(14.5px,0.36vw + 9.5px,18px);
+}
+
+/* The original .wrap is capped at 1240px. Allow the site to
+   breathe on wide/high-resolution screens while keeping the
+   same visual ratios. */
+@media(min-width:1400px){
+  .home-page .wrap{
+    width:min(84vw,1580px);
+  }
+
+  .home-page .home-hero-inner{
+    width:min(62vw,1160px);
+  }
+
+  .home-feature-grid{
+    width:min(84vw,1480px);
+  }
+
+  .home-process-grid{
+    width:min(84vw,1480px);
+  }
+}
+
+@media(min-width:1900px){
+  .home-page .wrap{
+    width:min(82vw,1760px);
+  }
+
+  .home-hero-inner{
+    max-width:1240px;
+  }
+}
+
+@media(max-width:900px){
+  .home-hero h1{
+    font-size:clamp(40px,8vw,58px);
+  }
+
+  .home-hero p{
+    font-size:clamp(16px,2.2vw,19px);
+  }
+
+  .home-narrow h2,
+  .home-model-overview h2,
+  .home-cta h2{
+    font-size:clamp(28px,5vw,40px);
+  }
+}
+
+@media(max-width:650px){
+  .home-page .brand{
+    font-size:16px;
+  }
+
+  .home-page .main-nav a,
+  .home-page .header nav a{
+    font-size:14px!important;
+  }
+
+  .home-hero h1{
+    font-size:clamp(38px,11vw,52px);
+  }
+
+  .home-feature-card p,
+  .home-process-grid p{
+    font-size:15px;
+  }
+}
+
+/* =========================================================
+   FULL-SCREEN HOME PAGE + FLUID HIGH-RES SCALE
+   =========================================================
+   Keeps readable paragraph lengths but lets sections, cards and
+   navigation use the width of large laptop/desktop displays.
+   ========================================================= */
+
+.home-page .wrap{
+  width:92vw;
+  max-width:none;
+}
+
+.home-page .header{
+  width:92vw;
+}
+
+.home-hero{
+  padding:clamp(76px,6.2vw,150px) 0 clamp(68px,5.2vw,126px);
+}
+
+.home-hero-inner{
+  width:min(78vw,1600px);
+  max-width:none;
+  margin-inline:auto;
+}
+
+.home-hero .label{
+  font-size:var(--fluid-xs,clamp(13px,0.22vw + 10px,20px));
+}
+
+.home-hero h1{
+  max-width:18ch;
+  margin-inline:auto;
+  font-size:clamp(46px,2.4vw + 16px,96px);
+  line-height:1.03;
+}
+
+.home-hero p{
+  max-width:78ch;
+  font-size:var(--fluid-base,clamp(16px,0.34vw + 10px,25px));
+  line-height:1.72;
+}
+
+.home-actions{
+  gap:clamp(10px,0.75vw,16px);
+  margin-top:clamp(28px,2vw,44px);
+}
+
+.home-primary-btn,
+.home-secondary-btn{
+  min-width:clamp(160px,10vw,230px);
+  min-height:clamp(44px,2.8vw,58px);
+  font-size:var(--fluid-sm,clamp(14px,0.26vw + 10px,22px));
+}
+
+.home-section{
+  padding:clamp(66px,5vw,120px) 0;
+}
+
+/* The explanatory area is wider than before; the paragraph itself
+   still stops at a comfortable reading length. */
+.home-narrow{
+  width:86vw;
+  max-width:1600px;
+  margin-inline:auto;
+}
+
+.home-narrow h2,
+.home-model-overview h2,
+.home-cta h2{
+  max-width:28ch;
+  font-size:clamp(32px,1.55vw + 12px,62px);
+  line-height:1.12;
+}
+
+.home-narrow>p,
+.home-model-overview p{
+  max-width:82ch;
+  font-size:var(--fluid-base,clamp(16px,0.34vw + 10px,25px));
+  line-height:1.75;
+}
+
+.home-feature-grid,
+.home-process-grid{
+  width:100%;
+  gap:clamp(18px,1.4vw,34px);
+  margin-top:clamp(32px,2.5vw,58px);
+}
+
+.home-feature-card,
+.home-process-grid article{
+  min-height:clamp(170px,11vw,250px);
+  padding:clamp(22px,1.55vw,38px);
+  border-radius:clamp(12px,0.8vw,18px);
+}
+
+.home-feature-icon,
+.home-process-grid strong{
+  min-width:clamp(38px,2.4vw,58px);
+  height:clamp(38px,2.4vw,58px);
+  font-size:var(--fluid-sm,clamp(14px,0.26vw + 10px,22px));
+}
+
+.home-feature-card h3,
+.home-process-grid h3{
+  font-size:var(--fluid-lg,clamp(20px,0.55vw + 10px,34px));
+}
+
+.home-feature-card p,
+.home-process-grid p,
+.home-category-list span{
+  font-size:var(--fluid-sm,clamp(14px,0.26vw + 10px,22px));
+}
+
+.home-model-overview{
+  width:100%;
+  grid-template-columns:minmax(0,1.05fr) minmax(420px,.95fr);
+  gap:clamp(48px,4vw,96px);
+}
+
+.home-category-list{
+  gap:clamp(10px,0.9vw,20px);
+}
+
+.home-category-list span{
+  padding:clamp(13px,0.9vw,20px) clamp(15px,1vw,22px);
+}
+
+.home-cta-inner{
+  width:min(86vw,1500px);
+  max-width:none;
+}
+
+/* On very wide displays, keep the feature cards as substantial
+   columns rather than a small island in the centre. */
+@media(min-width:1800px){
+  .home-page .wrap,
+  .home-page .header{
+    width:90vw;
+  }
+
+  .home-narrow{
+    width:82vw;
+  }
+}
+
+@media(max-width:1200px){
+  .home-page .wrap,
+  .home-page .header{
+    width:calc(100% - 40px);
+  }
+
+  .home-narrow{
+    width:100%;
+  }
+
+  .home-model-overview{
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+}
+
+@media(max-width:900px){
+  .home-page .wrap,
+  .home-page .header{
+    width:calc(100% - 28px);
+  }
+
+  .home-hero-inner{
+    width:100%;
+  }
+
+  .home-feature-grid,
+  .home-process-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:650px){
+  .home-page .wrap,
+  .home-page .header{
+    width:calc(100% - 20px);
+  }
+
+  .home-hero{
+    padding:62px 0 58px;
+  }
+
+  .home-hero h1{
+    font-size:clamp(38px,11vw,54px);
+  }
+
+  .home-feature-grid,
+  .home-process-grid{
+    grid-template-columns:1fr;
+  }
+
+  .home-feature-card,
+  .home-process-grid article{
+    min-height:0;
+  }
+}

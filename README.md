@@ -118,3 +118,25 @@ The models use simplified examples intended to demonstrate how algorithms work. 
 ## Author
 
 Developed by Najib Ur Rehman.
+
+
+## Citation & Attribution
+
+AI Model Playground is developed and maintained by **Najib Ur Rehman**.
+
+If you use this project for research, academic work, teaching,
+demonstrations, derivative projects, or publications, attribution
+to the original project is appreciated.
+
+### Suggested Citation
+
+Najib Ur Rehman. (2026). *AI Model Playground* [Computer software].
+GitHub: https://github.com/rehmannajib/ai-model-playground
+
+For citation metadata, see [`CITATION.cff`](CITATION.cff).
+
+## License
+
+This project is released under the MIT License.
+
+Copyright © 2026 Najib Ur Rehman.

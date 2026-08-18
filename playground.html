@@ -2695,154 +2695,309 @@ Final Predictions
 
 <div id="kmeans-playground" hidden>
 
-<div class="heading">
-
-<span class="label">
-K-Means Clustering Playground
-</span>
-
-<h2>
-Watch clusters form around centroids
-</h2>
-
-<p>
-Choose K and observe the repeated assignment and centroid
-update process used by K-Means clustering.
-</p>
-
-</div>
+  <div class="heading">
+    <span class="label">K-Means Clustering Playground</span>
+    <h2>Watch clusters form step by step</h2>
+    <p>
+      Generate unlabeled data, choose K, and watch K-Means assign points,
+      move centroids, and repeat until the clusters stabilize.
+    </p>
+  </div>
 
 
-<div class="toolbar card">
+  <!-- EXAMPLE DATASET -->
+  <section class="card kmeans-dataset-card">
 
-<div>
-<small>CLUSTERING PIPELINE</small>
-<strong>
-Points → Centroids → Assignment → Update → Repeat
-</strong>
-</div>
+    <div class="kmeans-dataset-header">
+      <div>
+        <small>CHOOSE AN EXAMPLE</small>
+        <h3 id="kmeans-dataset-title">🛍️ Customer Segments</h3>
+        <p id="kmeans-dataset-description">
+          Group customers using age and spending behaviour.
+        </p>
+      </div>
+    </div>
 
-<div class="actions">
+    <div class="kmeans-dataset-switcher" role="group" aria-label="K-Means example datasets">
 
-<button id="kmeans-reset" class="btn" type="button">
-Reset
-</button>
+      <button
+        class="kmeans-dataset-option active"
+        type="button"
+        data-kmeans-dataset="customers"
+        aria-pressed="true">
+        <strong>🛍️ Customer Segments</strong>
+        <span>Age + spending behaviour</span>
+      </button>
 
-<button id="kmeans-step" class="btn" type="button">
-Run One Step
-</button>
+      <button
+        class="kmeans-dataset-option"
+        type="button"
+        data-kmeans-dataset="space"
+        aria-pressed="false">
+        <strong>🪐 Space Objects</strong>
+        <span>Size + temperature</span>
+      </button>
 
-<button id="kmeans-run" class="btn primary" type="button">
-Run K-Means
-</button>
+      <button
+        class="kmeans-dataset-option"
+        type="button"
+        data-kmeans-dataset="numeric"
+        aria-pressed="false">
+        <strong>🔢 Numeric Points</strong>
+        <span>Simple X + Y coordinates</span>
+      </button>
 
-</div>
+    </div>
 
-</div>
-
-
-<div id="kmeans-live-step" class="live-step">
-Ready. Choose K and run clustering.
-</div>
-
-
-<section class="card model-control-card">
-
-<div class="model-control-grid">
-
-<label>
-Number of Clusters (K)
-
-<select id="kmeans-k">
-<option value="2">2 Clusters</option>
-<option value="3" selected>3 Clusters</option>
-<option value="4">4 Clusters</option>
-<option value="5">5 Clusters</option>
-</select>
-
-</label>
-
-</div>
-
-</section>
+  </section>
 
 
-<div class="model-two-column">
+  <!-- SETTINGS -->
+  <section class="card kmeans-settings-card">
 
-<section class="card model-panel-card">
+    <div class="kmeans-panel-heading">
+      <div>
+        <small>1 · CONFIGURE THE EXPERIMENT</small>
+        <h3>Choose how the data should look</h3>
+        <p>Set the number of clusters and the type of data before K-Means starts.</p>
+      </div>
+    </div>
 
-<h3>
-<span class="step">1</span>
-Cluster Visualization
-</h3>
+    <div class="kmeans-settings-grid">
 
-<div id="kmeans-plot" class="model-plot">
+      <label>
+        Number of Clusters (K)
+        <select id="kmeans-k">
+          <option value="2">2 Clusters</option>
+          <option value="3" selected>3 Clusters</option>
+          <option value="4">4 Clusters</option>
+          <option value="5">5 Clusters</option>
+        </select>
+      </label>
 
-<p class="muted">
-Run K-Means to see clusters.
-</p>
+      <label>
+        Number of Points
+        <select id="kmeans-points">
+          <option value="24">24 Points</option>
+          <option value="36" selected>36 Points</option>
+          <option value="48">48 Points</option>
+          <option value="60">60 Points</option>
+        </select>
+      </label>
 
-</div>
+      <label>
+        Dataset Shape
+        <select id="kmeans-pattern">
+          <option value="clear" selected>Clear Groups</option>
+          <option value="overlap">Overlapping Groups</option>
+          <option value="random">Random Scatter</option>
+        </select>
+      </label>
 
-</section>
+      <button id="kmeans-generate" class="btn" type="button">
+        Generate New Data
+      </button>
 
+    </div>
 
-<section class="card model-panel-card">
-
-<h3>
-<span class="step">2</span>
-Centroids
-</h3>
-
-<div class="model-table-wrap">
-
-<table class="model-table">
-
-<thead>
-<tr>
-<th>Centroid</th>
-<th>X</th>
-<th>Y</th>
-</tr>
-</thead>
-
-<tbody id="kmeans-centroid-body"></tbody>
-
-</table>
-
-</div>
-
-</section>
-
-</div>
+  </section>
 
 
-<section class="card model-panel-card">
+  <!-- FULL-WIDTH GRAPH FIRST -->
+  <section class="card kmeans-plot-card">
 
-<h3>
-Point Assignments
-</h3>
+    <div class="kmeans-panel-heading">
+      <div>
+        <small>2 · EXPLORE THE DATA</small>
+        <h3>Live Cluster Visualization</h3>
+        <p>The points begin unlabeled. K-Means will discover the groups.</p>
+      </div>
 
-<div class="model-table-wrap">
+      <span class="kmeans-axis-chip">
+        <span id="kmeans-x-axis-label">Age</span>
+        ×
+        <span id="kmeans-y-axis-label">Spending Score</span>
+      </span>
+    </div>
 
-<table class="model-table">
+    <div id="kmeans-plot"></div>
 
-<thead>
-<tr>
-<th>ID</th>
-<th>X</th>
-<th>Y</th>
-<th>Cluster</th>
-</tr>
-</thead>
+    <p class="kmeans-plot-hint">
+      Tip: click inside the graph to add your own point, then run K-Means again.
+    </p>
 
-<tbody id="kmeans-result-body"></tbody>
+  </section>
 
-</table>
 
-</div>
+  <!-- NAVIGATION DIRECTLY AFTER GRAPH -->
+  <section class="card kmeans-run-card">
 
-</section>
+    <div class="kmeans-run-header">
+      <div>
+        <small>3 · RUN &amp; NAVIGATE</small>
+        <h3>Run instantly or watch every clustering step</h3>
+        <p>
+          Play automatically, pause whenever you want, or use Previous and Next
+          to inspect the algorithm one step at a time.
+        </p>
+      </div>
+    </div>
+
+    <div class="kmeans-run-actions">
+      <button id="kmeans-instant" class="btn primary" type="button">
+        Instant Result
+      </button>
+
+      <button id="kmeans-play" class="btn" type="button">
+        ▶ Play Animation
+      </button>
+
+      <button id="kmeans-pause" class="btn" type="button" disabled>
+        ⏸ Pause
+      </button>
+
+      <button id="kmeans-prev" class="btn" type="button">
+        ← Previous
+      </button>
+
+      <button id="kmeans-next" class="btn" type="button">
+        Next Step →
+      </button>
+
+      <button id="kmeans-reset" class="btn" type="button">
+        Reset Algorithm
+      </button>
+    </div>
+
+    <div class="kmeans-run-lower">
+      <div class="kmeans-speed-control">
+        <label for="kmeans-speed">Animation Speed</label>
+        <input id="kmeans-speed" type="range" min="1" max="5" value="3" step="1">
+        <span id="kmeans-speed-value">Normal</span>
+      </div>
+
+      <div class="kmeans-progress-row">
+        <progress id="kmeans-progress" max="100" value="0"></progress>
+        <span id="kmeans-step-counter">Ready</span>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- RESULT / STATUS AFTER GRAPH + NAVIGATION -->
+  <section class="card kmeans-metrics-card kmeans-status-card">
+
+    <div class="kmeans-panel-heading">
+      <div>
+        <small>4 · LIVE CLUSTERING RESULT</small>
+        <h3>What is changing?</h3>
+        <p>These values update while K-Means assigns points and moves centroids.</p>
+      </div>
+    </div>
+
+    <div class="kmeans-status-layout">
+
+      <div class="kmeans-metric-grid">
+
+        <div class="kmeans-metric">
+          <span>Iteration</span>
+          <strong id="kmeans-metric-iteration">0</strong>
+        </div>
+
+        <div class="kmeans-metric">
+          <span>Assigned Points</span>
+          <strong id="kmeans-metric-assigned">0/0</strong>
+        </div>
+
+        <div class="kmeans-metric">
+          <span>Inertia</span>
+          <strong id="kmeans-metric-inertia">—</strong>
+        </div>
+
+        <div class="kmeans-metric">
+          <span>Centroid Movement</span>
+          <strong id="kmeans-metric-movement">—</strong>
+        </div>
+
+      </div>
+
+      <div class="kmeans-cluster-sizes-panel">
+        <h4>Cluster Sizes</h4>
+        <div id="kmeans-cluster-summary" class="kmeans-cluster-summary"></div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LIVE EXPLANATION + LIVE MATH -->
+  <section class="card kmeans-explanation-card">
+
+    <div class="kmeans-explanation-grid">
+
+      <div>
+        <small>WHAT IS HAPPENING NOW?</small>
+        <div id="kmeans-live-step">
+          <span class="kmeans-live-kicker">Ready</span>
+          <strong>Generate data and run K-Means.</strong>
+        </div>
+      </div>
+
+      <div>
+        <small>LIVE CALCULATION</small>
+        <div id="kmeans-live-math-mini">
+          <p class="muted">Run K-Means to see the current calculation.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TABLES -->
+  <div class="kmeans-results-grid">
+
+    <section class="card model-panel-card">
+      <h3>Centroids</h3>
+
+      <div class="model-table-wrap">
+        <table class="model-table">
+          <thead>
+            <tr>
+              <th>Centroid</th>
+              <th>X Feature</th>
+              <th>Y Feature</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody id="kmeans-centroid-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <section class="card model-panel-card">
+      <h3>Point Assignments</h3>
+
+      <div class="model-table-wrap">
+        <table class="model-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>X Feature</th>
+              <th>Y Feature</th>
+              <th>Cluster</th>
+            </tr>
+          </thead>
+          <tbody id="kmeans-result-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
 
 </div>
 
@@ -5335,165 +5490,157 @@ Fₘ = Fₘ₋₁ + ηhₘ
 ===================================================== -->
 
 <section
-class="section model-learn-section"
-id="kmeans-learn"
-data-learn-model="kmeans"
-hidden>
+  class="section model-learn-section"
+  id="kmeans-learn"
+  data-learn-model="kmeans"
+  hidden>
 
-<div class="wrap">
+  <div class="wrap">
 
-<div class="heading">
-
-<span class="label">
-Learn K-Means Clustering
-</span>
-
-<h2>
-How do centroids create clusters?
-</h2>
-
-<p>
-Understand cluster centers, distance-based assignment
-and iterative centroid updates.
-</p>
-
-</div>
+    <div class="heading">
+      <span class="label">Learn K-Means Clustering</span>
+      <h2>How do centroids discover groups?</h2>
+      <p>
+        K-Means is unsupervised: the data starts without class labels.
+        The algorithm creates groups by repeatedly assigning points to
+        nearby centroids and moving those centroids to the cluster means.
+      </p>
+    </div>
 
 
-<div class="tabs model-learn-tabs">
-
-<button class="tab active" data-learn-tab="beginner">
-Beginner
-</button>
-
-<button class="tab" data-learn-tab="math">
-Mathematics
-</button>
-
-<button class="tab" data-learn-tab="process">
-Clustering Process
-</button>
-
-</div>
+    <div class="tabs model-learn-tabs">
+      <button class="tab active" data-learn-tab="beginner">Beginner</button>
+      <button class="tab" data-learn-tab="math">Mathematics</button>
+      <button class="tab" data-learn-tab="process">Clustering Process</button>
+    </div>
 
 
-<div class="learn-panel" data-learn-panel="beginner">
+    <div class="learn-panel" data-learn-panel="beginner">
 
-<div class="learn-grid">
+      <div class="learn-grid">
 
-<article>
-<b>1</b>
-<h3>Choose K</h3>
-<p>K specifies how many clusters should be created.</p>
-</article>
+        <article>
+          <b>1</b>
+          <h3>Start with unlabeled data</h3>
+          <p>Unlike KNN, K-Means does not receive known class labels.</p>
+        </article>
 
-<article>
-<b>2</b>
-<h3>Initialize centroids</h3>
-<p>The algorithm begins with K cluster centers.</p>
-</article>
+        <article>
+          <b>2</b>
+          <h3>Choose K</h3>
+          <p>K tells the algorithm how many clusters it should create.</p>
+        </article>
 
-<article>
-<b>3</b>
-<h3>Calculate distances</h3>
-<p>Each point is compared with every centroid.</p>
-</article>
+        <article>
+          <b>3</b>
+          <h3>Place centroids</h3>
+          <p>K starting centers are placed in the feature space.</p>
+        </article>
 
-<article>
-<b>4</b>
-<h3>Assign clusters</h3>
-<p>A point joins the cluster with the closest centroid.</p>
-</article>
+        <article>
+          <b>4</b>
+          <h3>Assign points</h3>
+          <p>Each point joins the cluster of its nearest centroid.</p>
+        </article>
 
-<article>
-<b>5</b>
-<h3>Update centroids</h3>
-<p>Each centroid moves to the average of its assigned points.</p>
-</article>
+        <article>
+          <b>5</b>
+          <h3>Move centroids</h3>
+          <p>Each centroid moves to the average position of its cluster.</p>
+        </article>
 
-<article>
-<b>6</b>
-<h3>Repeat</h3>
-<p>Assignment and updating continue until the clusters stabilize.</p>
-</article>
+        <article>
+          <b>6</b>
+          <h3>Repeat until stable</h3>
+          <p>The assignment/update cycle continues until the clusters stop changing.</p>
+        </article>
 
-</div>
+      </div>
 
-</div>
-
-
-<div class="learn-panel" data-learn-panel="math" hidden>
-
-<div class="math-grid">
-
-<article>
-<h3>Distance</h3>
-<p class="equation">
-d(x,c)=√Σ(xᵢ−cᵢ)²
-</p>
-</article>
-
-<article>
-<h3>Assignment</h3>
-<p class="equation">
-cluster(x)=argmin d(x,cₖ)
-</p>
-</article>
-
-<article>
-<h3>Centroid</h3>
-<p class="equation">
-cₖ = mean(points in cluster k)
-</p>
-</article>
-
-</div>
-
-</div>
+    </div>
 
 
-<div class="learn-panel" data-learn-panel="process" hidden>
+    <div class="learn-panel" data-learn-panel="math" hidden>
 
-<div class="process-grid">
+      <div class="math-grid">
 
-<article>
-<strong>Choose K</strong>
-<span>Number of clusters</span>
-</article>
+        <article>
+          <h3>Euclidean Distance</h3>
+          <p class="equation">d(x,c)=√Σ(xᵢ−cᵢ)²</p>
+        </article>
 
-<span>→</span>
+        <article>
+          <h3>Cluster Assignment</h3>
+          <p class="equation">cluster(x)=argminₖ d(x,cₖ)</p>
+        </article>
 
-<article>
-<strong>Centroids</strong>
-<span>Initialize centers</span>
-</article>
+        <article>
+          <h3>Centroid Update</h3>
+          <p class="equation">cₖ = mean(points assigned to cluster k)</p>
+        </article>
 
-<span>→</span>
+        <article>
+          <h3>Inertia</h3>
+          <p class="equation">Σ ||xᵢ − ccluster(i)||²</p>
+        </article>
 
-<article>
-<strong>Assignment</strong>
-<span>Nearest center</span>
-</article>
+      </div>
 
-<span>→</span>
+      <h3 class="kmeans-dynamic-heading">Using your current experiment</h3>
 
-<article>
-<strong>Update</strong>
-<span>Move centroids</span>
-</article>
+      <div id="kmeans-dynamic-math">
+        <p class="muted">
+          Run K-Means in the playground to see these equations filled with
+          values from your current dataset.
+        </p>
+      </div>
 
-<span>→</span>
+    </div>
 
-<article>
-<strong>Repeat</strong>
-<span>Converge to clusters</span>
-</article>
 
-</div>
+    <div class="learn-panel" data-learn-panel="process" hidden>
 
-</div>
+      <div class="kmeans-process-list">
 
-</div>
+        <article class="kmeans-process-item" data-kmeans-process-step="init">
+          <b>1</b>
+          <strong>Initialize</strong>
+          <span>Place K centroids</span>
+        </article>
+
+        <article class="kmeans-process-item" data-kmeans-process-step="assign">
+          <b>2</b>
+          <strong>Measure & Assign</strong>
+          <span>Find nearest centroid</span>
+        </article>
+
+        <article class="kmeans-process-item" data-kmeans-process-step="update">
+          <b>3</b>
+          <strong>Update</strong>
+          <span>Calculate cluster means</span>
+        </article>
+
+        <article class="kmeans-process-item" data-kmeans-process-step="moved">
+          <b>4</b>
+          <strong>Repeat</strong>
+          <span>Check every point again</span>
+        </article>
+
+        <article class="kmeans-process-item" data-kmeans-process-step="converged">
+          <b>5</b>
+          <strong>Converged</strong>
+          <span>Clusters are stable</span>
+        </article>
+
+      </div>
+
+      <p id="kmeans-process-note">
+        Run K-Means to follow the process step by step.
+      </p>
+
+    </div>
+
+  </div>
 
 </section>
 
@@ -6366,19 +6513,39 @@ softmax(QKᵀ/√dₖ)V
      FOOTER
 ===================================================== -->
 
-<footer>
+<footer class="site-footer">
 
-<div class="wrap footer">
+  <div class="wrap footer-content">
 
-<strong>
-AI Model Playground
-</strong>
+    <p>
+      AI Model Playground · Designed and developed by
+      <strong>Najib Ur Rehman</strong>
+      · © 2026
+    </p>
 
-<span>
-Developed by Najib Ur Rehman · Educational simulation only.
-</span>
+    <div class="footer-links">
 
-</div>
+      <a href="about.html">
+        About Author
+      </a>
+
+      <a
+        href="https://github.com/rehmannajib/ai-model-playground"
+        target="_blank"
+        rel="noopener noreferrer">
+        GitHub
+      </a>
+
+      <a
+        href="https://github.com/rehmannajib/ai-model-playground/blob/main/LICENSE"
+        target="_blank"
+        rel="noopener noreferrer">
+        MIT License
+      </a>
+
+    </div>
+
+  </div>
 
 </footer>
 

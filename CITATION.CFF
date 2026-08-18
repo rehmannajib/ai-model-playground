@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+
+message: >
+  If you use the AI Model Playground in research, teaching,
+  academic work, demonstrations, or other projects,
+  please cite this software.
+
+title: "AI Model Playground"
+
+authors:
+  - family-names: "Ur Rehman"
+    given-names: "Najib"
+
+version: "1.0.0"
+
+date-released: "2026-08-18"
+
+url: "https://github.com/rehmannajib/ai-model-playground"
+
+repository-code: "https://github.com/rehmannajib/ai-model-playground"
+
+license: MIT
+
+type: software
+
+abstract: >
+  AI Model Playground is an interactive educational platform
+  developed to help users explore, visualize, and understand
+  machine learning and deep learning algorithms through
+  interactive experiments, mathematical explanations, and
+  step-by-step model processes.
