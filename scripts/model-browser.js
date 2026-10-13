@@ -282,7 +282,17 @@ AIPlayground.modelBrowser = (() => {
     updateLayoutMode(false);
     hideAllModels();
 
-    if (modelWelcome) modelWelcome.hidden = false;
+    if (modelWelcome) {
+      modelWelcome.hidden = false;
+      const title = modelWelcome.querySelector(".model-welcome-head h1");
+      if (title) title.textContent = "Choose a model to start";
+      modelWelcome.querySelectorAll(".model-welcome-group-title").forEach(heading => {
+        heading.parentElement.hidden = false;
+      });
+      modelWelcome.querySelectorAll(".model-welcome-card").forEach(card => {
+        card.hidden = false;
+      });
+    }
 
     document.querySelectorAll(".nav-model").forEach(item => {
       item.classList.remove("active");
@@ -348,31 +358,74 @@ AIPlayground.modelBrowser = (() => {
     breadcrumb.append(separator, current);
   }
 
-  function updateBreadcrumb(main, section, group, model) {
+  function showCategoryChooser(level, main, section, group) {
+    showModelChooser(false);
+    const head = modelWelcome.querySelector(".model-welcome-head");
+    const title = head?.querySelector("h1");
+    if (title) title.textContent = [main, section, group][level - 1];
+
+    modelWelcome.querySelectorAll(".model-welcome-group-title").forEach(heading => {
+      const category = heading.parentElement;
+      const categoryName = heading.textContent.trim();
+      const categoryMatches = categoryName.includes(main);
+      category.hidden = !categoryMatches;
+      if (!categoryMatches) return;
+
+      let visible = 0;
+      category.querySelectorAll(".model-welcome-card").forEach(card => {
+        const meta = getModelMeta(card.dataset.model);
+        const matches = meta && meta.main === main &&
+          (level < 2 || meta.section === section) &&
+          (level < 3 || meta.group === group);
+        card.hidden = !matches;
+        if (matches) visible++;
+      });
+      category.hidden = visible === 0;
+    });
+
     const breadcrumb = document.getElementById("model-breadcrumb");
-    if (!breadcrumb) return;
-
-    breadcrumb.replaceChildren();
-    breadcrumb.append(makeAllModelsButton());
-
-    [main, section, group].forEach(item => {
+    breadcrumb.replaceChildren(makeAllModelsButton());
+    const levels = [main, section, group].slice(0, level);
+    levels.forEach((label, index) => {
       const separator = document.createElement("span");
       separator.className = "breadcrumb-separator";
       separator.textContent = "›";
-
-      const span = document.createElement("span");
-      span.textContent = item;
-
-      breadcrumb.append(separator, span);
+      breadcrumb.append(separator);
+      if (index === level - 1) {
+        const current = document.createElement("strong");
+        current.textContent = label;
+        breadcrumb.append(current);
+      } else {
+        breadcrumb.append(makeCategoryButton(label, index + 1, main, section, group));
+      }
     });
+    document.querySelector(".model-content")?.scrollIntoView({behavior:"smooth",block:"start"});
+  }
 
+  function makeCategoryButton(label, level, main, section, group) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "model-breadcrumb-home";
+    button.textContent = label;
+    button.addEventListener("click", () => showCategoryChooser(level, main, section, group));
+    return button;
+  }
+
+  function updateBreadcrumb(main, section, group, model) {
+    const breadcrumb = document.getElementById("model-breadcrumb");
+    if (!breadcrumb) return;
+    breadcrumb.replaceChildren(makeAllModelsButton());
+    [main, section, group].forEach((label, index) => {
+      const separator = document.createElement("span");
+      separator.className = "breadcrumb-separator";
+      separator.textContent = "›";
+      breadcrumb.append(separator, makeCategoryButton(label, index + 1, main, section, group));
+    });
     const separator = document.createElement("span");
     separator.className = "breadcrumb-separator";
     separator.textContent = "›";
-
     const current = document.createElement("strong");
     current.textContent = model;
-
     breadcrumb.append(separator, current);
   }
 
